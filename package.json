@@ -1,26 +1,33 @@
 {
-  "name": "schedule-system",
-  "version": "1.0.0",
-  "description": "product development and production schedule management system",
-  "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/junior-upgi/scheduleSystem.git"
-  },
-  "author": "Chia-Yu Tsai",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/junior-upgi/scheduleSystem/issues"
-  },
-  "private": true,
-  "homepage": "https://github.com/junior-upgi/scheduleSystem#readme",
-  "scripts": {},
-  "dependencies": {
-    "vue": "^2.2.6",
-    "vue-router": "^2.4.0",
-    "vuex": "^2.3.1"
-  },
-  "devDependencies": {
-    "vueify": "^9.4.1"
-  }
+    "name": "schedule-system",
+    "version": "1.0.0",
+    "description": "product development and production schedule management system",
+    "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/junior-upgi/scheduleSystem.git"
+    },
+    "author": "Chia-Yu Tsai",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/junior-upgi/scheduleSystem/issues"
+    },
+    "private": true,
+    "homepage": "https://github.com/junior-upgi/scheduleSystem#readme",
+    "scripts": {},
+    "dependencies": {
+        "vue": "^2.2.6",
+        "vue-router": "^2.4.0",
+        "vuex": "^2.3.1"
+    },
+    "devDependencies": {
+        "vueify": "^9.4.1",
+        "eslint-config-google": "^0.7.1",
+        "eslint-config-standard": "^7.1.0",
+        "eslint-config-vue": "^2.0.2",
+        "eslint-plugin-node": "^4.2.2",
+        "eslint-plugin-promise": "^3.5.0",
+        "eslint-plugin-standard": "^2.3.1",
+        "eslint-plugin-vue": "^2.0.1"
+    }
 }
