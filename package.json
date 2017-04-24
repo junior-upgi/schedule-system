@@ -12,8 +12,7 @@
   "bugs": {
     "url": "https://github.com/junior-upgi/scheduleSystem/issues"
   },
+  "private": true,
   "homepage": "https://github.com/junior-upgi/scheduleSystem#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "scripts": {}
 }
