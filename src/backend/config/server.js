@@ -9,3 +9,7 @@ export const serverUrl = `${host}:${port}`;
 
 export const systemReference = 'scheduleSystem';
 export const administrator = getUserID('蔡佳佑');
+
+export function passphrase() {
+    return 'this is not a passphrase';
+}

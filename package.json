@@ -1,108 +1,113 @@
 {
-    "name": "schedule-system",
-    "version": "1.0.0",
-    "description": "product development and production schedule management system",
-    "main": "server.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/junior-upgi/scheduleSystem.git"
-    },
-    "author": "Chia-Yu Tsai",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/junior-upgi/scheduleSystem/issues"
-    },
-    "private": true,
-    "homepage": "https://github.com/junior-upgi/scheduleSystem#readme",
-    "dependencies": {
-        "axios": "^0.16.1",
-        "body-parser": "^1.17.1",
-        "cors": "^2.8.3",
-        "express": "^4.15.2",
-        "jsonwebtoken": "^7.3.0",
-        "moment-timezone": "^0.5.13",
-        "node-cron": "^1.1.3",
-        "request": "^2.81.0",
-        "request-promise": "^4.2.0",
-        "vue": "^2.2.6",
-        "vue-router": "^2.4.0",
-        "vuex": "^2.3.1",
-        "winston": "^2.3.1"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.24.1",
-        "babel-core": "^6.24.1",
-        "babel-eslint": "^7.2.3",
-        "babel-plugin-transform-runtime": "^6.23.0",
-        "babel-preset-es2015": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
-        "babel-runtime": "^6.23.0",
-        "babelify": "^7.3.0",
-        "browserify": "^14.3.0",
-        "browserify-hmr": "^0.3.5",
-        "cpx": "^1.5.0",
-        "cross-env": "^4.0.0",
-        "envify": "^4.0.0",
-        "es6-promise": "^4.1.0",
-        "eslint": "^3.19.0",
-        "eslint-config-google": "^0.7.1",
-        "eslint-config-standard": "^7.1.0",
-        "eslint-config-vue": "^2.0.2",
-        "eslint-plugin-node": "^4.2.2",
-        "eslint-plugin-promise": "^3.5.0",
-        "eslint-plugin-standard": "^2.3.1",
-        "eslint-plugin-vue": "^2.0.1",
-        "npm-run-all": "^4.0.2",
-        "rimraf": "^2.6.1",
-        "uglify-js": "^2.8.22",
-        "vueify": "^9.4.1",
-        "watchify": "^3.9.0"
-    },
-    "engines": {
-        "node": ">=6.9.0"
-    },
-    "browser": {
-        "vue": "vue/dist/vue.common.js"
-    },
-    "browserify": {
-        "transform": [
-            "babelify",
-            "vueify"
-        ]
-    },
-    "config": {
-        "appurl": "http://localhost:9007/scheduleSystem/index.html"
-    },
-    "scripts": {
-        "rebuild:cleanup": "run-p client:cleanup server:cleanup cleanup:log cleanup:misc",
-        "client:cleanup": "rimraf public && mkdir public",
-        "server:cleanup": "rimraf build && mkdir build",
-        "cleanup:log": "rimraf log && mkdir log",
-        "cleanup:misc": "rimraf temp && mkdir temp",
-        "rebuild:lint": "run-p client:lint server:lint",
-        "client:lint": "eslint --color --ext .js,.vue src/frontend",
-        "server:lint": "eslint --color --ext .js src/backend",
-        "rebuild:transpile": "run-p client:transpile server:transpile",
-        "client:transpile": "browserify -p [ vueify/plugins/extract-css -o public/style.css ] -e src/frontend/main.js -o public/main.js --debug",
-        "rebuild:transfer": "npm run client:transfer:rebuild",
-        "client:transfer:rebuild": "run-p client:transfer:html client:transfer:favicon",
-        "client:transfer:html": "cpx src/frontend/**/*.html public",
-        "client:transfer:favicon": "cpx src/frontend/upgiLogo.png public",
-        "server:transpile": "babel src/backend -d build",
-        "server:watch:retranspile": "babel -w src/backend -d build",
-        "server:watch:restart": "cross-env NODE_ENV=development nodemon --watch build --exec \"node build/server.js\"",
-        "server:start": "run-p server:watch:retranspile server:watch:restart",
-        "client:watch:hmr": "watchify -vd -p browserify-hmr -e src/frontend/main.js -o public/main.js",
-        "browser:start": "start %npm_package_config_appurl%",
-        "prestart:dev:server": "run-s rebuild:cleanup rebuild:lint rebuild:transpile rebuild:transfer",
-        "start:dev:server": "run-p server:start client:watch:hmr browser:start",
-        "server:watch:relint": "nodemon --ext js --watch src/backend --on-change-only --exec \"npm run server:lint\"",
-        "client:watch:relint": "nodemon --ext js,vue --watch src/frontend --on-change-only --exec \"npm run client:lint\"",
-        "start:dev:lint": "run-p server:watch:relint client:watch:relint",
-        "prestart:dev": "run-s rebuild:cleanup rebuild:lint rebuild:transpile rebuild:transfer",
-        "start:dev": "run-p server:start client:watch:hmr server:watch:relint client:watch:relint browser:start",
-        "client:build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o public/style.css ] -e src/frontend/main.js | uglifyjs -c warnings=false -m > public/main.js",
-        "preproduction:build": "run-s prestart:dev:server",
-        "production:build": "run-s client:build server:start"
-    }
+  "name": "schedule-system",
+  "version": "1.0.0",
+  "description": "product development and production schedule management system",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junior-upgi/scheduleSystem.git"
+  },
+  "author": "Chia-Yu Tsai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/junior-upgi/scheduleSystem/issues"
+  },
+  "private": true,
+  "homepage": "https://github.com/junior-upgi/scheduleSystem#readme",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
+    "knex": "^0.12.9",
+    "ldapjs": "^1.0.1",
+    "moment-timezone": "^0.5.13",
+    "morgan": "^1.8.1",
+    "mssql": "^3.3.0",
+    "node-cron": "^1.1.3",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "smartsheet": "^0.1.0",
+    "vue": "^2.2.6",
+    "vue-router": "^2.4.0",
+    "vuex": "^2.3.1",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "browserify-hmr": "^0.3.5",
+    "cpx": "^1.5.0",
+    "cross-env": "^4.0.0",
+    "envify": "^4.0.0",
+    "es6-promise": "^4.1.0",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.3.1",
+    "eslint-plugin-vue": "^2.0.1",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1",
+    "uglify-js": "^2.8.22",
+    "vueify": "^9.4.1",
+    "watchify": "^3.9.0"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "browser": {
+    "vue": "vue/dist/vue.common.js"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "vueify"
+    ]
+  },
+  "config": {
+    "appurl": "http://localhost:9007/scheduleSystem/index.html"
+  },
+  "scripts": {
+    "rebuild:cleanup": "run-p client:cleanup server:cleanup cleanup:log cleanup:misc",
+    "client:cleanup": "rimraf public && mkdir public",
+    "server:cleanup": "rimraf build && mkdir build",
+    "cleanup:log": "rimraf log && mkdir log",
+    "cleanup:misc": "rimraf temp && mkdir temp",
+    "rebuild:lint": "run-p client:lint server:lint",
+    "client:lint": "eslint --color --ext .js,.vue src/frontend",
+    "server:lint": "eslint --color --ext .js src/backend",
+    "rebuild:transpile": "run-p client:transpile server:transpile",
+    "client:transpile": "browserify -p [ vueify/plugins/extract-css -o public/style.css ] -e src/frontend/main.js -o public/main.js --debug",
+    "rebuild:transfer": "npm run client:transfer:rebuild",
+    "client:transfer:rebuild": "run-p client:transfer:html client:transfer:favicon",
+    "client:transfer:html": "cpx src/frontend/**/*.html public",
+    "client:transfer:favicon": "cpx src/frontend/upgiLogo.png public",
+    "server:transpile": "babel src/backend -d build",
+    "server:watch:retranspile": "babel -w src/backend -d build",
+    "server:watch:restart": "cross-env NODE_ENV=development nodemon --watch build --exec \"node build/server.js\"",
+    "server:start": "run-p server:watch:retranspile server:watch:restart",
+    "client:watch:hmr": "watchify -vd -p browserify-hmr -e src/frontend/main.js -o public/main.js",
+    "browser:start": "start %npm_package_config_appurl%",
+    "prestart:dev:server": "run-s rebuild:cleanup rebuild:lint rebuild:transpile rebuild:transfer",
+    "start:dev:server": "run-p server:start client:watch:hmr browser:start",
+    "server:watch:relint": "nodemon --ext js --watch src/backend --on-change-only --exec \"npm run server:lint\"",
+    "client:watch:relint": "nodemon --ext js,vue --watch src/frontend --on-change-only --exec \"npm run client:lint\"",
+    "start:dev:lint": "run-p server:watch:relint client:watch:relint",
+    "prestart:dev": "run-s rebuild:cleanup rebuild:lint rebuild:transpile rebuild:transfer",
+    "start:dev": "run-p server:start client:watch:hmr server:watch:relint client:watch:relint browser:start",
+    "client:build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o public/style.css ] -e src/frontend/main.js | uglifyjs -c warnings=false -m > public/main.js",
+    "preproduction:build": "run-s prestart:dev:server",
+    "production:build": "run-s client:build server:start"
+  }
 }

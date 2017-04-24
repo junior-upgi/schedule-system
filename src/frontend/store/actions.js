@@ -54,10 +54,9 @@ function componentErrorHandler(context, errorObject) {
 }
 
 function initData(context) {
-    console.log(`${serverUrl}/data/smartsheet/workspace`);
     const initOptList = [{
         method: 'get',
-        url: `${serverUrl}/data/smartsheet/workspace`,
+        url: `${serverUrl}/data/smartsheet/workspaces`,
         headers: { 'x-access-token': sessionStorage.token }
     }];
     return Promise.all(initOptList.map(axios));

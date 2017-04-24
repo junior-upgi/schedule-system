@@ -1,12 +1,12 @@
 import { decode } from 'jsonwebtoken';
 import moment from 'moment-timezone';
-import { currentDatetime } from '../utility/timeUtility.js';
+import { currentDateTime } from '../utility/timeUtility.js';
 
 function emptyStore(state) {
     // application state
     state.activeView = 'login';
     // access control
-    state.accessExp = currentDatetime().format('HH:mm');
+    state.accessExp = currentDateTime().format('HH:mm');
     state.loginId = null;
     state.role = null;
     state.token = null;
