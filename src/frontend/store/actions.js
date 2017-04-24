@@ -56,6 +56,10 @@ function componentErrorHandler(context, errorObject) {
 function initData(context) {
     const initOptList = [{
         method: 'get',
+        url: `${serverUrl}/data/productType`,
+        headers: { 'x-access-token': sessionStorage.token }
+    }, {
+        method: 'get',
         url: `${serverUrl}/data/smartsheet/workspaces`,
         headers: { 'x-access-token': sessionStorage.token }
     }];

@@ -12,6 +12,7 @@ function emptyStore(state) {
     state.token = null;
     // working data
     state.userData = {};
+    state.productType = null;
 }
 
 export default {

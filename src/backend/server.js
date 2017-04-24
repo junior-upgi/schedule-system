@@ -20,6 +20,8 @@ main.use('/bower_components', express.static(path.join(__dirname, '/../bower_com
 
 // data routes
 main.use('/', require('./route/data/smartsheet/workspaces.js'));
+main.use('/', require('./route/data/productType.js'));
+main.use('/', require('./route/data/referenceList.js'));
 // utility routes
 main.use('/', require('./route/utility/login.js'));
 main.use('/', require('./route/utility/status.js'));
