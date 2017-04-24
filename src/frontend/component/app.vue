@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<script lang="babel/es6">
+<script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { store } from '../store/store.js';
 

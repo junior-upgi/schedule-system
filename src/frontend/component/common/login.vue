@@ -16,7 +16,7 @@
 <script>
 import axios from 'axios';
 import { mapActions, mapMutations } from 'vuex';
-import { serverUrl } from '../clientConfig.js';
+import { serverUrl } from '../../config/client.js';
 
 export default {
     name: 'login',

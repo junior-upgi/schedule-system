@@ -9,9 +9,12 @@ import { statusReport } from './utility/statusReport.js';
 
 const app = express();
 const main = express.Router();
-main.user(cors());
+app.use(`/${systemReference}`, main);
+main.use(cors());
 main.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 main.use(bodyParser.json()); // parse application/json
+
+console.log(path.join(__dirname, '/../public'));
 
 main.use('/', express.static(path.join(__dirname, '/../public'))); // frontend client server route
 main.use('/bower_components', express.static(path.join(__dirname, '/../bower_components'))); // serve bower packages

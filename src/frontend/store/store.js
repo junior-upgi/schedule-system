@@ -6,7 +6,7 @@ import actions from './actions.js';
 import getters from './getters.js';
 import mutations from './mutations.js';
 
-import { currentDatetime } from '../utility.js';
+import { currentDateTime } from '../utility/timeUtility.js';
 
 export const store = new Vuex.Store({
     actions: actions,
@@ -16,7 +16,7 @@ export const store = new Vuex.Store({
         // application state
         activeView: 'login',
         // access control
-        accessExp: currentDatetime().format('HH:mm'),
+        accessExp: currentDateTime().format('HH:mm'),
         loginId: null, // same value as userData.SAL_NO
         role: null, // 'admin', 'rnd', 'sales', 'prod'
         token: null, // jwt token
