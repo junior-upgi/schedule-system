@@ -25,7 +25,6 @@ export const store = new Vuex.Store({
     }
 });
 
-/*
 if (module.hot) {
     module.hot.accept(['./getters', './actions', './mutations'], () => {
         store.hotUpdate({
@@ -35,4 +34,3 @@ if (module.hot) {
         });
     });
 }
-*/
