@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<script>
+<script lang="babel/es6">
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { store } from '../store/store.js';
 
@@ -41,7 +41,7 @@ export default {
             restoreToken: 'restoreToken'
         })
     },
-    created: function () {
+    created: function() {
         // if jwt token exists in the sessionStorage
         if (
             (sessionStorage.token !== undefined) &&
