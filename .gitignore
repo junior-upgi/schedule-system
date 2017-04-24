@@ -1,0 +1,14 @@
+.DS_Store
+node_modules
+dist/build.js
+dist/build.css
+node_modules
+bower_components
+build
+public
+debug.log
+npm-debug.log
+log
+deprecated
+temp
+reference
