@@ -22,10 +22,15 @@ export const store = new Vuex.Store({
         token: null, // jwt token
         // working data
         userData: {}, // used to hold the user information returned from the authentication process
-        productType: null
+        jobType: null,
+        productType: null,
+        processType: null,
+        procState: null,
+        stage: null
     }
 });
 
+/*
 if (module.hot) {
     module.hot.accept(['./getters', './actions', './mutations'], () => {
         store.hotUpdate({
@@ -35,3 +40,4 @@ if (module.hot) {
         });
     });
 }
+*/

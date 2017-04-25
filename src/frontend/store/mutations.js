@@ -12,7 +12,11 @@ function emptyStore(state) {
     state.token = null;
     // working data
     state.userData = {};
+    state.jobType = null;
     state.productType = null;
+    state.processType = null;
+    state.procState = null;
+    state.stage = null;
 }
 
 export default {

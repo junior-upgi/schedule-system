@@ -56,7 +56,23 @@ function componentErrorHandler(context, errorObject) {
 function initData(context) {
     const initOptList = [{
         method: 'get',
+        url: `${serverUrl}/data/jobType`,
+        headers: { 'x-access-token': sessionStorage.token }
+    }, {
+        method: 'get',
         url: `${serverUrl}/data/productType`,
+        headers: { 'x-access-token': sessionStorage.token }
+    }, {
+        method: 'get',
+        url: `${serverUrl}/data/processType`,
+        headers: { 'x-access-token': sessionStorage.token }
+    }, {
+        method: 'get',
+        url: `${serverUrl}/data/procState`,
+        headers: { 'x-access-token': sessionStorage.token }
+    }, {
+        method: 'get',
+        url: `${serverUrl}/data/stage`,
         headers: { 'x-access-token': sessionStorage.token }
     }, {
         method: 'get',
