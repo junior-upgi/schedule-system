@@ -5,7 +5,7 @@ SELECT
 	,b.NAME
 	,b.DEP
 	,d.NAME AS DEPT_NAME
-	,b.POS
+	,g.pos_name AS POS
 	,b.TEL2 AS mobileNumber
 	,b.E_MAIL
 	,c.DSC_REM AS telegramId
@@ -22,4 +22,5 @@ FROM scheduleSystem.dbo.privilege a
     LEFT JOIN DB_U105.dbo.SALM_DSC c ON a.SAL_NO=c.SAL_NO AND c.DSC_NO='telegramId'
     LEFT JOIN DB_U105.dbo.DEPT d ON b.DEP=d.DEP
     LEFT JOIN telegram.dbo.[user] e ON a.SAL_NO=e.SAL_NO AND CAST(c.DSC_REM AS INT)=e.id
-    LEFT JOIN DB_U105.dbo.SALM_DSC f ON a.SAL_NO=f.SAL_NO AND f.DSC_NO='ext';
+    LEFT JOIN DB_U105.dbo.SALM_DSC f ON a.SAL_NO=f.SAL_NO AND f.DSC_NO='ext'
+    LEFT JOIN DB_U105.dbo.MF_YG g ON a.SAL_NO=g.YG_NO;
