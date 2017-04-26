@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
     state: {
         // application state
         activeView: 'login',
+        processingData: false,
         // access control
         accessExp: currentDateTime().format('HH:mm'),
         loginId: null, // same value as userData.SAL_NO
@@ -26,7 +27,8 @@ export const store = new Vuex.Store({
         productType: null,
         processType: null,
         procState: null,
-        stage: null
+        stage: null,
+        procTemplate: null
     }
 });
 

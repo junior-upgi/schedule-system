@@ -2,7 +2,7 @@
     <span>newTemplate</span>
 </template>
 
-<script lang="babel/es6">
+<script>
 // template .vue file
 export default {
     name: 'newTemplate'

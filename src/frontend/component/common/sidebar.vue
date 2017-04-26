@@ -27,23 +27,27 @@
             @click="changeWorkingView('shippingStatement')">
             對帳資料
         </button>
-        <button
-            v-if="role==='admin'"
-            type="button" class="btn btn-default btn-block"
-            :disabled="dataProcessingState?true:false"
-            :class="{'btn-danger':role==='supplier'}" disabled>
-            廠商模組
-        </button>
         -->
         <button
             v-if="role==='admin'"
             type="button" class="btn btn-default btn-block"
-            :disabled="dataProcessingState?true:false"
+            :disabled="processingData?true:false"
             :class="{'btn-danger':activeView==='admin'}"
             @click="changeWorkingView('admin')">
             管理模組
         </button>
-        <button type="button" class="btn btn-default btn-block" @click="logout()">
+        <button
+            v-if="role==='admin'"
+            type="button" class="btn btn-default btn-block"
+            :disabled="processingData?true:false"
+            :class="{'btn-danger':activeView==='templateManager'}"
+            @click="changeWorkingView('templateManager')">
+            範本管理
+        </button>
+        <button
+            type="button" class="btn btn-default btn-block"
+            :disabled="processingData?true:false"
+            @click="logout()">
             登出系統
         </button>
     </div>
@@ -54,11 +58,11 @@ import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 export default {
     name: 'sidebar',
-    components: {},
     computed: {
         ...mapGetters({
             activeView: 'activeView',
-            role: 'role'
+            role: 'role',
+            processingData: 'processingData'
         })
     },
     methods: {
@@ -67,7 +71,9 @@ export default {
             initData: 'initData'
         }),
         ...mapMutations({
+            buildStore: 'buildStore',
             forceViewChange: 'forceViewChange',
+            processingDataSwitch: 'processingDataSwitch',
             resetStore: 'resetStore'
         }),
         logout: function() {
@@ -76,11 +82,12 @@ export default {
             }
         },
         changeWorkingView: function(view) {
-            // this.processingDataSwitch(true);
+            this.processingDataSwitch(true);
             this.initData()
                 .then((responseList) => {
-                    // this.buildStore(responseList);
+                    this.buildStore(responseList);
                     this.forceViewChange(view);
+                    this.processingDataSwitch(false);
                 })
                 .catch((error) => {
                     this.componentErrorHandler({

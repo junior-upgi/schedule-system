@@ -22,11 +22,17 @@ import { store } from '../store/store.js';
 import login from './common/login.vue';
 import sidebar from './common/sidebar.vue';
 import admin from './admin/admin.vue';
+import templateManager from './templateManager/templateManager.vue';
 
 export default {
     name: 'app',
     store: store,
-    components: { login, sidebar, admin },
+    components: {
+        login,
+        sidebar,
+        admin,
+        templateManager
+    },
     computed: {
         ...mapGetters({ activeView: 'activeView' })
     },

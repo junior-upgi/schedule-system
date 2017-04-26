@@ -18,7 +18,7 @@ router.route('/data/procState')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序類別資料表讀取發生錯誤: ${error}`)
+                        `工序狀態資料表讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();

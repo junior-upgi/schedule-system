@@ -25,6 +25,7 @@ main.use('/', require('./route/data/productType.js'));
 main.use('/', require('./route/data/processType.js'));
 main.use('/', require('./route/data/procState.js'));
 main.use('/', require('./route/data/stage.js'));
+main.use('/', require('./route/data/procTemplate.js'));
 // utility routes
 main.use('/', require('./route/utility/login.js'));
 main.use('/', require('./route/utility/status.js'));

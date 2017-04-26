@@ -4,8 +4,19 @@ import { serverUrl } from '../config/client.js';
 
 export default {
     componentErrorHandler: componentErrorHandler,
-    initData: initData
+    initData: initData,
+    // templateManager
+    createNewTemplate: createNewTemplate
 };
+
+function createNewTemplate(context, payload) {
+    return axios({
+        method: 'post',
+        url: `${serverUrl}/data/procTemplate`,
+        data: { templateName: payload.templateName },
+        headers: { 'x-access-token': sessionStorage.token }
+    });
+}
 
 function componentErrorHandler(context, errorObject) {
     if (
@@ -73,6 +84,10 @@ function initData(context) {
     }, {
         method: 'get',
         url: `${serverUrl}/data/stage`,
+        headers: { 'x-access-token': sessionStorage.token }
+    }, {
+        method: 'get',
+        url: `${serverUrl}/data/procTemplate`,
         headers: { 'x-access-token': sessionStorage.token }
     }, {
         method: 'get',

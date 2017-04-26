@@ -5,6 +5,7 @@ import { currentDateTime } from '../utility/timeUtility.js';
 function emptyStore(state) {
     // application state
     state.activeView = 'login';
+    state.processingData = false;
     // access control
     state.accessExp = currentDateTime().format('HH:mm');
     state.loginId = null;
@@ -17,14 +18,18 @@ function emptyStore(state) {
     state.processType = null;
     state.procState = null;
     state.stage = null;
+    state.procTemplate = null;
 }
 
 export default {
     buildStore: buildStore,
     forceViewChange: function(state, view) { state.activeView = view; },
+    processingDataSwitch: function(state, onOffSwitch) { state.processingData = onOffSwitch; },
     redirectUser: function(state) { state.activeView = state.role; },
     resetStore: resetStore,
-    restoreToken: restoreToken
+    restoreToken: restoreToken,
+    // procTemplate
+    procTemplateInsert: function(state, recordObject) { state.procTemplate.push(recordObject); }
 };
 
 function buildStore(state, responseList) {

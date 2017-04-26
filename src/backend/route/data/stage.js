@@ -18,7 +18,7 @@ router.route('/data/stage')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `產品類別資料表讀取發生錯誤: ${error}`)
+                        `工作階段資料表讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
