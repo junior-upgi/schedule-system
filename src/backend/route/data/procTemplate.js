@@ -57,6 +57,31 @@ router.route('/data/procTemplate')
         }).finally(() => {
             knex.destroy();
         });
+    })
+    .delete((request, response, next) => {
+        let knex = require('knex')(mssqlConfig);
+        knex.transaction((trx) => {
+            return trx('scheduleSystem.dbo.procTemplate')
+                .delete().where({ id: request.body.targetId }).debug(false)
+                .then(() => {
+                    // wasn't able to get normal knex query to work, so a raw query is used
+                    return trx.raw('UPDATE scheduleSystem.dbo.procTemplate SET displaySequence=displaySequence-1 WHERE displaySequence > ?;', [request.body.targetPosition]).debug(true);
+                }).then(() => {
+                    return trx('scheduleSystem.dbo.procTemplate')
+                        .select('*').orderBy('displaySequence').debug(false);
+                });
+        }).then((resultset) => {
+            return response.status(200).json({ procTemplate: resultset });
+        }).catch((error) => {
+            return response.status(500).json(
+                endpointErrorHandler(
+                    request.method,
+                    request.originalUrl,
+                    `工序範本刪除發生錯誤: ${error}`)
+            );
+        }).finally(() => {
+            knex.destroy();
+        });
     });
 
 module.exports = router;

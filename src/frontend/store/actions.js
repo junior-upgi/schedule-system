@@ -6,8 +6,21 @@ export default {
     componentErrorHandler: componentErrorHandler,
     initData: initData,
     // templateManager
-    createNewTemplate: createNewTemplate
+    createNewTemplate: createNewTemplate,
+    deleteTemplate: deleteTemplate
 };
+
+function deleteTemplate(context, payload) {
+    return axios({
+        method: 'delete',
+        url: `${serverUrl}/data/procTemplate`,
+        data: {
+            targetId: payload.targetId,
+            targetPosition: payload.targetPosition
+        },
+        headers: { 'x-access-token': sessionStorage.token }
+    });
+}
 
 function createNewTemplate(context, payload) {
     return axios({

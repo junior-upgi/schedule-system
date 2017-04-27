@@ -5,7 +5,7 @@
             class="form-control"
             :placeholder="captionPlaceholder"
             :disabled="processingData?true:false"
-            v-model="templateName">
+            v-model.trim="templateName">
         <span class="input-group-btn">
             <button
                 class="btn btn-default"
@@ -28,14 +28,14 @@ export default {
             processingData: 'processingData',
             procTemplate: 'procTemplate'
         }),
-        checkDuplication: function() {
+        checkDuplication: function () {
             let duplicate = this.procTemplate.filter((procTemplateItem) => {
                 return procTemplateItem.reference === this.templateName;
             });
             return duplicate.length > 0 ? true : false;
         }
     },
-    data: function() {
+    data: function () {
         return {
             templateName: '',
             captionPlaceholder: '請輸入範本名稱'
@@ -44,19 +44,15 @@ export default {
     methods: {
         ...mapActions({
             componentErrorHandler: 'componentErrorHandler',
-            initData: 'initData',
             createNewTemplate: 'createNewTemplate'
         }),
         ...mapMutations({
-            buildStore: 'buildStore',
-            redirectUser: 'redirectUser',
-            restoreToken: 'restoreToken',
             processingDataSwitch: 'processingDataSwitch',
             procTemplateInsert: 'procTemplateInsert'
         }),
-        registerNew: function() {
+        registerNew: function () {
             this.processingDataSwitch(true);
-            if(this.checkDuplication === true) {
+            if (this.checkDuplication === true) {
                 this.captionPlaceholder = '範本名稱重複，請重新輸入';
                 this.templateName = '';
                 this.processingDataSwitch(false);

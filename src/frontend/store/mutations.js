@@ -23,13 +23,14 @@ function emptyStore(state) {
 
 export default {
     buildStore: buildStore,
-    forceViewChange: function(state, view) { state.activeView = view; },
-    processingDataSwitch: function(state, onOffSwitch) { state.processingData = onOffSwitch; },
-    redirectUser: function(state) { state.activeView = state.role; },
+    forceViewChange: function (state, view) { state.activeView = view; },
+    processingDataSwitch: function (state, onOffSwitch) { state.processingData = onOffSwitch; },
+    redirectUser: function (state) { state.activeView = state.role; },
     resetStore: resetStore,
     restoreToken: restoreToken,
     // procTemplate
-    procTemplateInsert: function(state, recordObject) { state.procTemplate.push(recordObject); }
+    procTemplateInsert: function (state, recordObject) { state.procTemplate.push(recordObject); },
+    procTemplateReset: function (state) { state.procTemplate = null; }
 };
 
 function buildStore(state, responseList) {

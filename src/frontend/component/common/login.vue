@@ -20,7 +20,7 @@ import { serverUrl } from '../../config/client.js';
 
 export default {
     name: 'login',
-    data: function() {
+    data: function () {
         return {
             loginId: '',
             password: ''
@@ -36,7 +36,7 @@ export default {
             redirectUser: 'redirectUser',
             restoreToken: 'restoreToken'
         }),
-        login: function() {
+        login: function () {
             if (document.getElementById('loginForm').checkValidity()) {
                 axios.post(`${serverUrl}/login`, {
                     loginId: this.loginId,
