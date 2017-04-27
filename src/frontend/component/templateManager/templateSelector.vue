@@ -4,9 +4,11 @@
             <select
                 class="form-control"
                 v-model="targetId"
-                :disabled="processingData?true:false">
-                <option disabled value="">請選擇範本</option>
+                :disabled="((procTemplate.length===0)||(processingData))?true:false">
+                <option v-if="procTemplate.length===0" disabled value="">沒有工序範本選項</option>
+                <option v-if="procTemplate.length>0" disabled value="">選擇操作範本</option>
                 <option
+                    style="margin:5px;"
                     v-for="procTemplateItem in procTemplate"
                     v-bind:value="procTemplateItem.id">
                     {{ procTemplateItem.reference }}
@@ -95,7 +97,7 @@ export default {
                     this.targetId = '';
                     this.processingDataSwitch(false);
                 }).catch((error) => {
-                    this.targetId = '';
+                    this.targetId[0] = '';
                     this.processingDataSwitch(false);
                     this.componentErrorHandler({
                         component: 'templateSelector',
@@ -119,7 +121,6 @@ export default {
                     id: this.targetId,
                     reference: newReference
                 }).then((resultset) => {
-                    console.log(resultset.data);
                     this.procTemplateRename({
                         targetIndex: this.targetTemplateArrayIndex,
                         reference: newReference
