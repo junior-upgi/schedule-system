@@ -10,7 +10,7 @@
             <button
                 class="btn btn-default"
                 type="button"
-                :disabled="processingData?true:false"
+                :disabled="processingData||templateName===''?true:false"
                 @click="registerNew()">
                 新建範本
             </button>
