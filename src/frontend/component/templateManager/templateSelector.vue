@@ -151,6 +151,15 @@ export default {
             } else {
                 alert('指定工序名稱重複或已取消名稱變更作業');
             }
+        },
+        templateActivation: function () {
+            this.processingDataSwitch(true);
+            this.activateTemplate({
+                id: this.targetId,
+                deprecated: null
+            }).then(() => {
+                this.processingDataSwitch(false);
+            });
         }
     }
 };

@@ -33,5 +33,22 @@ export const templateManagerFunction = {
             requestObject.data[property] = payload[property];
         }
         return axios(requestObject);
+    },
+    activate: function (context, payload) {
+        let requestObject = {
+            method: 'put',
+            url: `${serverUrl}/data/procTemplate`,
+            data: {},
+            headers: { 'x-access-token': sessionStorage.token }
+        };
+        for (let property in payload) {
+            requestObject.data[property] = payload[property];
+        }
+        axios(requestObject)
+            .then((resultset) => {
+
+            }).catch((error) => {
+
+            });
     }
 };

@@ -12,42 +12,6 @@ export default {
     renameTemplate: templateManagerFunction.rename
 };
 
-/*
-function renameTemplate(context, payload) {
-    let requestObject = {
-        method: 'put',
-        url: `${serverUrl}/data/procTemplate`,
-        data: {},
-        headers: { 'x-access-token': sessionStorage.token }
-    };
-    for (let property in payload) {
-        requestObject.data[property] = payload[property];
-    }
-    return axios(requestObject);
-}
-
-function deleteTemplate(context, payload) {
-    return axios({
-        method: 'delete',
-        url: `${serverUrl}/data/procTemplate`,
-        data: {
-            targetId: payload.targetId,
-            targetPosition: payload.targetPosition
-        },
-        headers: { 'x-access-token': sessionStorage.token }
-    });
-}
-
-function createNewTemplate(context, payload) {
-    return axios({
-        method: 'post',
-        url: `${serverUrl}/data/procTemplate`,
-        data: { templateName: payload.templateName },
-        headers: { 'x-access-token': sessionStorage.token }
-    });
-}
-*/
-
 function componentErrorHandler(context, errorObject) {
     if (
         (sessionStorage.token !== undefined) &&

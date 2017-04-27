@@ -10,6 +10,85 @@ import tokenValidation from '../../middleware/tokenValidation.js';
 const router = express.Router();
 router.use(bodyParser.json());
 
+router.route('/data/procTemplate/:procTemplateId')
+    .all(tokenValidation)
+    .get((request, response, next) => {
+        let targetProcTemplateId = request.params.targetProcTemplateId;
+        let knex = require('knex')(mssqlConfig);
+        knex('scheduleSystem.dbo.procTemplate').select('*').where({ id: targetProcTemplateId }).debug(false)
+            .then((resultset) => {
+                return response.status(200).json({ procTemplate: resultset[0] });
+            }).catch((error) => {
+                return response.status(500).json(
+                    endpointErrorHandler(
+                        request.method,
+                        request.originalUrl,
+                        `工序範本資料 [${targetProcTemplateId}] 讀取發生錯誤: ${error}`)
+                );
+            }).finally(() => {
+                knex.destroy();
+            });
+    })
+    .put((request, response, next) => {
+        let targetProcTemplateId = request.params.targetProcTemplateId;
+        let knex = require('knex')(mssqlConfig);
+        knex('scheduleSystem.dbo.procTemplate').update({
+                reference: request.body.reference,
+                displaySequence: request.body.displaySequence,
+                deprecated: request.body.deprecated
+            }).where({ id: targetProcTemplateId }).debug(false)
+            .then(() => {
+                return response.status(204);
+            }).catch((error) => {
+                return response.status(500).json(
+                    endpointErrorHandler(
+                        request.method,
+                        request.originalUrl,
+                        `工序範本資料 [${targetProcTemplateId}] 更新發生錯誤: ${error}`)
+                );
+            }).finally(() => {
+                knex.destroy();
+            });
+    })
+    .patch((request, response, next) => {
+        let targetProcTemplateId = request.params.targetProcTemplateId;
+        let fieldToUpdate = {};
+        for (let property in request.body) {
+            fieldToUpdate[property] = request.body[property];
+        }
+        let knex = require('knex')(mssqlConfig);
+        knex('scheduleSystem.dbo.procTemplate').update(fieldToUpdate).where({ id: targetProcTemplateId }).debug(false)
+            .then(() => {
+                return response.status(204);
+            }).catch((error) => {
+                return response.status(500).json(
+                    endpointErrorHandler(
+                        request.method,
+                        request.originalUrl,
+                        `工序範本資料 [${targetProcTemplateId}] 局部更新發生錯誤: ${error}`)
+                );
+            }).finally(() => {
+                knex.destroy();
+            });
+    })
+    .delete((request, response, next) => {
+        let targetProcTemplateId = request.params.targetProcTemplateId;
+        let knex = require('knex')(mssqlConfig);
+        knex('scheduleSystem.dbo.procTemplate').delete().where({ id: targetProcTemplateId }).debug(false)
+            .then(() => {
+                return response.status(204);
+            }).catch((error) => {
+                return response.status(500).json(
+                    endpointErrorHandler(
+                        request.method,
+                        request.originalUrl,
+                        `工序範本資料 [${targetProcTemplateId}] 刪除發生錯誤: ${error}`)
+                );
+            }).finally(() => {
+                knex.destroy();
+            });
+    });
+
 router.route('/data/procTemplate')
     .all(tokenValidation)
     .get((request, response, next) => {
