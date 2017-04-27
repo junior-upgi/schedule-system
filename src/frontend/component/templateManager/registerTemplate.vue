@@ -11,7 +11,7 @@
                 class="btn btn-default"
                 type="button"
                 :disabled="processingData||templateName===''?true:false"
-                @click="registerNew()">
+                @click="registerNewTemplate">
                 新建範本
             </button>
         </span>
@@ -44,20 +44,20 @@ export default {
     methods: {
         ...mapActions({
             componentErrorHandler: 'componentErrorHandler',
-            createNewTemplate: 'createNewTemplate'
+            createTemplate: 'createTemplate'
         }),
         ...mapMutations({
             processingDataSwitch: 'processingDataSwitch',
             procTemplateInsert: 'procTemplateInsert'
         }),
-        registerNew: function () {
+        registerNewTemplate: function () {
             this.processingDataSwitch(true);
             if (this.checkDuplication === true) {
                 this.captionPlaceholder = '範本名稱重複，請重新輸入';
                 this.templateName = '';
                 this.processingDataSwitch(false);
             } else {
-                this.createNewTemplate({ templateName: this.templateName })
+                this.createTemplate({ templateName: this.templateName })
                     .then((resultset) => {
                         this.procTemplateInsert(resultset.data);
                         this.captionPlaceholder = '請輸入範本名稱';

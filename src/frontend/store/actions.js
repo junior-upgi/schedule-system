@@ -1,16 +1,18 @@
 import axios from 'axios';
 
 import { serverUrl } from '../config/client.js';
+import { templateManagerFunction } from './templateManager.js';
 
 export default {
     componentErrorHandler: componentErrorHandler,
     initData: initData,
     // templateManager
-    createNewTemplate: createNewTemplate,
-    deleteTemplate: deleteTemplate,
-    renameTemplate: renameTemplate
+    createTemplate: templateManagerFunction.create,
+    deleteTemplate: templateManagerFunction.delete,
+    renameTemplate: templateManagerFunction.rename
 };
 
+/*
 function renameTemplate(context, payload) {
     let requestObject = {
         method: 'put',
@@ -44,6 +46,7 @@ function createNewTemplate(context, payload) {
         headers: { 'x-access-token': sessionStorage.token }
     });
 }
+*/
 
 function componentErrorHandler(context, errorObject) {
     if (

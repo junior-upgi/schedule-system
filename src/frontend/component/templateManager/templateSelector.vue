@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="row">
-        <div class="col-xs-8 col-md-9 col-lg-10">
+        <div class="col-sm-7 col-md-8 col-lg-9">
             <select
                 class="form-control"
                 v-model="targetId"
@@ -12,10 +12,23 @@
                     v-for="procTemplateItem in procTemplate"
                     v-bind:value="procTemplateItem.id">
                     {{ procTemplateItem.reference }}
+                    <template v-if="procTemplateItem.deprecated">(停用)</template>
                 </option>
             </select>
         </div>
-        <div class="col-xs-4 col-md-3 col-lg-2 text-left">
+        <div class="col-sm-5 col-md-4 col-lg-3 text-left">
+            <button
+                class="btn btn-default"
+                :disabled="((targetId==='')||(processingData))?true:false"
+                v-if="targetTemplate&&targetTemplate.deprecated!==null">
+                啟用
+            </button>
+            <button
+                class="btn btn-danger"
+                :disabled="((targetId==='')||(processingData))?true:false"
+                v-if="targetTemplate&&targetTemplate.deprecated===null">
+                停用
+            </button>
             <button
                 class="btn btn-danger"
                 @click="deleteCurrentTemplate"
