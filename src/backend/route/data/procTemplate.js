@@ -34,19 +34,23 @@ router.route('/data/procTemplate')
         knex.transaction((trx) => {
             return trx('scheduleSystem.dbo.procTemplate').max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
-                    console.log(resultset);
                     let newRecord = {
                         id: newId,
                         reference: request.body.templateName,
                         displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
                         deprecated: currentDatetimeString()
                     };
-                    return trx.insert(newRecord).into('scheduleSystem.dbo.procTemplate').debug(false);
-                }).then(() => {
-                    return trx('scheduleSystem.dbo.procTemplate').select('*').where({ id: newId }).debug(false);
+                    return trx.insert(newRecord).into('scheduleSystem.dbo.procTemplate')
+                        .returning(['id', 'reference', 'displaySequence', 'deprecated']).debug(false);
                 });
+            /*
+            }).then((resultset) => {
+                return trx('scheduleSystem.dbo.procTemplate').select('*').where({ id: newId }).debug(false);
+            });
+            */
         }).then((resultset) => {
-            return response.status(200).json({ newRecord: resultset[0] });
+            return response.status(200).json(resultset[0]);
+            // return response.status(200).json({ newRecord: resultset[0] });
         }).catch((error) => {
             return response.status(500).json(
                 endpointErrorHandler(

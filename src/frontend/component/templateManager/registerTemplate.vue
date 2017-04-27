@@ -59,7 +59,7 @@ export default {
             } else {
                 this.createNewTemplate({ templateName: this.templateName })
                     .then((resultset) => {
-                        this.procTemplateInsert(resultset.data.newRecord);
+                        this.procTemplateInsert(resultset.data);
                         this.captionPlaceholder = '請輸入範本名稱';
                         this.templateName = '';
                         this.processingDataSwitch(false);
