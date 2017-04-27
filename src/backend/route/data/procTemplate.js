@@ -68,7 +68,7 @@ router.route('/data/procTemplate')
                 .update(newRecordData)
                 .where({ id: request.body.id })
                 .returning(['id', 'reference', 'displaySequence', 'deprecated'])
-                .debug(true);
+                .debug(false);
         }).then((resultset) => {
             return response.status(200).json(resultset[0]);
         }).catch((error) => {
