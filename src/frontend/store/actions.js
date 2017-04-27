@@ -7,8 +7,22 @@ export default {
     initData: initData,
     // templateManager
     createNewTemplate: createNewTemplate,
-    deleteTemplate: deleteTemplate
+    deleteTemplate: deleteTemplate,
+    renameTemplate: renameTemplate
 };
+
+function renameTemplate(context, payload) {
+    let requestObject = {
+        method: 'put',
+        url: `${serverUrl}/data/procTemplate`,
+        data: {},
+        headers: { 'x-access-token': sessionStorage.token }
+    };
+    for (let property in payload) {
+        requestObject.data[property] = payload[property];
+    }
+    return axios(requestObject);
+}
 
 function deleteTemplate(context, payload) {
     return axios({

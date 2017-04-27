@@ -30,8 +30,13 @@ export default {
     restoreToken: restoreToken,
     // procTemplate
     procTemplateInsert: function (state, recordObject) { state.procTemplate.push(recordObject); },
-    procTemplateReset: function (state) { state.procTemplate = null; }
+    procTemplateReset: function (state) { state.procTemplate = null; },
+    procTemplateRename: procTemplateRename
 };
+
+function procTemplateRename(state, payload) {
+    state.procTemplate[payload.targetIndex].reference = payload.reference;
+}
 
 function buildStore(state, responseList) {
     let dataObject = {};

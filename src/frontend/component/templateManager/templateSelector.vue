@@ -22,7 +22,7 @@
             </button>
             <button
                 class="btn btn-primary"
-                @click="deleteCurrentTemplate"
+                @click="renameCurrentTemplate"
                 :disabled="((targetId==='')||(processingData))?true:false">
                 修改名稱
             </button>
@@ -44,6 +44,19 @@ export default {
             return this.procTemplate.filter((procTemplateItem) => {
                 return procTemplateItem.id === this.targetId;
             })[0];
+        },
+        targetTemplateArrayIndex: function () {
+            if (this.targetId === '') {
+                return null;
+            } else {
+                let targetArrayIndex = null;
+                this.procTemplate.forEach((procTemplateItem, currentIndex) => {
+                    if (procTemplateItem.id === this.targetId) {
+                        targetArrayIndex = currentIndex;
+                    }
+                });
+                return targetArrayIndex;
+            }
         }
     },
     data: function () {
@@ -54,14 +67,22 @@ export default {
     methods: {
         ...mapActions({
             componentErrorHandler: 'componentErrorHandler',
-            deleteTemplate: 'deleteTemplate'
+            deleteTemplate: 'deleteTemplate',
+            renameTemplate: 'renameTemplate'
         }),
         ...mapMutations({
             processingDataSwitch: 'processingDataSwitch',
             procTemplateRemove: 'procTemplateRemove',
             procTemplateReset: 'procTemplateReset',
+            procTemplateRename: 'procTemplateRename',
             buildStore: 'buildStore'
         }),
+        checkDuplication: function (newReference) {
+            let duplicate = this.procTemplate.filter((procTemplateItem) => {
+                return procTemplateItem.reference === newReference;
+            });
+            return duplicate.length > 0 ? true : false;
+        },
         deleteCurrentTemplate: function () {
             if (confirm('請確定是否刪除')) {
                 this.processingDataSwitch(true);
@@ -83,6 +104,38 @@ export default {
                         systemMessage: error
                     });
                 });
+            }
+        },
+        renameCurrentTemplate: function () {
+            let newReference = prompt('請輸入新範本名稱', this.targetTemplate.reference);
+            if (
+                (newReference !== null) &&
+                (newReference !== '') &&
+                (newReference !== this.targetTemplate.reference) &&
+                (!this.checkDuplication(newReference))
+            ) {
+                this.processingDataSwitch(true);
+                this.renameTemplate({
+                    id: this.targetId,
+                    reference: newReference
+                }).then((resultset) => {
+                    console.log(resultset.data);
+                    this.procTemplateRename({
+                        targetIndex: this.targetTemplateArrayIndex,
+                        reference: newReference
+                    });
+                    this.processingDataSwitch(false);
+                }).catch((error) => {
+                    this.processingDataSwitch(false);
+                    this.componentErrorHandler({
+                        component: 'templateSelector',
+                        method: 'renameCurrentTemplate',
+                        situation: '工序範本名稱變更作業失敗',
+                        systemMessage: error
+                    });
+                });
+            } else {
+                alert('指定工序名稱重複或已取消名稱變更作業');
             }
         }
     }
