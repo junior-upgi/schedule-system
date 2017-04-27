@@ -10,14 +10,14 @@ import tokenValidation from '../../middleware/tokenValidation.js';
 const router = express.Router();
 router.use(bodyParser.json());
 
-router.route('/data/procTemplate/:procTemplateId')
+router.route('/data/procTemplates/:id')
     .all(tokenValidation)
     .get((request, response, next) => {
         let targetProcTemplateId = request.params.targetProcTemplateId;
         let knex = require('knex')(mssqlConfig);
         knex('scheduleSystem.dbo.procTemplate').select('*').where({ id: targetProcTemplateId }).debug(false)
             .then((resultset) => {
-                return response.status(200).json({ procTemplate: resultset[0] });
+                return response.status(200).json(resultset[0]);
             }).catch((error) => {
                 return response.status(500).json(
                     endpointErrorHandler(
@@ -52,12 +52,12 @@ router.route('/data/procTemplate/:procTemplateId')
     })
     .patch((request, response, next) => {
         let targetProcTemplateId = request.params.targetProcTemplateId;
-        let fieldToUpdate = {};
+        let recordData = {};
         for (let property in request.body) {
-            fieldToUpdate[property] = request.body[property];
+            recordData[property] = request.body[property];
         }
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.procTemplate').update(fieldToUpdate).where({ id: targetProcTemplateId }).debug(false)
+        knex('scheduleSystem.dbo.procTemplate').update(recordData).where({ id: targetProcTemplateId }).debug(false)
             .then(() => {
                 return response.status(204);
             }).catch((error) => {
@@ -95,7 +95,7 @@ router.route('/data/procTemplate')
         let knex = require('knex')(mssqlConfig);
         knex('scheduleSystem.dbo.procTemplate').select('*').orderBy('displaySequence').debug(false)
             .then((resultset) => {
-                return response.status(200).json({ procTemplate: resultset });
+                return response.status(200).json(resultset);
             }).catch((error) => {
                 return response.status(500).json(
                     endpointErrorHandler(
@@ -108,18 +108,18 @@ router.route('/data/procTemplate')
             });
     })
     .post((request, response, next) => {
-        let newId = uuidV4().toUpperCase();
+        let recordData = {
+            id: uuidV4().toUpperCase(),
+            reference: request.body.reference,
+            displaySequence: null,
+            deprecated: currentDatetimeString()
+        };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             return trx('scheduleSystem.dbo.procTemplate').max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
-                    let newRecord = {
-                        id: newId,
-                        reference: request.body.templateName,
-                        displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
-                        deprecated: currentDatetimeString()
-                    };
-                    return trx.insert(newRecord).into('scheduleSystem.dbo.procTemplate')
+                    recordData.displaySequence = resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1;
+                    return trx('scheduleSystem.dbo.procTemplate').insert(recordData)
                         .returning(['id', 'reference', 'displaySequence', 'deprecated']).debug(false);
                 });
         }).then((resultset) => {
@@ -129,58 +129,7 @@ router.route('/data/procTemplate')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序範本新建發生錯誤: ${error}`)
-            );
-        }).finally(() => {
-            knex.destroy();
-        });
-    })
-    .put((request, response, next) => {
-        let newRecordData = {};
-        for (let property in request.body) {
-            newRecordData[property] = request.body[property];
-        }
-        delete newRecordData.id;
-        let knex = require('knex')(mssqlConfig);
-        knex.transaction((trx) => {
-            return trx('scheduleSystem.dbo.procTemplate')
-                .update(newRecordData)
-                .where({ id: request.body.id })
-                .returning(['id', 'reference', 'displaySequence', 'deprecated'])
-                .debug(false);
-        }).then((resultset) => {
-            return response.status(200).json(resultset[0]);
-        }).catch((error) => {
-            return response.status(500).json(
-                endpointErrorHandler(
-                    request.method,
-                    request.originalUrl,
-                    `工序範本新建發生錯誤: ${error}`)
-            );
-        }).finally(() => {
-            knex.destroy();
-        });
-    })
-    .delete((request, response, next) => {
-        let knex = require('knex')(mssqlConfig);
-        knex.transaction((trx) => {
-            return trx('scheduleSystem.dbo.procTemplate')
-                .delete().where({ id: request.body.targetId }).debug(false)
-                .then(() => {
-                    // wasn't able to get normal knex query to work, so a raw query is used
-                    return trx.raw('UPDATE scheduleSystem.dbo.procTemplate SET displaySequence=displaySequence-1 WHERE displaySequence > ?;', [request.body.targetPosition]).debug(false);
-                }).then(() => {
-                    return trx('scheduleSystem.dbo.procTemplate')
-                        .select('*').orderBy('displaySequence').debug(false);
-                });
-        }).then((resultset) => {
-            return response.status(200).json({ procTemplate: resultset });
-        }).catch((error) => {
-            return response.status(500).json(
-                endpointErrorHandler(
-                    request.method,
-                    request.originalUrl,
-                    `工序範本刪除發生錯誤: ${error}`)
+                    `工序範本新增發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
