@@ -2,12 +2,12 @@ import express from 'express';
 
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
 import { mssqlConfig } from '../../config/mssqlServer.js';
-// import tokenValidation from '../../middleware/tokenValidation.js';
+import tokenValidation from '../../middleware/tokenValidation.js';
 
 const router = express.Router();
 
 router.route('/data/initialize')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .get((request, response, next) => {
         let initData = {
             jobType: null,
