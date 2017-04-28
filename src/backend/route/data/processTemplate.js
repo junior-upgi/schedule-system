@@ -5,7 +5,7 @@ import uuidV4 from 'uuid/v4';
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
 import { mssqlConfig } from '../../config/mssqlServer.js';
 import { currentDatetimeString } from '../../utility/timeUtility.js';
-import tokenValidation from '../../middleware/tokenValidation.js';
+// import tokenValidation from '../../middleware/tokenValidation.js';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -13,34 +13,31 @@ router.use(bodyParser.json());
 /*
 route definitions
 
-get /data/processTemplates/:id - get a particular record
-patch /data/processTemplates/:id -  update 'reference' field of a particular record
-delete /data/processTemplates/:id - deactivate a particular record
+get /data/processTemplates/id/:id - get a particular record
+patch /data/processTemplates/id/:id -  update 'reference' field of a particular record
+delete /data/processTemplates/id/:id - deactivate target record and reorder (deprecated IS NULL is assumed to be true)
 
-patch /data/processTemplates/:id/:displaySequence - reorder active record list
+patch /data/processTemplates/id/:id/displaySequence/:displaySequence - reorder active record list
 
 get /data/processTemplates - get all active records
 post /data/processTemplates - add new records to the end of list
 
 get /data/processTemplates/inactive - get all inactive but not deprecated records
 
-patch /data/processTemplates/inactive/:id - reactivate a record and place at the end of list (assuming record isn't deprecated)
-delete /data/processTemplates/inactive/:id - deprecate a record
+patch /data/processTemplates/inactive/id/:id - reactivate a record and place at the end of list (assuming record isn't deprecated)
+delete /data/processTemplates/inactive/id/:id - deprecate an inactive record
 
 get /data/processTemplates/all - get all records
 */
 
-// TODO needs to work sorting
-// TODO rename file to processTempate.js
-
-router.route('/data/processTemplates/:id')
-    .all(tokenValidation)
+router.route('/data/processTemplates/id/:id')
+    // .all(tokenValidation)
     .get((request, response, next) => { // get a particular record
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.procTemplate').select('*').where({ id: id }).debug(false)
+        knex('scheduleSystem.dbo.processTemplate').select('*').where({ id: id }).debug(false)
             .then((resultset) => {
-                return response.status(200).json(resultset[0]);
+                return response.status(200).json(resultset);
             }).catch((error) => {
                 return response.status(500).json(
                     endpointErrorHandler(
@@ -52,10 +49,11 @@ router.route('/data/processTemplates/:id')
                 knex.destroy();
             });
     })
-    .patch((request, response, next) => { // update target record's reference
+    .patch((request, response, next) => { // update 'reference' field of a particular record
         let id = request.params.id;
-        // check if the request has valid reference data
-        if ((request.body.reference === undefined) || (request.body.reference === null) || (request.body.reference === '')) {
+        let reference = request.body.reference;
+        // check if the request has valid data
+        if ((reference === undefined) || (reference === null) || (reference === '')) {
             return response.status(400).json(
                 endpointErrorHandler(
                     request.method,
@@ -64,9 +62,9 @@ router.route('/data/processTemplates/:id')
             );
         } else {
             let knex = require('knex')(mssqlConfig);
-            knex('scheduleSystem.dbo.processTemplate').update({ reference: request.body.reference }).where({ id: id }).debug(false)
+            knex('scheduleSystem.dbo.processTemplate').update({ reference: reference }).where({ id: id }).debug(false)
                 .then(() => {
-                    return response.status(204);
+                    return response.status(204).end();
                 }).catch((error) => {
                     return response.status(500).json(
                         endpointErrorHandler(
@@ -79,58 +77,24 @@ router.route('/data/processTemplates/:id')
                 });
         }
     })
-    .delete((request, response, next) => { // deactivate target record (assuming it's not deprecated)
+    .delete((request, response, next) => { // deactivate target record and reorder (deprecated=null is assumed to be true)
         let id = request.params.id;
         let targetRecordDisplaySequence = null;
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
-            // get target record's displaySequence value
+            // get target record's current data
             return trx('scheduleSystem.dbo.processTemplate').select('displaySequence').where({ id: id }).debug(false)
                 .then((resultset) => {
                     targetRecordDisplaySequence = resultset[0].displaySequence;
                     // deactivate the target record
                     return trx('scheduleSystem.dbo.processTemplate').update({
                         displaySequence: null,
-                        active: 0,
-                        deprecated: null
+                        active: 0
                     }).where({ id: id }).debug(false);
                 }).then(() => {
                     // update all active records that are preceeded by the target record to displaySequence -1
                     // note: raw query was used due to an issue of getting standard knex query to work
-                    return trx.raw('UPDATE scheduleSystem.dbo.processTemplate SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>=?;', [targetRecordDisplaySequence]).debug(false);
-                });
-        }).then(() => {
-            return response.status(204);
-        }).catch((error) => {
-            return response.status(500).json(
-                endpointErrorHandler(
-                    request.method,
-                    request.originalUrl,
-                    `工序範本資料 [${id}] 停用發生錯誤: ${error}`)
-            );
-        }).finally(() => {
-            knex.destroy();
-        });
-    });
-
-router.route('/data/processTemplates/:id/:displaySequence')
-    .all(tokenValidation)
-    .patch((request, response, next) => { // update target record's reference
-        let id = request.params.id;
-        let targetRecordDisplaySequence = null;
-        let knex = require('knex')(mssqlConfig);
-        knex.transaction((trx) => {
-            // get target record's current displaySequence value
-            return trx('scheduleSystem.dbo.processTemplate').select('displaySequence').where({ id: id }).debug(false)
-                .then((resultset) => {
-                    targetRecordDisplaySequence = resultset[0].displaySequence;
-                    // adjust displaySequence of all affected active records
-                    // note: raw query was used due to an issue of getting standard knex query to work
-                    return trx.raw('UPDATE scheduleSystem.dbo.processTemplate SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>? AND displaySequence<=?;', [targetRecordDisplaySequence, request.params.displaySequence]).debug(false);
-                }).then(() => { // update the target with intended displaySequence
-                    return trx('scheduleSystem.dbo.processTemplate')
-                        .update({ displaySequence: request.params.displaySequence })
-                        .where({ id: id }).debug(false);
+                    return trx.raw('UPDATE scheduleSystem.dbo.processTemplate SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>?;', [targetRecordDisplaySequence]).debug(false);
                 }).then(() => { // get a fresh set of processTemplate data
                     return trx('scheduleSystem.dbo.processTemplate')
                         .select('*').where({ active: 1, deprecated: null })
@@ -143,7 +107,57 @@ router.route('/data/processTemplates/:id/:displaySequence')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序範本資料順序調整發生錯誤: ${error}`)
+                    `工序範本資料 [${id}] 停用發生錯誤: ${error}`)
+            );
+        }).finally(() => {
+            knex.destroy();
+        });
+    });
+
+router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
+    // .all(tokenValidation)
+    .patch((request, response, next) => { // reorder active record list
+        let id = request.params.id;
+        let targetRecordDisplaySequence = null;
+        let knex = require('knex')(mssqlConfig);
+        knex.transaction((trx) => {
+            // get target record's current displaySequence value
+            return trx('scheduleSystem.dbo.processTemplate').select('displaySequence').where({ id: id }).debug(false)
+                .then((resultset) => {
+                    targetRecordDisplaySequence = resultset[0].displaySequence;
+                    // check the original and final displaySequence to determine how to reorder
+                    if (targetRecordDisplaySequence < request.params.displaySequence) {
+                        // adjust displaySequence of all affected active records
+                        // note: raw query was used due to an issue of getting standard knex query to work
+                        return trx.raw('UPDATE scheduleSystem.dbo.processTemplate SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>? AND displaySequence<=?;', [targetRecordDisplaySequence, request.params.displaySequence]).debug(false);
+                    } else if (targetRecordDisplaySequence > request.params.displaySequence) {
+                        // adjust displaySequence of all affected active records
+                        // note: raw query was used due to an issue of getting standard knex query to work
+                        return trx.raw('UPDATE scheduleSystem.dbo.processTemplate SET displaySequence=displaySequence+1 WHERE active=1 AND displaySequence>=? AND displaySequence<?;', [request.params.displaySequence, targetRecordDisplaySequence]).debug(false);
+                    } else { // original value and target value are the same
+                        return Promise.resolve();
+                    }
+                }).then(() => { // update the target with intended displaySequence
+                    if (targetRecordDisplaySequence !== request.params.displaySequenc) {
+                        return trx('scheduleSystem.dbo.processTemplate')
+                            .update({ displaySequence: request.params.displaySequence })
+                            .where({ id: id }).debug(false);
+                    } else {
+                        return Promise.resolve();
+                    }
+                }).then(() => { // get a fresh set of processTemplate data
+                    return trx('scheduleSystem.dbo.processTemplate')
+                        .select('*').where({ active: 1, deprecated: null })
+                        .orderBy('displaySequence').debug(false);
+                });
+        }).then((resultset) => {
+            return response.status(200).json(resultset);
+        }).catch((error) => {
+            return response.status(500).json(
+                endpointErrorHandler(
+                    request.method,
+                    request.originalUrl,
+                    `工序範本資料 [${id}] 順序調整發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
@@ -151,10 +165,12 @@ router.route('/data/processTemplates/:id/:displaySequence')
     });
 
 router.route('/data/processTemplates')
-    .all(tokenValidation)
+    // .all(tokenValidation)
     .get((request, response, next) => { // get all active records
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.processTemplate').select('*').where({ active: 1, deprecated: null }).orderBy('displaySequence').debug(false)
+        knex('scheduleSystem.dbo.processTemplate')
+            .select('*').where({ active: 1, deprecated: null })
+            .orderBy('displaySequence').debug(false)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -169,22 +185,34 @@ router.route('/data/processTemplates')
             });
     })
     .post((request, response, next) => { // insert a new active record to the end of the list
-        let recordData = {
-            id: uuidV4().toUpperCase(),
-            reference: request.body.reference,
-            displaySequence: null,
-            deprecated: null
-        };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             return trx('scheduleSystem.dbo.processTemplate').max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
-                    recordData.displaySequence = resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1;
-                    return trx('scheduleSystem.dbo.processTemplate').insert(recordData)
-                        .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']).debug(false);
+                    let recordData = {
+                        id: uuidV4().toUpperCase(),
+                        reference: request.body.reference,
+                        displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
+                        active: 1,
+                        deprecated: null
+                    };
+                    // check if the requested 'reference' is duplicated
+                    return trx('scheduleSystem.dbo.processTemplate')
+                        .select('*').where({ reference: request.body.reference }).debug(false)
+                        .then((resultset) => {
+                            if (resultset.length === 0) { // insert new record if no duplicates are found
+                                return trx('scheduleSystem.dbo.processTemplate')
+                                    .insert(recordData)
+                                    .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
+                                    .debug(false);
+                            } else { // returns the existing record with the same reference
+                                return trx('scheduleSystem.dbo.processTemplate')
+                                    .select('*').where({ reference: request.body.reference }).debug(false);
+                            }
+                        });
                 });
         }).then((resultset) => {
-            return response.status(201).json(resultset[0]);
+            return response.status(201).json(resultset);
         }).catch((error) => {
             return response.status(500).json(
                 endpointErrorHandler(
@@ -197,8 +225,8 @@ router.route('/data/processTemplates')
         });
     });
 
-router.route('data/procTemplates/inactive')
-    .all(tokenValidation)
+router.route('/data/processTemplates/inactive')
+    // .all(tokenValidation)
     .get((request, response, next) => { // get all inactive but not deprecated records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
@@ -217,9 +245,9 @@ router.route('data/procTemplates/inactive')
             });
     });
 
-router.route('/data/processTemplates/inactive/:id')
-    .all(tokenValidation)
-    .patch((request, response, next) => { // reactivate record and place at the end of list (assuming the record is not deprecated)
+router.route('/data/processTemplates/inactive/id/:id')
+    // .all(tokenValidation)
+    .patch((request, response, next) => { // reactivate record
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
@@ -231,11 +259,12 @@ router.route('/data/processTemplates/inactive/:id')
                         active: 1,
                         deprecated: null
                     }).where({
-                        id: id
+                        id: id,
+                        active: 0
                     }).returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']).debug(false);
                 });
         }).then((resultset) => {
-            return response.status(200).json(resultset[0]);
+            return response.status(200).json(resultset);
         }).catch((error) => {
             return response.status(500).json(
                 endpointErrorHandler(
@@ -247,43 +276,23 @@ router.route('/data/processTemplates/inactive/:id')
             knex.destroy();
         });
     })
-    .delete((request, response, next) => { // deprecate target record
+    .delete((request, response, next) => { // deprecate an inactive record
         let id = request.params.id;
-        let targetRecordDisplaySequence = null;
+        let standardDeprecatedData = {
+            displaySequence: null,
+            deprecated: currentDatetimeString()
+        };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
-            // get target record's original displaySequence value
+            // deactivate and deprecate the target record
             return trx('scheduleSystem.dbo.processTemplate')
-                .select('displaySequence').where({ id: id }).debug(false)
-                .then((resultset) => {
-                    targetRecordDisplaySequence = resultset[0].displaySequence;
-                    // deactivate and deprecate the target record
-                    return trx('scheduleSystem.dbo.processTemplate').update({
-                        displaySequence: null,
-                        active: 0,
-                        deprecated: currentDatetimeString()
-                    }).where({ id: id }).debug(false);
-                }).then(() => {
-                    // check if list resequence is needed
-                    if (targetRecordDisplaySequence === null) { // not needed (record was deactivated to begin with)
-                        // get a fresh set of processTemplate data
-                        return trx('scheduleSystem.dbo.processTemplate')
-                            .select('*').where({ active: 1, deprecated: null })
-                            .orderBy('displaySequence').debug(false);
-                    } else { // resequence required
-                        // update all active records that are preceeded by the target record to displaySequence -1
-                        // note: raw query was used due to an issue of getting standard knex query to work
-                        return trx.raw('UPDATE scheduleSystem.dbo.processTemplate SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>?;', [targetRecordDisplaySequence]).debug(false)
-                            .then(() => {
-                                // get a fresh set of processTemplate data
-                                return trx('scheduleSystem.dbo.processTemplate')
-                                    .select('*').where({ active: 1, deprecated: null })
-                                    .orderBy('displaySequence').debug(false);
-                            });
-                    }
-                });
-        }).then((resultset) => {
-            return response.status(200).json(resultset);
+                .update(standardDeprecatedData)
+                .where({
+                    id: id,
+                    active: 0
+                }).debug(false);
+        }).then(() => {
+            return response.status(204).end();
         }).catch((error) => {
             return response.status(500).json(
                 endpointErrorHandler(
@@ -296,12 +305,13 @@ router.route('/data/processTemplates/inactive/:id')
         });
     });
 
-router.route('data/procTemplates/all')
-    .all(tokenValidation)
+router.route('/data/processTemplates/all')
+    // .all(tokenValidation)
     .get((request, response, next) => { // get all template records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.processTemplate').select('*').debug(false)
+        knex('scheduleSystem.dbo.processTemplate').select('*')
+            .orderBy('deprecated').orderBy('active', 'desc').orderBy('displaySequence').debug(false)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
