@@ -5,7 +5,7 @@ import uuidV4 from 'uuid/v4';
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
 import { mssqlConfig } from '../../config/mssqlServer.js';
 import { currentDatetimeString } from '../../utility/timeUtility.js';
-// import tokenValidation from '../../middleware/tokenValidation.js';
+import tokenValidation from '../../middleware/tokenValidation.js';
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -31,7 +31,7 @@ get /data/processTemplates/all - get all records
 */
 
 router.route('/data/processTemplates/id/:id')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .get((request, response, next) => { // get a particular record
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
@@ -115,7 +115,7 @@ router.route('/data/processTemplates/id/:id')
     });
 
 router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .patch((request, response, next) => { // reorder active record list
         let id = request.params.id;
         let targetRecordDisplaySequence = null;
@@ -165,7 +165,7 @@ router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
     });
 
 router.route('/data/processTemplates')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .get((request, response, next) => { // get all active records
         let knex = require('knex')(mssqlConfig);
         knex('scheduleSystem.dbo.processTemplate')
@@ -226,7 +226,7 @@ router.route('/data/processTemplates')
     });
 
 router.route('/data/processTemplates/inactive')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .get((request, response, next) => { // get all inactive but not deprecated records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
@@ -246,7 +246,7 @@ router.route('/data/processTemplates/inactive')
     });
 
 router.route('/data/processTemplates/inactive/id/:id')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .patch((request, response, next) => { // reactivate record
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
@@ -284,7 +284,7 @@ router.route('/data/processTemplates/inactive/id/:id')
         };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
-            // deactivate and deprecate the target record
+            // deprecate the target record
             return trx('scheduleSystem.dbo.processTemplate')
                 .update(standardDeprecatedData)
                 .where({
@@ -306,7 +306,7 @@ router.route('/data/processTemplates/inactive/id/:id')
     });
 
 router.route('/data/processTemplates/all')
-    // .all(tokenValidation)
+    .all(tokenValidation)
     .get((request, response, next) => { // get all template records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);

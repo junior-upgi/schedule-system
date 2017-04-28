@@ -19,13 +19,13 @@ main.use('/', express.static(path.join(__dirname, '/../public'))); // frontend c
 main.use('/bower_components', express.static(path.join(__dirname, '/../bower_components'))); // serve bower packages
 
 // data routes
+main.use('/', require('./route/data/processTemplate.js'));
+main.use('/', require('./route/data/processType.js'));
 main.use('/', require('./route/data/smartsheet/workspaces.js'));
 main.use('/', require('./route/data/jobType.js'));
 main.use('/', require('./route/data/productType.js'));
-main.use('/', require('./route/data/processType.js'));
 main.use('/', require('./route/data/processState.js'));
 main.use('/', require('./route/data/phase.js'));
-main.use('/', require('./route/data/processTemplate.js'));
 // utility routes
 main.use('/', require('./route/utility/login.js'));
 main.use('/', require('./route/utility/status.js'));
