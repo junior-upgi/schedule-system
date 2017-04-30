@@ -10,6 +10,8 @@ import tokenValidation from '../../middleware/tokenValidation.js';
 const router = express.Router();
 router.use(bodyParser.json());
 
+const dataTable = 'scheduleSystem.dbo.jobType';
+
 /*
 route definitions
 
@@ -35,7 +37,9 @@ router.route('/data/processStates/id/:id')
     .get((request, response, next) => { // get a particular record
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.processState').select('*').where({ id: id }).debug(false)
+        knex(dataTable)
+            .select('*')
+            .where({ id: id }).debug(false)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -62,7 +66,9 @@ router.route('/data/processStates/id/:id')
             );
         } else {
             let knex = require('knex')(mssqlConfig);
-            knex('scheduleSystem.dbo.processState').update({ reference: reference }).where({ id: id }).debug(false)
+            knex(dataTable)
+                .update({ reference: reference })
+                .where({ id: id }).debug(false)
                 .then(() => {
                     return response.status(204).end();
                 }).catch((error) => {
@@ -83,20 +89,28 @@ router.route('/data/processStates/id/:id')
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get target record's current data
-            return trx('scheduleSystem.dbo.processState').select('displaySequence').where({ id: id }).debug(false)
+            return trx(dataTable)
+                .select('displaySequence')
+                .where({ id: id }).debug(false)
                 .then((resultset) => {
                     targetRecordDisplaySequence = resultset[0].displaySequence;
                     // deactivate the target record
-                    return trx('scheduleSystem.dbo.processState').update({
-                        displaySequence: null,
-                        active: 0
-                    }).where({ id: id }).debug(false);
+                    return trx(dataTable)
+                        .update({
+                            displaySequence: null,
+                            active: 0
+                        }).where({ id: id }).debug(false);
                 }).then(() => {
                     // update all active records that are preceeded by the target record to displaySequence -1
-                    // note: raw query was used due to an issue of getting standard knex query to work
-                    return trx.raw('UPDATE scheduleSystem.dbo.processState SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>?;', [targetRecordDisplaySequence]).debug(false);
-                }).then(() => { // get a fresh set of processState data
-                    return trx('scheduleSystem.dbo.processState')
+                    return trx(dataTable)
+                        .decrement('displaySequence', 1)
+                        .where({
+                            active: 1,
+                            displaySequence: targetRecordDisplaySequence
+                        })
+                        .debug(false);
+                }).then(() => { // get a fresh set of jobType data
+                    return trx(dataTable)
                         .select('*').where({ active: 1, deprecated: null })
                         .orderBy('displaySequence').debug(false);
                 });
@@ -118,37 +132,66 @@ router.route('/data/processStates/id/:id/displaySequence/:displaySequence')
     .all(tokenValidation)
     .patch((request, response, next) => { // reorder active record list
         let id = request.params.id;
-        let targetRecordDisplaySequence = null;
+        let originalSeqValue = null;
+        let intendedSeqValue = request.params.displaySequence;
+        let upperLimit = null;
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get target record's current displaySequence value
-            return trx('scheduleSystem.dbo.processState').select('displaySequence').where({ id: id }).debug(false)
+            return trx(dataTable)
+                .select('displaySequence')
+                .where({ id: id }).debug(false)
                 .then((resultset) => {
-                    targetRecordDisplaySequence = resultset[0].displaySequence;
-                    // check the original and final displaySequence to determine how to reorder
-                    if (targetRecordDisplaySequence < request.params.displaySequence) {
-                        // adjust displaySequence of all affected active records
-                        // note: raw query was used due to an issue of getting standard knex query to work
-                        return trx.raw('UPDATE scheduleSystem.dbo.processState SET displaySequence=displaySequence-1 WHERE active=1 AND displaySequence>? AND displaySequence<=?;', [targetRecordDisplaySequence, request.params.displaySequence]).debug(false);
-                    } else if (targetRecordDisplaySequence > request.params.displaySequence) {
-                        // adjust displaySequence of all affected active records
-                        // note: raw query was used due to an issue of getting standard knex query to work
-                        return trx.raw('UPDATE scheduleSystem.dbo.processState SET displaySequence=displaySequence+1 WHERE active=1 AND displaySequence>=? AND displaySequence<?;', [request.params.displaySequence, targetRecordDisplaySequence]).debug(false);
-                    } else { // original value and target value are the same
+                    originalSeqValue = resultset[0].displaySequence;
+                    // get the current highest displaySequence value
+                    return trx(dataTable)
+                        .max('displaySequence as maxDisplaySequence').debug(false);
+                }).then((resultset) => {
+                    upperLimit = resultset[0].maxDisplaySequence;
+                    if (
+                        // check if the intended sequence value is out of range
+                        (upperLimit < intendedSeqValue) ||
+                        // check if the target record is already at the intended sequence value
+                        (originalSeqValue === intendedSeqValue)
+                    ) { // skip operation
                         return Promise.resolve();
+                    } else { // check the original and final displaySequence to determine how to reorder
+                        if (originalSeqValue < intendedSeqValue) {
+                            // adjust displaySequence of all affected active records
+                            return trx(dataTable)
+                                .decrement('displaySequence', 1)
+                                .where({ active: 1 })
+                                .where('displaySequence', '>', originalSeqValue)
+                                .where('displaySequence', '<=', intendedSeqValue)
+                                .debug(false);
+                        } else { // adjust displaySequence of all affected active records
+                            return trx(dataTable)
+                                .increment('displaySequence', 1)
+                                .where({ active: 1 })
+                                .where('displaySequence', '>=', intendedSeqValue)
+                                .where('displaySequence', '<', originalSeqValue)
+                                .debug(false);
+                        }
                     }
-                }).then(() => { // update the target with intended displaySequence
-                    if (targetRecordDisplaySequence !== request.params.displaySequenc) {
-                        return trx('scheduleSystem.dbo.processState')
-                            .update({ displaySequence: request.params.displaySequence })
+                }).then(() => {
+                    if (
+                        // check if the intended sequence value is out of range
+                        (upperLimit < intendedSeqValue) ||
+                        // check if the target record is already at the intended sequence value
+                        (originalSeqValue === intendedSeqValue)
+                    ) { // skip operation
+                        return Promise.resolve();
+                    } else { // update the target with intended displaySequence
+                        return trx(dataTable)
+                            .update({ displaySequence: intendedSeqValue })
                             .where({ id: id }).debug(false);
-                    } else {
-                        return Promise.resolve();
                     }
-                }).then(() => { // get a fresh set of processState data
-                    return trx('scheduleSystem.dbo.processState')
-                        .select('*').where({ active: 1, deprecated: null })
-                        .orderBy('displaySequence').debug(false);
+                }).then(() => { // get a fresh set of jobType data
+                    return trx(dataTable)
+                        .select('*')
+                        .where({ active: 1, deprecated: null })
+                        // .orderBy('displaySequence')
+                        .debug(false);
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset);
@@ -168,8 +211,9 @@ router.route('/data/processStates')
     .all(tokenValidation)
     .get((request, response, next) => { // get all active records
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.processState')
-            .select('*').where({ active: 1, deprecated: null })
+        knex(dataTable)
+            .select('*')
+            .where({ active: 1, deprecated: null })
             .orderBy('displaySequence').debug(false)
             .then((resultset) => {
                 return response.status(200).json(resultset);
@@ -187,7 +231,8 @@ router.route('/data/processStates')
     .post((request, response, next) => { // insert a new active record to the end of the list
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
-            return trx('scheduleSystem.dbo.processState').max('displaySequence as maxDisplaySequence').debug(false)
+            // get the current highest displaySequence value
+            return trx(dataTable).max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
                     let recordData = {
                         id: uuidV4().toUpperCase(),
@@ -197,16 +242,16 @@ router.route('/data/processStates')
                         deprecated: null
                     };
                     // check if the requested 'reference' is duplicated
-                    return trx('scheduleSystem.dbo.processState')
+                    return trx(dataTable)
                         .select('*').where({ reference: request.body.reference }).debug(false)
                         .then((resultset) => {
                             if (resultset.length === 0) { // insert new record if no duplicates are found
-                                return trx('scheduleSystem.dbo.processState')
+                                return trx(dataTable)
                                     .insert(recordData)
                                     .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
                                     .debug(false);
                             } else { // returns the existing record with the same reference
-                                return trx('scheduleSystem.dbo.processState')
+                                return trx(dataTable)
                                     .select('*').where({ reference: request.body.reference }).debug(false);
                             }
                         });
@@ -218,7 +263,7 @@ router.route('/data/processStates')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序狀態新增發生錯誤: ${error}`)
+                    `工作類別新增發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
@@ -230,7 +275,9 @@ router.route('/data/processStates/inactive')
     .get((request, response, next) => { // get all inactive but not deprecated records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.processState').select('*').where({ active: 0, deprecated: null }).debug(false)
+        knex(dataTable)
+            .select('*')
+            .where({ active: 0, deprecated: null }).debug(false)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -238,7 +285,7 @@ router.route('/data/processStates/inactive')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序狀態資料 [${id}] 讀取發生錯誤: ${error}`)
+                        `工序狀態資料(停用中) [${id}] 讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
@@ -252,16 +299,18 @@ router.route('/data/processStates/inactive/id/:id')
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get the current highest displaySequence value
-            return trx('scheduleSystem.dbo.processState').max('displaySequence as maxDisplaySequence').debug(false)
+            return trx(dataTable)
+                .max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
-                    return trx('scheduleSystem.dbo.processState').update({
-                        displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
-                        active: 1,
-                        deprecated: null
-                    }).where({
-                        id: id,
-                        active: 0
-                    }).returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']).debug(false);
+                    return trx(dataTable)
+                        .update({
+                            displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
+                            active: 1,
+                            deprecated: null
+                        }).where({
+                            id: id,
+                            active: 0
+                        }).returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']).debug(false);
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset);
@@ -270,7 +319,7 @@ router.route('/data/processStates/inactive/id/:id')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序狀態 [${id}] 重新啟用發生錯誤: ${error}`)
+                    `工作類別 [${id}] 重新啟用發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
@@ -284,8 +333,7 @@ router.route('/data/processStates/inactive/id/:id')
         };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
-            // deprecate the target record
-            return trx('scheduleSystem.dbo.processState')
+            return trx(dataTable) // deprecate the target record
                 .update(standardDeprecatedData)
                 .where({
                     id: id,
@@ -305,13 +353,14 @@ router.route('/data/processStates/inactive/id/:id')
         });
     });
 
-router.route('/data/processStates/all')
+router.route('/data/processStates/deprecated')
     .all(tokenValidation)
-    .get((request, response, next) => { // get all records
+    .get((request, response, next) => { // get all deprecated records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.processState').select('*')
-            .orderBy('deprecated').orderBy('active', 'desc').orderBy('displaySequence').debug(false)
+        knex(dataTable)
+            .select('*')
+            .whereNotNull('deprecated').debug(false)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -319,7 +368,30 @@ router.route('/data/processStates/all')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序狀態資料 [${id}] 讀取發生錯誤: ${error}`)
+                        `工序狀態資料(永遠停用項目) [${id}] 讀取發生錯誤: ${error}`)
+                );
+            }).finally(() => {
+                knex.destroy();
+            });
+    });
+
+router.route('/data/processStates/all')
+    .all(tokenValidation)
+    .get((request, response, next) => { // get all records
+        let id = request.params.id;
+        let knex = require('knex')(mssqlConfig);
+        knex(dataTable).select('*')
+            .orderBy('deprecated')
+            .orderBy('active', 'desc')
+            .orderBy('displaySequence').debug(false)
+            .then((resultset) => {
+                return response.status(200).json(resultset);
+            }).catch((error) => {
+                return response.status(500).json(
+                    endpointErrorHandler(
+                        request.method,
+                        request.originalUrl,
+                        `工序狀態資料(所有資料) [${id}] 讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
