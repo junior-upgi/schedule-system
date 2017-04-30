@@ -10,6 +10,8 @@ import tokenValidation from '../../middleware/tokenValidation.js';
 const router = express.Router();
 router.use(bodyParser.json());
 
+const dataTable = 'scheduleSystem.dbo.jobType';
+
 /*
 route definitions
 
@@ -35,7 +37,7 @@ router.route('/data/jobTypes/id/:id')
     .get((request, response, next) => { // get a particular record
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.jobType')
+        knex(dataTable)
             .select('*')
             .where({ id: id }).debug(false)
             .then((resultset) => {
@@ -64,7 +66,7 @@ router.route('/data/jobTypes/id/:id')
             );
         } else {
             let knex = require('knex')(mssqlConfig);
-            knex('scheduleSystem.dbo.jobType')
+            knex(dataTable)
                 .update({ reference: reference })
                 .where({ id: id }).debug(false)
                 .then(() => {
@@ -87,20 +89,20 @@ router.route('/data/jobTypes/id/:id')
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get target record's current data
-            return trx('scheduleSystem.dbo.jobType')
+            return trx(dataTable)
                 .select('displaySequence')
                 .where({ id: id }).debug(false)
                 .then((resultset) => {
                     targetRecordDisplaySequence = resultset[0].displaySequence;
                     // deactivate the target record
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .update({
                             displaySequence: null,
                             active: 0
                         }).where({ id: id }).debug(false);
                 }).then(() => {
                     // update all active records that are preceeded by the target record to displaySequence -1
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .decrement('displaySequence', 1)
                         .where({
                             active: 1,
@@ -108,7 +110,7 @@ router.route('/data/jobTypes/id/:id')
                         })
                         .debug(false);
                 }).then(() => { // get a fresh set of jobType data
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .select('*').where({ active: 1, deprecated: null })
                         .orderBy('displaySequence').debug(false);
                 });
@@ -130,61 +132,62 @@ router.route('/data/jobTypes/id/:id/displaySequence/:displaySequence')
     .all(tokenValidation)
     .patch((request, response, next) => { // reorder active record list
         let id = request.params.id;
-        let targetRecordDisplaySequence = null;
+        let originalSeqValue = null;
+        let intendedSeqValue = request.params.displaySequence;
         let upperLimit = null;
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get target record's current displaySequence value
-            return trx('scheduleSystem.dbo.jobType')
+            return trx(dataTable)
                 .select('displaySequence')
                 .where({ id: id }).debug(false)
                 .then((resultset) => {
-                    targetRecordDisplaySequence = resultset[0].displaySequence;
+                    originalSeqValue = resultset[0].displaySequence;
                     // get the current highest displaySequence value
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .max('displaySequence as maxDisplaySequence').debug(false);
                 }).then((resultset) => {
                     upperLimit = resultset[0].maxDisplaySequence;
                     if (
                         // check if the intended sequence value is out of range
-                        (upperLimit < request.params.displaySequence) ||
+                        (upperLimit < intendedSeqValue) ||
                         // check if the target record is already at the intended sequence value
-                        (targetRecordDisplaySequence === request.params.displaySequence)
+                        (originalSeqValue === intendedSeqValue)
                     ) { // skip operation
                         return Promise.resolve();
                     } else { // check the original and final displaySequence to determine how to reorder
-                        if (targetRecordDisplaySequence < request.params.displaySequence) {
+                        if (originalSeqValue < intendedSeqValue) {
                             // adjust displaySequence of all affected active records
-                            return trx('scheduleSystem.dbo.jobType')
+                            return trx(dataTable)
                                 .decrement('displaySequence', 1)
                                 .where({ active: 1 })
-                                .where('displaySequence', '>', targetRecordDisplaySequence)
-                                .where('displaySequence', '<=', request.params.displaySequence)
+                                .where('displaySequence', '>', originalSeqValue)
+                                .where('displaySequence', '<=', intendedSeqValue)
                                 .debug(false);
                         } else { // adjust displaySequence of all affected active records
-                            return trx('scheduleSystem.dbo.jobType')
+                            return trx(dataTable)
                                 .increment('displaySequence', 1)
                                 .where({ active: 1 })
-                                .where('displaySequence', '>=', request.params.displaySequence)
-                                .where('displaySequence', '<', targetRecordDisplaySequence)
+                                .where('displaySequence', '>=', intendedSeqValue)
+                                .where('displaySequence', '<', originalSeqValue)
                                 .debug(false);
                         }
                     }
                 }).then(() => {
                     if (
                         // check if the intended sequence value is out of range
-                        (upperLimit < request.params.displaySequence) ||
+                        (upperLimit < intendedSeqValue) ||
                         // check if the target record is already at the intended sequence value
-                        (targetRecordDisplaySequence === request.params.displaySequence)
+                        (originalSeqValue === intendedSeqValue)
                     ) { // skip operation
                         return Promise.resolve();
                     } else { // update the target with intended displaySequence
-                        return trx('scheduleSystem.dbo.jobType')
-                            .update({ displaySequence: request.params.displaySequence })
+                        return trx(dataTable)
+                            .update({ displaySequence: intendedSeqValue })
                             .where({ id: id }).debug(false);
                     }
                 }).then(() => { // get a fresh set of jobType data
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .select('*')
                         .where({ active: 1, deprecated: null })
                         // .orderBy('displaySequence')
@@ -208,7 +211,7 @@ router.route('/data/jobTypes')
     .all(tokenValidation)
     .get((request, response, next) => { // get all active records
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.jobType')
+        knex(dataTable)
             .select('*')
             .where({ active: 1, deprecated: null })
             .orderBy('displaySequence').debug(false)
@@ -229,7 +232,7 @@ router.route('/data/jobTypes')
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get the current highest displaySequence value
-            return trx('scheduleSystem.dbo.jobType').max('displaySequence as maxDisplaySequence').debug(false)
+            return trx(dataTable).max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
                     let recordData = {
                         id: uuidV4().toUpperCase(),
@@ -239,16 +242,16 @@ router.route('/data/jobTypes')
                         deprecated: null
                     };
                     // check if the requested 'reference' is duplicated
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .select('*').where({ reference: request.body.reference }).debug(false)
                         .then((resultset) => {
                             if (resultset.length === 0) { // insert new record if no duplicates are found
-                                return trx('scheduleSystem.dbo.jobType')
+                                return trx(dataTable)
                                     .insert(recordData)
                                     .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
                                     .debug(false);
                             } else { // returns the existing record with the same reference
-                                return trx('scheduleSystem.dbo.jobType')
+                                return trx(dataTable)
                                     .select('*').where({ reference: request.body.reference }).debug(false);
                             }
                         });
@@ -272,7 +275,7 @@ router.route('/data/jobTypes/inactive')
     .get((request, response, next) => { // get all inactive but not deprecated records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.jobType')
+        knex(dataTable)
             .select('*')
             .where({ active: 0, deprecated: null }).debug(false)
             .then((resultset) => {
@@ -296,10 +299,10 @@ router.route('/data/jobTypes/inactive/id/:id')
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get the current highest displaySequence value
-            return trx('scheduleSystem.dbo.jobType')
+            return trx(dataTable)
                 .max('displaySequence as maxDisplaySequence').debug(false)
                 .then((resultset) => {
-                    return trx('scheduleSystem.dbo.jobType')
+                    return trx(dataTable)
                         .update({
                             displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
                             active: 1,
@@ -330,7 +333,7 @@ router.route('/data/jobTypes/inactive/id/:id')
         };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
-            return trx('scheduleSystem.dbo.jobType') // deprecate the target record
+            return trx(dataTable) // deprecate the target record
                 .update(standardDeprecatedData)
                 .where({
                     id: id,
@@ -355,7 +358,7 @@ router.route('/data/jobTypes/deprecated')
     .get((request, response, next) => { // get all deprecated records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.jobType')
+        knex(dataTable)
             .select('*')
             .whereNotNull('deprecated').debug(false)
             .then((resultset) => {
@@ -377,7 +380,7 @@ router.route('/data/jobTypes/all')
     .get((request, response, next) => { // get all records
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
-        knex('scheduleSystem.dbo.jobType').select('*')
+        knex(dataTable).select('*')
             .orderBy('deprecated')
             .orderBy('active', 'desc')
             .orderBy('displaySequence').debug(false)
