@@ -24,11 +24,11 @@ export const store = new Vuex.Store({
         // working data
         userData: {}, // used to hold the user information returned from the authentication process
         jobType: null,
-        productType: null,
+        phase: null,
+        processState: null,
+        processTemplate: null,
         processType: null,
-        procState: null,
-        stage: null,
-        procTemplate: null
+        productType: null
     }
 });
 

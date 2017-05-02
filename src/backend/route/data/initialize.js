@@ -25,7 +25,8 @@ router.route('/data/initialize')
                     return trx('scheduleSystem.dbo.processState').select('*').where({ active: 1 }).orderBy('displaySequence').debug(false);
                 }).then((resultset) => {
                     initData.processState = resultset;
-                    return trx('scheduleSystem.dbo.processTemplate').select('*').where({ active: 1 }).orderBy('displaySequence').debug(false);
+                    return trx('scheduleSystem.dbo.processTemplate').select('*').whereNull('deprecated')
+                        .orderBy('active', 'desc').orderBy('displaySequence').orderBy('reference').debug(false);
                 }).then((resultset) => {
                     initData.processTemplate = resultset;
                     return trx('scheduleSystem.dbo.processType').select('*').where({ active: 1 }).orderBy('displaySequence').debug(false);

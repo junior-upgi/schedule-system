@@ -3,9 +3,9 @@ export default {
     role: function (state) { return state.role; },
     processingData: function (state) { return state.processingData; },
     jobType: function (state) { return state.jobType; },
-    productType: function (state) { return state.productType; },
+    phase: function (state) { return state.phase; },
+    processState: function (state) { return state.processState; },
+    processTemplate: function (state) { return state.processTemplate; },
     processType: function (state) { return state.processType; },
-    procState: function (state) { return state.procState; },
-    stage: function (state) { return state.stage; },
-    procTemplate: function (state) { return state.procTemplate; }
+    productType: function (state) { return state.productType; }
 };

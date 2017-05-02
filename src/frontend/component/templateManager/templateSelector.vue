@@ -4,42 +4,49 @@
             <select
                 class="form-control"
                 v-model="targetId"
-                :disabled="((procTemplate.length===0)||(processingData))?true:false">
-                <option v-if="procTemplate.length===0" disabled value="">沒有工序範本選項</option>
-                <option v-if="procTemplate.length>0" disabled value="">選擇操作範本</option>
+                :disabled="((processTemplate.length===0)||(processingData))?true:false">
+                <option v-if="processTemplate.length===0" disabled value="">沒有工序範本選項</option>
+                <option v-if="processTemplate.length>0" disabled value="">選擇操作範本</option>
                 <option
+                    v-for="processTemplateItem in processTemplate"
                     style="margin:5px;"
-                    v-for="procTemplateItem in procTemplate"
-                    v-bind:value="procTemplateItem.id">
-                    {{ procTemplateItem.reference }}
-                    <template v-if="procTemplateItem.deprecated">(停用)</template>
+                    v-bind:value="processTemplateItem.id">
+                    <template v-if="processTemplateItem.active">
+                        {{processTemplateItem.displaySequence+1}}.&nbsp;
+                    </template>
+                    {{ processTemplateItem.reference }}
+                    <template v-if="!processTemplateItem.active">(停用)</template>
                 </option>
             </select>
         </div>
         <div class="col-sm-5 col-md-4 col-lg-3 text-left">
             <button
-                class="btn btn-default"
+                v-if="targetTemplateArrayIndex!==null"
+                class="btn btn-primary"
+                @click="update"
+                :disabled="((targetId==='')||(processingData))?true:false">
+                修改名稱
+            </button>
+            <button
+                v-if="((targetTemplateArrayIndex!==null)&&(targetTemplate.active===false))"
+                class="btn btn-success"
                 :disabled="((targetId==='')||(processingData))?true:false"
-                v-if="targetTemplate&&targetTemplate.deprecated!==null">
+                @click="activate">
                 啟用
             </button>
             <button
-                class="btn btn-danger"
+                v-if="((targetTemplateArrayIndex!==null)&&(targetTemplate.active===true))"
+                class="btn btn-warning"
                 :disabled="((targetId==='')||(processingData))?true:false"
-                v-if="targetTemplate&&targetTemplate.deprecated===null">
+                @click="deactivate">
                 停用
             </button>
             <button
+                v-if="((targetTemplateArrayIndex!==null)&&(targetTemplate.active===false))"
                 class="btn btn-danger"
-                @click="deleteCurrentTemplate"
-                :disabled="((targetId==='')||(processingData))?true:false">
+                :disabled="((targetId==='')||(processingData))?true:false"
+                @click="deprecate">
                 刪除
-            </button>
-            <button
-                class="btn btn-primary"
-                @click="renameCurrentTemplate"
-                :disabled="((targetId==='')||(processingData))?true:false">
-                修改名稱
             </button>
         </div>
     </div>
@@ -53,11 +60,11 @@ export default {
     computed: {
         ...mapGetters({
             processingData: 'processingData',
-            procTemplate: 'procTemplate'
+            processTemplate: 'processTemplate'
         }),
         targetTemplate: function () {
-            return this.procTemplate.filter((procTemplateItem) => {
-                return procTemplateItem.id === this.targetId;
+            return this.processTemplate.filter((processTemplateItem) => {
+                return processTemplateItem.id === this.targetId;
             })[0];
         },
         targetTemplateArrayIndex: function () {
@@ -65,8 +72,8 @@ export default {
                 return null;
             } else {
                 let targetArrayIndex = null;
-                this.procTemplate.forEach((procTemplateItem, currentIndex) => {
-                    if (procTemplateItem.id === this.targetId) {
+                this.processTemplate.forEach((processTemplateItem, currentIndex) => {
+                    if (processTemplateItem.id === this.targetId) {
                         targetArrayIndex = currentIndex;
                     }
                 });
@@ -81,63 +88,93 @@ export default {
     },
     methods: {
         ...mapActions({
-            componentErrorHandler: 'componentErrorHandler',
-            deleteTemplate: 'deleteTemplate',
-            renameTemplate: 'renameTemplate'
+            action_deactivate_processTemplate: 'action_deactivate_processTemplate',
+            action_activate_processTemplate: 'action_activate_processTemplate',
+            action_deprecate_processTemplate: 'action_deprecate_processTemplate',
+            action_update_processTemplate: 'action_update_processTemplate',
+            componentErrorHandler: 'componentErrorHandler'
         }),
         ...mapMutations({
-            processingDataSwitch: 'processingDataSwitch',
-            procTemplateRemove: 'procTemplateRemove',
-            procTemplateReset: 'procTemplateReset',
-            procTemplateRename: 'procTemplateRename',
-            buildStore: 'buildStore'
+            processingDataSwitch: 'processingDataSwitch'
         }),
         checkDuplication: function (newReference) {
-            let duplicate = this.procTemplate.filter((procTemplateItem) => {
-                return procTemplateItem.reference === newReference;
+            let duplicate = this.processTemplate.filter((processTemplateItem) => {
+                return processTemplateItem.reference === newReference;
             });
             return duplicate.length > 0 ? true : false;
         },
-        deleteCurrentTemplate: function () {
-            if (confirm('請確定是否刪除')) {
+        deactivate: function () {
+            if (confirm(`請確定停用 [${this.targetTemplate.reference}]`)) {
                 this.processingDataSwitch(true);
-                this.deleteTemplate({
-                    targetId: this.targetId,
-                    targetPosition: this.targetTemplate.displaySequence
-                }).then((resultset) => {
-                    this.procTemplateReset();
-                    this.buildStore([resultset]);
-                    this.targetId = '';
+                this.action_deactivate_processTemplate({
+                    id: this.targetId
+                }).then(() => {
                     this.processingDataSwitch(false);
                 }).catch((error) => {
-                    this.targetId[0] = '';
+                    this.targetId = '';
                     this.processingDataSwitch(false);
                     this.componentErrorHandler({
                         component: 'templateSelector',
-                        method: 'deleteCurrentTemplate',
+                        method: 'deactivate',
+                        situation: '停用工序範本作業失敗',
+                        systemMessage: error
+                    });
+                });
+            }
+        },
+        activate: function () {
+            if (confirm(`請確定啟用 [${this.targetTemplate.reference}]`)) {
+                this.processingDataSwitch(true);
+                this.action_activate_processTemplate({
+                    id: this.targetId
+                }).then(() => {
+                    this.processingDataSwitch(false);
+                }).catch((error) => {
+                    this.targetId = '';
+                    this.processingDataSwitch(false);
+                    this.componentErrorHandler({
+                        component: 'templateSelector',
+                        method: 'activate',
+                        situation: '啟用工序範本作業失敗',
+                        systemMessage: error
+                    });
+                });
+            }
+        },
+        deprecate: function () {
+            if (confirm(`請確定是否刪除 [${this.targetTemplate.reference}]`)) {
+                this.processingDataSwitch(true);
+                this.action_deprecate_processTemplate({
+                    id: this.targetId
+                }).then(() => {
+                    this.targetId = '';
+                    this.processingDataSwitch(false);
+                }).catch((error) => {
+                    this.targetId = '';
+                    this.processingDataSwitch(false);
+                    this.componentErrorHandler({
+                        component: 'templateSelector',
+                        method: 'deprecate',
                         situation: '刪除工序範本作業失敗',
                         systemMessage: error
                     });
                 });
             }
         },
-        renameCurrentTemplate: function () {
+        update: function () {
             let newReference = prompt('請輸入新範本名稱', this.targetTemplate.reference);
-            if (
-                (newReference !== null) &&
+            if (newReference === null) {
+                return;
+            } else if (
                 (newReference !== '') &&
                 (newReference !== this.targetTemplate.reference) &&
                 (!this.checkDuplication(newReference))
             ) {
                 this.processingDataSwitch(true);
-                this.renameTemplate({
+                this.action_update_processTemplate({
                     id: this.targetId,
                     reference: newReference
-                }).then((resultset) => {
-                    this.procTemplateRename({
-                        targetIndex: this.targetTemplateArrayIndex,
-                        reference: newReference
-                    });
+                }).then(() => {
                     this.processingDataSwitch(false);
                 }).catch((error) => {
                     this.processingDataSwitch(false);
@@ -149,17 +186,8 @@ export default {
                     });
                 });
             } else {
-                alert('指定工序名稱重複或已取消名稱變更作業');
+                alert('指定工序名稱重複');
             }
-        },
-        templateActivation: function () {
-            this.processingDataSwitch(true);
-            this.activateTemplate({
-                id: this.targetId,
-                deprecated: null
-            }).then(() => {
-                this.processingDataSwitch(false);
-            });
         }
     }
 };

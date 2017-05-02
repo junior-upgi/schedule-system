@@ -5,13 +5,13 @@
             class="form-control"
             :placeholder="captionPlaceholder"
             :disabled="processingData?true:false"
-            v-model.trim="templateName">
+            v-model.trim="reference">
         <span class="input-group-btn">
             <button
                 class="btn btn-default"
                 type="button"
-                :disabled="processingData||templateName===''?true:false"
-                @click="registerNewTemplate">
+                :disabled="processingData||reference===''?true:false"
+                @click="insert">
                 新建範本
             </button>
         </span>
@@ -26,55 +26,67 @@ export default {
     computed: {
         ...mapGetters({
             processingData: 'processingData',
-            procTemplate: 'procTemplate'
+            processTemplate: 'processTemplate'
         }),
         checkDuplication: function () {
-            let duplicate = this.procTemplate.filter((procTemplateItem) => {
-                return procTemplateItem.reference === this.templateName;
+            let duplicate = this.processTemplate.filter((processTemplateItem) => {
+                return processTemplateItem.reference === this.reference;
             });
             return duplicate.length > 0 ? true : false;
         }
     },
     data: function () {
         return {
-            templateName: '',
+            reference: '',
             captionPlaceholder: '請輸入範本名稱'
         };
     },
     methods: {
         ...mapActions({
             componentErrorHandler: 'componentErrorHandler',
-            createTemplate: 'createTemplate'
+            action_getDeprecated_processTemplate: 'action_getDeprecated_processTemplate',
+            action_insert_processTemplate: 'action_insert_processTemplate'
         }),
         ...mapMutations({
-            processingDataSwitch: 'processingDataSwitch',
-            procTemplateInsert: 'procTemplateInsert'
+            processingDataSwitch: 'processingDataSwitch'
         }),
-        registerNewTemplate: function () {
+        insert: function () {
             this.processingDataSwitch(true);
-            if (this.checkDuplication === true) {
-                this.captionPlaceholder = '範本名稱重複，請重新輸入';
-                this.templateName = '';
-                this.processingDataSwitch(false);
-            } else {
-                this.createTemplate({ templateName: this.templateName })
-                    .then((resultset) => {
-                        this.procTemplateInsert(resultset.data);
-                        this.captionPlaceholder = '請輸入範本名稱';
-                        this.templateName = '';
+            this.action_getDeprecated_processTemplate()
+                .then((resultset) => {
+                    if (resultset.data.filter((resultItem) => {
+                        return resultItem.reference === this.reference;
+                    }).length > 0) {
+                        this.captionPlaceholder = '新範本名稱與過去刪除資料相同';
+                        this.reference = '';
                         this.processingDataSwitch(false);
-                    }).catch((error) => {
-                        this.captionPlaceholder = '新建工序範本作業失敗，請輸入範本名稱';
-                        this.templateName = '';
-                        this.processingDataSwitch(false);
-                        this.componentErrorHandler({
-                            component: 'registerTemplate',
-                            method: 'registerNew',
-                            situation: '新建工序範本作業失敗',
-                            systemMessage: error
-                        });
-                    });
-            }
+                        return;
+                    } else {
+                        if (this.checkDuplication === true) {
+                            this.captionPlaceholder = '範本名稱重複，請重新輸入';
+                            this.reference = '';
+                            this.processingDataSwitch(false);
+                            return;
+                        } else {
+                            this.action_insert_processTemplate({ reference: this.reference })
+                                .then(() => {
+                                    this.captionPlaceholder = '請輸入範本名稱';
+                                    this.reference = '';
+                                    this.processingDataSwitch(false);
+                                }).catch((error) => {
+                                    this.captionPlaceholder = '新建工序範本作業失敗，請輸入範本名稱';
+                                    this.reference = '';
+                                    this.processingDataSwitch(false);
+                                    this.componentErrorHandler({
+                                        component: 'registerTemplate',
+                                        method: 'registerNew',
+                                        situation: '新建工序範本作業失敗',
+                                        systemMessage: error
+                                    });
+                                });
+                        }
+                    }
+                });
         }
     }
 };

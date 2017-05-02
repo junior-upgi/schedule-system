@@ -10,14 +10,16 @@ import tokenValidation from '../../middleware/tokenValidation.js';
 const router = express.Router();
 router.use(bodyParser.json());
 
+const routePath = '/data/processTemplates';
 const dataTable = 'scheduleSystem.dbo.processTemplate';
+const errorRef = '工序範本資料';
+const debugFlag = false;
 
-/*
-route definitions
+/* // route definitions
 
-get /data/processTemplates/id/:id - get a particular record
-patch /data/processTemplates/id/:id -  update 'reference' field of a particular record
-delete /data/processTemplates/id/:id - deactivate target record and reorder (deprecated IS NULL is assumed to be true)
+get /data/processTemplates/id/:id - get a single record by 'id'
+patch /data/processTemplates/id/:id - update the 'reference' field value of a record
+delete /data/processTemplates/id/:id - deactivate an active record and reorder
 
 patch /data/processTemplates/id/:id/displaySequence/:displaySequence - reorder active record list
 
@@ -26,20 +28,24 @@ post /data/processTemplates - add new records to the end of list
 
 get /data/processTemplates/inactive - get all inactive but not deprecated records
 
-patch /data/processTemplates/inactive/id/:id - reactivate a record and place at the end of list (assuming record isn't deprecated)
+patch /data/processTemplates/inactive/id/:id - activate a record and place at the end of list (assuming record isn't deprecated)
 delete /data/processTemplates/inactive/id/:id - deprecate an inactive record
+
+get /data/processTemplates/deprecated - get all deprecated records
 
 get /data/processTemplates/all - get all records
 */
 
-router.route('/data/processTemplates/id/:id')
+router.route(`${routePath}/id/:id`)
     .all(tokenValidation)
-    .get((request, response, next) => { // get a particular record
+    // get a single record by 'id'
+    .get((request, response, next) => {
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
         knex(dataTable)
             .select('*')
-            .where({ id: id }).debug(false)
+            .where({ id: id })
+            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -47,28 +53,33 @@ router.route('/data/processTemplates/id/:id')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序範本資料 [${id}] 讀取發生錯誤: ${error}`)
+                        `${errorRef} [${id}] 讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
     })
-    .patch((request, response, next) => { // update 'reference' field of a particular record
+    // update the 'reference' field value of a record
+    .patch((request, response, next) => {
         let id = request.params.id;
         let reference = request.body.reference;
         // check if the request has valid data
-        if ((reference === undefined) || (reference === null) || (reference === '')) {
+        if (
+            (reference === undefined) ||
+            (reference === null) ||
+            (reference === '')) {
             return response.status(400).json(
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序範本資料 [${id}] 名稱更新發生錯誤: reference parameter is invalid`)
+                    `${errorRef} [${id}] 名稱更新發生錯誤: reference parameter is invalid`)
             );
         } else {
             let knex = require('knex')(mssqlConfig);
             knex(dataTable)
                 .update({ reference: reference })
-                .where({ id: id }).debug(false)
+                .where({ id: id })
+                .debug(debugFlag)
                 .then(() => {
                     return response.status(204).end();
                 }).catch((error) => {
@@ -76,14 +87,15 @@ router.route('/data/processTemplates/id/:id')
                         endpointErrorHandler(
                             request.method,
                             request.originalUrl,
-                            `工序範本資料 [${id}] 名稱更新發生錯誤: ${error}`)
+                            `${errorRef} [${id}] 名稱更新發生錯誤: ${error}`)
                     );
                 }).finally(() => {
                     knex.destroy();
                 });
         }
     })
-    .delete((request, response, next) => { // deactivate target record and reorder (deprecated=null is assumed to be true)
+    // deactivate an active record and reorder
+    .delete((request, response, next) => {
         let id = request.params.id;
         let targetRecordDisplaySequence = null;
         let knex = require('knex')(mssqlConfig);
@@ -91,28 +103,33 @@ router.route('/data/processTemplates/id/:id')
             // get target record's current data
             return trx(dataTable)
                 .select('displaySequence')
-                .where({ id: id }).debug(false)
+                .where({ id: id })
+                .debug(debugFlag)
                 .then((resultset) => {
                     targetRecordDisplaySequence = resultset[0].displaySequence;
                     // deactivate the target record
                     return trx(dataTable)
-                        .update({
-                            displaySequence: null,
-                            active: 0
-                        }).where({ id: id }).debug(false);
+                        .update({ displaySequence: null, active: 0 })
+                        .where({ id: id, active: 1 })
+                        .whereNull('deprecated')
+                        .debug(debugFlag)
+                        .returning(['id']);
                 }).then(() => {
                     // update all active records that are preceeded by the target record to displaySequence -1
                     return trx(dataTable)
                         .decrement('displaySequence', 1)
-                        .where({
-                            active: 1,
-                            displaySequence: targetRecordDisplaySequence
-                        })
-                        .debug(false);
-                }).then(() => { // get a fresh set of jobType data
+                        .where({ active: 1 })
+                        .where('displaySequence', '>', targetRecordDisplaySequence)
+                        .debug(debugFlag);
+                }).then(() => {
+                    // get a fresh set of data
                     return trx(dataTable)
-                        .select('*').where({ active: 1, deprecated: null })
-                        .orderBy('displaySequence').debug(false);
+                        .select('*')
+                        .whereNull('deprecated')
+                        .orderBy('active', 'desc')
+                        .orderBy('displaySequence')
+                        .orderBy('reference')
+                        .debug(debugFlag);
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset);
@@ -121,16 +138,17 @@ router.route('/data/processTemplates/id/:id')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序範本資料 [${id}] 停用發生錯誤: ${error}`)
+                    `${errorRef} [${id}] 停用發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
         });
     });
 
-router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
+router.route(`${routePath}/id/:id/displaySequence/:displaySequence`)
     .all(tokenValidation)
-    .patch((request, response, next) => { // reorder active record list
+    // reorder active record list
+    .patch((request, response, next) => {
         let id = request.params.id;
         let originalSeqValue = null;
         let intendedSeqValue = request.params.displaySequence;
@@ -140,12 +158,14 @@ router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
             // get target record's current displaySequence value
             return trx(dataTable)
                 .select('displaySequence')
-                .where({ id: id }).debug(false)
+                .where({ id: id })
+                .debug(debugFlag)
                 .then((resultset) => {
                     originalSeqValue = resultset[0].displaySequence;
                     // get the current highest displaySequence value
                     return trx(dataTable)
-                        .max('displaySequence as maxDisplaySequence').debug(false);
+                        .max('displaySequence as maxDisplaySequence')
+                        .debug(debugFlag);
                 }).then((resultset) => {
                     upperLimit = resultset[0].maxDisplaySequence;
                     if (
@@ -163,14 +183,14 @@ router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
                                 .where({ active: 1 })
                                 .where('displaySequence', '>', originalSeqValue)
                                 .where('displaySequence', '<=', intendedSeqValue)
-                                .debug(false);
+                                .debug(debugFlag);
                         } else { // adjust displaySequence of all affected active records
                             return trx(dataTable)
                                 .increment('displaySequence', 1)
                                 .where({ active: 1 })
                                 .where('displaySequence', '>=', intendedSeqValue)
                                 .where('displaySequence', '<', originalSeqValue)
-                                .debug(false);
+                                .debug(debugFlag);
                         }
                     }
                 }).then(() => {
@@ -184,14 +204,15 @@ router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
                     } else { // update the target with intended displaySequence
                         return trx(dataTable)
                             .update({ displaySequence: intendedSeqValue })
-                            .where({ id: id }).debug(false);
+                            .where({ id: id })
+                            .debug(debugFlag);
                     }
-                }).then(() => { // get a fresh set of jobType data
+                }).then(() => { // get a fresh set of data
                     return trx(dataTable)
                         .select('*')
                         .where({ active: 1, deprecated: null })
-                        // .orderBy('displaySequence')
-                        .debug(false);
+                        .orderBy('displaySequence')
+                        .debug(debugFlag);
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset);
@@ -200,21 +221,23 @@ router.route('/data/processTemplates/id/:id/displaySequence/:displaySequence')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序範本資料 [${id}] 順序調整發生錯誤: ${error}`)
+                    `${errorRef} [${id}] 順序調整發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
         });
     });
 
-router.route('/data/processTemplates')
+router.route(`${routePath}`)
     .all(tokenValidation)
-    .get((request, response, next) => { // get all active records
+    // get all active records
+    .get((request, response, next) => {
         let knex = require('knex')(mssqlConfig);
         knex(dataTable)
             .select('*')
             .where({ active: 1, deprecated: null })
-            .orderBy('displaySequence').debug(false)
+            .orderBy('displaySequence')
+            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -222,17 +245,20 @@ router.route('/data/processTemplates')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序範本資料表讀取發生錯誤: ${error}`)
+                        `${errorRef}表讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
     })
-    .post((request, response, next) => { // insert a new active record to the end of the list
+    // insert a new active record to the end of the list
+    .post((request, response, next) => {
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get the current highest displaySequence value
-            return trx(dataTable).max('displaySequence as maxDisplaySequence').debug(false)
+            return trx(dataTable)
+                .max('displaySequence as maxDisplaySequence')
+                .debug(debugFlag)
                 .then((resultset) => {
                     let recordData = {
                         id: uuidV4().toUpperCase(),
@@ -243,41 +269,47 @@ router.route('/data/processTemplates')
                     };
                     // check if the requested 'reference' is duplicated
                     return trx(dataTable)
-                        .select('*').where({ reference: request.body.reference }).debug(false)
+                        .select('*')
+                        .where({ reference: request.body.reference })
+                        .debug(debugFlag)
                         .then((resultset) => {
                             if (resultset.length === 0) { // insert new record if no duplicates are found
                                 return trx(dataTable)
                                     .insert(recordData)
                                     .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
-                                    .debug(false);
+                                    .debug(debugFlag);
                             } else { // returns the existing record with the same reference
                                 return trx(dataTable)
-                                    .select('*').where({ reference: request.body.reference }).debug(false);
+                                    .select('*')
+                                    .where({ reference: request.body.reference })
+                                    .debug(debugFlag);
                             }
                         });
                 });
         }).then((resultset) => {
-            return response.status(201).json(resultset);
+            return response.status(201).json(resultset[0]);
         }).catch((error) => {
             return response.status(500).json(
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工作類別新增發生錯誤: ${error}`)
+                    `${errorRef}新增發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
         });
     });
 
-router.route('/data/processTemplates/inactive')
+router.route(`${routePath}/inactive`)
     .all(tokenValidation)
-    .get((request, response, next) => { // get all inactive but not deprecated records
+    // get all inactive but not deprecated records
+    .get((request, response, next) => {
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
         knex(dataTable)
             .select('*')
-            .where({ active: 0, deprecated: null }).debug(false)
+            .where({ active: 0, deprecated: null })
+            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -285,60 +317,60 @@ router.route('/data/processTemplates/inactive')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序範本資料(停用中) [${id}] 讀取發生錯誤: ${error}`)
+                        `${errorRef}(停用中) [${id}] 讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
     });
 
-router.route('/data/processTemplates/inactive/id/:id')
+router.route(`${routePath}/inactive/id/:id`)
     .all(tokenValidation)
-    .patch((request, response, next) => { // reactivate record
+    // activate an inactive record
+    .patch((request, response, next) => {
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             // get the current highest displaySequence value
             return trx(dataTable)
-                .max('displaySequence as maxDisplaySequence').debug(false)
+                .max('displaySequence as maxDisplaySequence')
+                .debug(debugFlag)
                 .then((resultset) => {
                     return trx(dataTable)
                         .update({
                             displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
                             active: 1,
                             deprecated: null
-                        }).where({
-                            id: id,
-                            active: 0
-                        }).returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']).debug(false);
+                        }).where({ id: id, active: 0 })
+                        .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
+                        .debug(debugFlag);
                 });
         }).then((resultset) => {
-            return response.status(200).json(resultset);
+            return response.status(200).json(resultset[0]);
         }).catch((error) => {
             return response.status(500).json(
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工作類別 [${id}] 重新啟用發生錯誤: ${error}`)
+                    `${errorRef} [${id}] 重新啟用發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
         });
     })
-    .delete((request, response, next) => { // deprecate an inactive record
+    // deprecate an inactive record
+    .delete((request, response, next) => {
         let id = request.params.id;
-        let standardDeprecatedData = {
+        let deprecatedFieldValue = {
             displaySequence: null,
             deprecated: currentDatetimeString()
         };
         let knex = require('knex')(mssqlConfig);
         knex.transaction((trx) => {
             return trx(dataTable) // deprecate the target record
-                .update(standardDeprecatedData)
-                .where({
-                    id: id,
-                    active: 0
-                }).debug(false);
+                .update(deprecatedFieldValue)
+                .where({ id: id, active: 0 })
+                .debug(debugFlag);
         }).then(() => {
             return response.status(204).end();
         }).catch((error) => {
@@ -346,21 +378,24 @@ router.route('/data/processTemplates/inactive/id/:id')
                 endpointErrorHandler(
                     request.method,
                     request.originalUrl,
-                    `工序範本資料 [${id}] 停用發生錯誤: ${error}`)
+                    `${errorRef} [${id}] 停用發生錯誤: ${error}`)
             );
         }).finally(() => {
             knex.destroy();
         });
     });
 
-router.route('/data/processTemplates/deprecated')
+router.route(`${routePath}/deprecated`)
     .all(tokenValidation)
-    .get((request, response, next) => { // get all deprecated records
+    // get all deprecated records
+    .get((request, response, next) => {
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
         knex(dataTable)
             .select('*')
-            .whereNotNull('deprecated').debug(false)
+            .whereNotNull('deprecated')
+            .orderBy('reference')
+            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -368,22 +403,24 @@ router.route('/data/processTemplates/deprecated')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序範本資料(永遠停用項目) [${id}] 讀取發生錯誤: ${error}`)
+                        `${errorRef}(刪除資料項目) [${id}] 讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
     });
 
-router.route('/data/processTemplates/all')
+router.route(`${routePath}/all`)
     .all(tokenValidation)
-    .get((request, response, next) => { // get all records
+    // get all records
+    .get((request, response, next) => {
         let id = request.params.id;
         let knex = require('knex')(mssqlConfig);
         knex(dataTable).select('*')
             .orderBy('deprecated')
             .orderBy('active', 'desc')
-            .orderBy('displaySequence').debug(false)
+            .orderBy('displaySequence')
+            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -391,7 +428,7 @@ router.route('/data/processTemplates/all')
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `工序範本資料(所有資料) [${id}] 讀取發生錯誤: ${error}`)
+                        `${errorRef}(所有項目) [${id}] 讀取發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();

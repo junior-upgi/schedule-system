@@ -13,3 +13,5 @@ export const administrator = getUserID('蔡佳佑');
 export function passphrase() {
     return 'this is not a passphrase';
 }
+
+export const enforceTokenValidation = false;

@@ -1,15 +1,101 @@
 import axios from 'axios';
 
 import { serverUrl } from '../config/client.js';
-import { templateManagerFunction } from './templateManager.js';
 
-export default {
-    componentErrorHandler: componentErrorHandler,
-    initData: initData,
-    // templateManager
-    createTemplate: templateManagerFunction.create,
-    deleteTemplate: templateManagerFunction.delete,
-    renameTemplate: templateManagerFunction.rename
+const processTemplateFunction = {
+    getRecord: function (context, payload) {
+        return axios({
+            method: 'get',
+            url: `${serverUrl}/data/processTemplates/id/${payload.id}`,
+            headers: { 'x-access-token': sessionStorage.token }
+        });
+    },
+    update: function (context, payload) {
+        return axios({
+            method: 'patch',
+            url: `${serverUrl}/data/processTemplates/id/${payload.id}`,
+            data: { reference: payload.reference },
+            headers: { 'x-access-token': sessionStorage.token }
+        }).then(() => {
+            let recordObject = {
+                id: payload.id,
+                reference: payload.reference
+            };
+            context.commit('mutation_update_processTemplate', recordObject);
+        });
+    },
+    deactivate: function (context, payload) {
+        return axios({
+            method: 'delete',
+            url: `${serverUrl}/data/processTemplates/id/${payload.id}`,
+            headers: { 'x-access-token': sessionStorage.token }
+        }).then((resultset) => {
+            context.commit('mutation_refresh_processTemplate', resultset);
+        });
+    },
+    reorder: function (context, payload) {
+        return axios({
+            method: 'post',
+            url: `${serverUrl}/data/processTemplates/id/${payload.id}/displaySequence/${payload.displaySequence}`,
+            headers: { 'x-access-token': sessionStorage.token }
+        });
+    },
+    getActive: function (context) {
+        return axios({
+            method: 'get',
+            url: `${serverUrl}/data/processTemplates`,
+            headers: { 'x-access-token': sessionStorage.token }
+        });
+    },
+    insert: function (context, payload) {
+        return axios({
+            method: 'post',
+            url: `${serverUrl}/data/processTemplates`,
+            data: { reference: payload.reference },
+            headers: { 'x-access-token': sessionStorage.token }
+        }).then((resultset) => {
+            context.commit('mutation_insert_processTemplate', resultset.data);
+        });
+    },
+    getInactive: function (context) {
+        return axios({
+            method: 'get',
+            url: `${serverUrl}/data/processTemplates/inactive`,
+            headers: { 'x-access-token': sessionStorage.token }
+        });
+    },
+    activate: function (context, payload) {
+        return axios({
+            method: 'patch',
+            url: `${serverUrl}/data/processTemplates/inactive/id/${payload.id}`,
+            headers: { 'x-access-token': sessionStorage.token }
+        }).then((resultset) => {
+            context.commit('mutation_update_processTemplate', resultset.data);
+        });
+    },
+    deprecate: function (context, payload) {
+        return axios({
+            method: 'delete',
+            url: `${serverUrl}/data/processTemplates/inactive/id/${payload.id}`,
+            headers: { 'x-access-token': sessionStorage.token }
+        }).then(() => {
+            context.commit('mutation_remove_processTemplate', payload.id);
+        });
+    },
+    getDeprecated: function (context, payload) {
+        return axios({
+            method: 'get',
+            url: `${serverUrl}/data/processTemplates/deprecated`,
+            headers: { 'x-access-token': sessionStorage.token }
+        });
+    },
+    getAll: function (context) {
+        return axios({
+            method: 'get',
+            url: `${serverUrl}/data/processTemplates/all`,
+            headers: { 'x-access-token': sessionStorage.token }
+        });
+    }
 };
 
 function componentErrorHandler(context, errorObject) {
@@ -61,27 +147,7 @@ function componentErrorHandler(context, errorObject) {
 function initData(context) {
     const initOptList = [{
         method: 'get',
-        url: `${serverUrl}/data/jobType`,
-        headers: { 'x-access-token': sessionStorage.token }
-    }, {
-        method: 'get',
-        url: `${serverUrl}/data/productType`,
-        headers: { 'x-access-token': sessionStorage.token }
-    }, {
-        method: 'get',
-        url: `${serverUrl}/data/processType`,
-        headers: { 'x-access-token': sessionStorage.token }
-    }, {
-        method: 'get',
-        url: `${serverUrl}/data/procState`,
-        headers: { 'x-access-token': sessionStorage.token }
-    }, {
-        method: 'get',
-        url: `${serverUrl}/data/stage`,
-        headers: { 'x-access-token': sessionStorage.token }
-    }, {
-        method: 'get',
-        url: `${serverUrl}/data/procTemplate`,
+        url: `${serverUrl}/data/initialize`,
         headers: { 'x-access-token': sessionStorage.token }
     }, {
         method: 'get',
@@ -90,3 +156,20 @@ function initData(context) {
     }];
     return Promise.all(initOptList.map(axios));
 }
+
+export default {
+    componentErrorHandler: componentErrorHandler,
+    initData: initData,
+    // templateManager
+    action_getRecord_processTemplate: processTemplateFunction.getRecord,
+    action_update_processTemplate: processTemplateFunction.update,
+    action_deactivate_processTemplate: processTemplateFunction.deactivate,
+    action_reorder_processTemplate: processTemplateFunction.reorder,
+    action_getActive_processTemplate: processTemplateFunction.getActive,
+    action_insert_processTemplate: processTemplateFunction.insert,
+    action_getInactive_processTemplate: processTemplateFunction.getInactive,
+    action_activate_processTemplate: processTemplateFunction.activate,
+    action_deprecate_processTemplate: processTemplateFunction.deprecate,
+    action_getDeprecated_processTemplate: processTemplateFunction.getDeprecated,
+    action_getAll_processTemplate: processTemplateFunction.getAll
+};

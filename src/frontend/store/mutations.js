@@ -14,28 +14,11 @@ function emptyStore(state) {
     // working data
     state.userData = {};
     state.jobType = null;
-    state.productType = null;
+    state.phase = null;
+    state.processState = null;
+    state.processTemplate = null;
     state.processType = null;
-    state.procState = null;
-    state.stage = null;
-    state.procTemplate = null;
-}
-
-export default {
-    buildStore: buildStore,
-    forceViewChange: function (state, view) { state.activeView = view; },
-    processingDataSwitch: function (state, onOffSwitch) { state.processingData = onOffSwitch; },
-    redirectUser: function (state) { state.activeView = state.role; },
-    resetStore: resetStore,
-    restoreToken: restoreToken,
-    // procTemplate
-    procTemplateInsert: function (state, recordObject) { state.procTemplate.push(recordObject); },
-    procTemplateReset: function (state) { state.procTemplate = null; },
-    procTemplateRename: procTemplateRename
-};
-
-function procTemplateRename(state, payload) {
-    state.procTemplate[payload.targetIndex].reference = payload.reference;
+    state.productType = null;
 }
 
 function buildStore(state, responseList) {
@@ -62,3 +45,36 @@ function restoreToken(state, token) {
     state.userData = decode(token, { complete: true }).payload;
     state.activeView = state.role;
 }
+
+export default {
+    buildStore: buildStore,
+    forceViewChange: function (state, view) { state.activeView = view; },
+    processingDataSwitch: function (state, onOffSwitch) { state.processingData = onOffSwitch; },
+    redirectUser: function (state) { state.activeView = state.role; },
+    resetStore: resetStore,
+    restoreToken: restoreToken,
+    // templateManger
+    mutation_insert_processTemplate: function (state, recordObject) { state.processTemplate.push(recordObject); },
+    mutation_refresh_processTemplate: function (state, resultset) {
+        state.processTemplate = null;
+        state.processTemplate = resultset.data;
+    },
+    mutation_remove_processTemplate: function (state, id) {
+        let temp = state.processTemplate.filter((processTemplateItem) => {
+            return processTemplateItem.id !== id;
+        });
+        state.processTemplate = null;
+        state.processTemplate = temp.slice(0);
+    },
+    mutation_update_processTemplate: function (state, recordObject) {
+        state.processTemplate.forEach((processTemplateItem) => {
+            if (processTemplateItem.id === recordObject.id) {
+                for (let property in recordObject) {
+                    if (property !== 'id') {
+                        processTemplateItem[property] = recordObject[property];
+                    }
+                }
+            }
+        });
+    }
+};
