@@ -24,7 +24,7 @@ export function mssqlServerUrl() {
     }
 }
 
-export const mssqlConfig = {
+export const mssqlConfig = { // also used as knex.js init object
     client: 'mssql',
     connection: {
         server: mssqlServerHost().slice(7),
