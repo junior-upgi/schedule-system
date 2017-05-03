@@ -3,7 +3,7 @@ import express from 'express';
 import uuidV4 from 'uuid/v4';
 
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
-import { mssqlConfig } from '../../config/mssqlServer.js';
+import { mssqlConfig } from '../../config/database.js';
 import { currentDatetimeString } from '../../utility/timeUtility.js';
 import tokenValidation from '../../middleware/tokenValidation.js';
 

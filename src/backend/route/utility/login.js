@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import ldap from 'ldapjs';
 
 import { ldapServerUrl } from '../../config/ldapServer.js';
-import { mssqlConfig } from '../../config/mssqlServer.js';
+import { mssqlConfig } from '../../config/database.js';
 import { passphrase, systemReference } from '../../config/server.js';
 import { logger } from '../../utility/logger.js';
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';

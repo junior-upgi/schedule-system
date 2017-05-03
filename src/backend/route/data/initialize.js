@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
-import { mssqlConfig } from '../../config/mssqlServer.js';
+import { mssqlConfig } from '../../config/database.js';
 import tokenValidation from '../../middleware/tokenValidation.js';
 
 const router = express.Router();
