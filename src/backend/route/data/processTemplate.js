@@ -13,7 +13,6 @@ router.use(bodyParser.json());
 const routePath = '/data/processTemplates';
 const dataTable = 'scheduleSystem.dbo.processTemplate';
 const errorRef = '工序範本資料';
-const debugFlag = false;
 
 /* // route definitions
 
@@ -45,7 +44,6 @@ router.route(`${routePath}/id/:id`)
         knex(dataTable)
             .select('*')
             .where({ id: id })
-            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -79,7 +77,6 @@ router.route(`${routePath}/id/:id`)
             knex(dataTable)
                 .update({ reference: reference })
                 .where({ id: id })
-                .debug(debugFlag)
                 .then(() => {
                     return response.status(204).end();
                 }).catch((error) => {
@@ -104,7 +101,6 @@ router.route(`${routePath}/id/:id`)
             return trx(dataTable)
                 .select('displaySequence')
                 .where({ id: id })
-                .debug(debugFlag)
                 .then((resultset) => {
                     targetRecordDisplaySequence = resultset[0].displaySequence;
                     // deactivate the target record
@@ -112,15 +108,13 @@ router.route(`${routePath}/id/:id`)
                         .update({ displaySequence: null, active: 0 })
                         .where({ id: id, active: 1 })
                         .whereNull('deprecated')
-                        .debug(debugFlag)
                         .returning(['id']);
                 }).then(() => {
                     // update all active records that are preceeded by the target record to displaySequence -1
                     return trx(dataTable)
                         .decrement('displaySequence', 1)
                         .where({ active: 1 })
-                        .where('displaySequence', '>', targetRecordDisplaySequence)
-                        .debug(debugFlag);
+                        .where('displaySequence', '>', targetRecordDisplaySequence);
                 }).then(() => {
                     // get a fresh set of data
                     return trx(dataTable)
@@ -128,8 +122,7 @@ router.route(`${routePath}/id/:id`)
                         .whereNull('deprecated')
                         .orderBy('active', 'desc')
                         .orderBy('displaySequence')
-                        .orderBy('reference')
-                        .debug(debugFlag);
+                        .orderBy('reference');
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset);
@@ -159,13 +152,11 @@ router.route(`${routePath}/id/:id/displaySequence/:displaySequence`)
             return trx(dataTable)
                 .select('displaySequence')
                 .where({ id: id })
-                .debug(debugFlag)
                 .then((resultset) => {
                     originalSeqValue = resultset[0].displaySequence;
                     // get the current highest displaySequence value
                     return trx(dataTable)
-                        .max('displaySequence as maxDisplaySequence')
-                        .debug(debugFlag);
+                        .max('displaySequence as maxDisplaySequence');
                 }).then((resultset) => {
                     upperLimit = resultset[0].maxDisplaySequence;
                     if (
@@ -182,15 +173,13 @@ router.route(`${routePath}/id/:id/displaySequence/:displaySequence`)
                                 .decrement('displaySequence', 1)
                                 .where({ active: 1 })
                                 .where('displaySequence', '>', originalSeqValue)
-                                .where('displaySequence', '<=', intendedSeqValue)
-                                .debug(debugFlag);
+                                .where('displaySequence', '<=', intendedSeqValue);
                         } else { // adjust displaySequence of all affected active records
                             return trx(dataTable)
                                 .increment('displaySequence', 1)
                                 .where({ active: 1 })
                                 .where('displaySequence', '>=', intendedSeqValue)
-                                .where('displaySequence', '<', originalSeqValue)
-                                .debug(debugFlag);
+                                .where('displaySequence', '<', originalSeqValue);
                         }
                     }
                 }).then(() => {
@@ -204,15 +193,13 @@ router.route(`${routePath}/id/:id/displaySequence/:displaySequence`)
                     } else { // update the target with intended displaySequence
                         return trx(dataTable)
                             .update({ displaySequence: intendedSeqValue })
-                            .where({ id: id })
-                            .debug(debugFlag);
+                            .where({ id: id });
                     }
                 }).then(() => { // get a fresh set of data
                     return trx(dataTable)
                         .select('*')
                         .where({ active: 1, deprecated: null })
-                        .orderBy('displaySequence')
-                        .debug(debugFlag);
+                        .orderBy('displaySequence');
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset);
@@ -237,7 +224,6 @@ router.route(`${routePath}`)
             .select('*')
             .where({ active: 1, deprecated: null })
             .orderBy('displaySequence')
-            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -258,7 +244,6 @@ router.route(`${routePath}`)
             // get the current highest displaySequence value
             return trx(dataTable)
                 .max('displaySequence as maxDisplaySequence')
-                .debug(debugFlag)
                 .then((resultset) => {
                     let recordData = {
                         id: uuidV4().toUpperCase(),
@@ -271,18 +256,15 @@ router.route(`${routePath}`)
                     return trx(dataTable)
                         .select('*')
                         .where({ reference: request.body.reference })
-                        .debug(debugFlag)
                         .then((resultset) => {
                             if (resultset.length === 0) { // insert new record if no duplicates are found
                                 return trx(dataTable)
                                     .insert(recordData)
-                                    .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
-                                    .debug(debugFlag);
+                                    .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']);
                             } else { // returns the existing record with the same reference
                                 return trx(dataTable)
                                     .select('*')
-                                    .where({ reference: request.body.reference })
-                                    .debug(debugFlag);
+                                    .where({ reference: request.body.reference });
                             }
                         });
                 });
@@ -309,7 +291,6 @@ router.route(`${routePath}/inactive`)
         knex(dataTable)
             .select('*')
             .where({ active: 0, deprecated: null })
-            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -334,7 +315,6 @@ router.route(`${routePath}/inactive/id/:id`)
             // get the current highest displaySequence value
             return trx(dataTable)
                 .max('displaySequence as maxDisplaySequence')
-                .debug(debugFlag)
                 .then((resultset) => {
                     return trx(dataTable)
                         .update({
@@ -342,8 +322,7 @@ router.route(`${routePath}/inactive/id/:id`)
                             active: 1,
                             deprecated: null
                         }).where({ id: id, active: 0 })
-                        .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated'])
-                        .debug(debugFlag);
+                        .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']);
                 });
         }).then((resultset) => {
             return response.status(200).json(resultset[0]);
@@ -369,8 +348,7 @@ router.route(`${routePath}/inactive/id/:id`)
         knex.transaction((trx) => {
             return trx(dataTable) // deprecate the target record
                 .update(deprecatedFieldValue)
-                .where({ id: id, active: 0 })
-                .debug(debugFlag);
+                .where({ id: id, active: 0 });
         }).then(() => {
             return response.status(204).end();
         }).catch((error) => {
@@ -395,7 +373,6 @@ router.route(`${routePath}/deprecated`)
             .select('*')
             .whereNotNull('deprecated')
             .orderBy('reference')
-            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {
@@ -420,7 +397,6 @@ router.route(`${routePath}/all`)
             .orderBy('deprecated')
             .orderBy('active', 'desc')
             .orderBy('displaySequence')
-            .debug(debugFlag)
             .then((resultset) => {
                 return response.status(200).json(resultset);
             }).catch((error) => {

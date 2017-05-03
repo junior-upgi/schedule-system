@@ -1,5 +1,12 @@
 import { development } from './server.js';
 
+const mssqlServerPort = 1433;
+
+const upgiSystemAccount = 'upgiSystem';
+const upgiSystemPassword = 'upgiSystem';
+
+const knexQueryDebugFlag = false;
+
 // database access configuration
 function mssqlServerHost() {
     if (development === true) {
@@ -8,7 +15,6 @@ function mssqlServerHost() {
         return 'http://192.168.168.5'; // access database from LAN (production)
     }
 }
-const mssqlServerPort = 1433;
 
 export function mssqlServerUrl() {
     if (development === true) {
@@ -18,9 +24,6 @@ export function mssqlServerUrl() {
     }
 }
 
-const upgiSystemAccount = 'upgiSystem';
-const upgiSystemPassword = 'upgiSystem';
-
 export const mssqlConfig = {
     client: 'mssql',
     connection: {
@@ -29,7 +32,7 @@ export const mssqlConfig = {
         password: upgiSystemPassword,
         port: mssqlServerPort
     },
-    debug: true,
+    debug: knexQueryDebugFlag,
     server: mssqlServerHost().slice(7),
     user: upgiSystemAccount,
     password: upgiSystemPassword,

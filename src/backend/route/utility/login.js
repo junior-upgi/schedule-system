@@ -34,7 +34,7 @@ router.post('/login', (request, response) => {
             const knex = require('knex')(mssqlConfig);
             knex.select('*')
                 .from('scheduleSystem.dbo.privilegeDetail')
-                .where({ SAL_NO: loginId }).debug(false)
+                .where({ SAL_NO: loginId })
                 .then((resultset) => {
                     if (resultset.length === 0) {
                         return response.status(403)
