@@ -5,6 +5,7 @@ import uuidV4 from 'uuid/v4';
 import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
 import { mssqlConfig } from '../../config/database.js';
 import { currentDatetimeString } from '../../utility/timeUtility.js';
+import { appTitle } from '../../config/server.js';
 import tokenValidation from '../../middleware/tokenValidation.js';
 
 const router = express.Router();
@@ -42,31 +43,68 @@ const commonReferenceList = [{
     errorRef: '產品類別資料'
 }];
 
-/* // route definitions
+const routeDefinition = [{
+    route: '/data/{ refName }/id/:id',
+    info: [{
+        method: 'get',
+        purpose: 'get a single record by \'id\''
+    }, {
+        method: 'patch',
+        purpose: 'update the \'reference\' field value of a record'
+    }, {
+        method: 'delete',
+        purpose: 'deactivate an active record and reorder'
+    }]
+}, {
+    route: '/data/{ refName }/id/:id/displaySequence/:displaySequence',
+    info: [{
+        method: 'patch',
+        purpose: 'reorder active record list'
+    }]
+}, {
+    route: '/data/{ refName }',
+    info: [{
+        method: 'get',
+        purpose: 'get all active records'
+    }, {
+        method: 'post',
+        purpose: 'insert a new active record to the end of the list'
+    }]
+}, {
+    route: '/data/{ refName }/inactive',
+    info: [{
+        method: 'get',
+        purpose: 'get all inactive but not deprecated records'
+    }]
+}, {
+    route: '/data/{ refName }/inactive/id/:id',
+    info: [{
+        method: 'patch',
+        purpose: 'activate an inactive record and place at the end of the list'
+    }, {
+        method: 'delete',
+        purpose: 'deprecate an inactive record'
+    }]
+}, {
+    route: 'get /data/{ refName }/deprecated',
+    info: [{
+        method: 'get',
+        purpose: 'get all deprecated records'
+    }]
+}, {
+    route: '/data/{ refName }/all',
+    info: [{
+        method: 'get',
+        purpose: 'get all records'
+    }]
+}];
 
-get /data/{ refName }/id/:id - get a single record by 'id'
-patch /data/{ refName }/id/:id - update the 'reference' field value of a record
-delete /data/{ refName }/id/:id - deactivate an active record and reorder
-
-patch /data/{ refName }/id/:id/displaySequence/:displaySequence - reorder active record list
-
-get /data/{ refName } - get all active records
-post /data/{ refName } - insert a new active record to the end of the list
-
-get /data/{ refName }/inactive - get all inactive but not deprecated records
-
-patch /data/{ refName }/inactive/id/:id - activate an inactive record and place at the end of the list
-delete /data/{ refName }/inactive/id/:id - deprecate an inactive record
-
-get /data/{ refName }/deprecated - get all deprecated records
-
-get /data/{ refName }/all - get all records
-*/
-
-router.route('/data/definitions')
-    .all(tokenValidation)
+router.route('/data/commonReference/definition')
     .get((request, response, next) => {
-        return response.status(204).end();
+        return response.status(200).render('definition', {
+            title: appTitle,
+            data: routeDefinition
+        });
     });
 
 commonReferenceList.forEach((commonReference) => {

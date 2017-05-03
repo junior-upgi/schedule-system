@@ -45,6 +45,14 @@
             範本管理
         </button>
         <button
+            v-if="role==='admin'"
+            type="button" class="btn btn-default btn-block"
+            :disabled="processingData?true:false"
+            :class="{'btn-danger':activeView==='processManager'}"
+            @click="changeWorkingView('processManager')">
+            工序管理
+        </button>
+        <button
             type="button" class="btn btn-default btn-block"
             :disabled="processingData?true:false"
             @click="logout()">

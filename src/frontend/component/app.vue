@@ -23,6 +23,7 @@ import login from './common/login.vue';
 import sidebar from './common/sidebar.vue';
 import admin from './admin/admin.vue';
 import templateManager from './templateManager/templateManager.vue';
+import processManager from './processManager/processManager.vue';
 
 export default {
     name: 'app',
@@ -31,7 +32,8 @@ export default {
         login,
         sidebar,
         admin,
-        templateManager
+        templateManager,
+        processManager
     },
     computed: {
         ...mapGetters({ activeView: 'activeView' })

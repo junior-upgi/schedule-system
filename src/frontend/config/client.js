@@ -1,5 +1,5 @@
 export const systemReference = 'scheduleSystem';
-export const systemName = '排程進度管理系統';
+export const appTitle = '排程進度管理系統';
 const development = true;
 const serverPort = 9007;
 

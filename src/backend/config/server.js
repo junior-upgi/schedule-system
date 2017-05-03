@@ -8,6 +8,7 @@ export const port = process.env.PORT || 9007;
 export const serverUrl = `${host}:${port}`;
 
 export const systemReference = 'scheduleSystem';
+export const appTitle = '排程進度管理系統';
 export const administrator = getUserID('蔡佳佑');
 
 export function passphrase() {

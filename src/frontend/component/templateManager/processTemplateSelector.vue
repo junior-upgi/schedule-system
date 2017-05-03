@@ -56,7 +56,7 @@
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 export default {
-    name: 'templateSelector',
+    name: 'productTemplateSelector',
     computed: {
         ...mapGetters({
             processingData: 'processingData',
@@ -85,6 +85,11 @@ export default {
         return {
             targetId: ''
         };
+    },
+    watch: {
+        targetId: function (value) {
+            this.$emit('selectTemplateEvent', this.targetId);
+        }
     },
     methods: {
         ...mapActions({

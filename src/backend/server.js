@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import exphbs from 'express-handlebars';
 import morgan from 'morgan';
 import path from 'path';
 
@@ -9,6 +10,16 @@ import { logger } from './utility/logger.js';
 import { statusReport } from './utility/statusReport.js';
 
 const app = express();
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    layoutsDir: path.join(__dirname, '/../public/layouts'),
+    partialsDir: path.join(__dirname, '/../public/partials')
+}));
+app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname, '/../public'));
+app.set('layouts', path.join(__dirname, '/../public/layouts'));
+app.set('partials', path.join(__dirname, '/../public/partials'));
 const main = express.Router();
 app.use(`/${systemReference}`, main);
 main.use(cors());

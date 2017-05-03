@@ -3,27 +3,39 @@
         <div>
             <registerTemplate></registerTemplate>
             <br>
-            <templateSelector></templateSelector>
+            <processTemplateSelector @selectTemplateEvent="selectTemplateEvent">
+            </processTemplateSelector>
         </div>
         <br>
-        <templateDetail></templateDetail>
+        <processTemplate :selectedTemplateId="selectedTemplateId"></processTemplate>
     </div>
 </template>
 
 <script>
 import registerTemplate from './registerTemplate.vue';
-import templateSelector from './templateSelector.vue';
-import templateDetail from './templateDetail.vue';
+import processTemplateSelector from './processTemplateSelector.vue';
+import processTemplate from './processTemplate.vue';
 
 export default {
     name: 'templateManager',
     components: {
         registerTemplate,
-        templateSelector,
-        templateDetail
+        processTemplateSelector,
+        processTemplate
+    },
+    data: function () {
+        return {
+            selectedTemplateId: null
+        };
+    },
+    methods: {
+        selectTemplateEvent: function (payload) {
+            this.selectedTemplateId = payload;
+        }
     }
 };
 </script>
 
 <style>
+
 </style>
