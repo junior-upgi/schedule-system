@@ -14,4 +14,4 @@ export function passphrase() {
     return 'this is not a passphrase';
 }
 
-export const enforceTokenValidation = false;
+export const enforceTokenValidation = true;
