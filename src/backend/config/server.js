@@ -16,3 +16,5 @@ export function passphrase() {
 }
 
 export const enforceTokenValidation = false;
+
+export const timezone = 'Asia/Taipei';

@@ -8,6 +8,7 @@ import path from 'path';
 import { port, serverUrl, systemReference } from './config/server.js';
 import { logger } from './utilities/logger.js';
 import { statusReport } from './utilities/statusReport.js';
+import { sequelize } from './config/database.js';
 
 const app = express();
 const main = express.Router();
@@ -46,13 +47,20 @@ main.use('/', require('./routes/utility/login.js'));
 main.use('/', require('./routes/utility/status.js'));
 
 // initiate server script
-if (!module.parent) {
-    app.listen(port, (error) => { // start backend server
-        if (error) {
-            logger.error(`error starting ${systemReference} server: ${error}`);
-        } else {
-            logger.info(`${systemReference} server in operation... (${serverUrl})`);
-            statusReport.start(); // start the server status reporting function
+sequelize
+    .authenticate()
+    .then(() => {
+        if (!module.parent) {
+            app.listen(port, (error) => { // start backend server
+                if (error) {
+                    logger.error(`error starting ${systemReference} server: ${error}`);
+                } else {
+                    logger.info(`${systemReference} server in operation... (${serverUrl})`);
+                    statusReport.start(); // start the server status reporting function
+                }
+            });
         }
+    })
+    .catch((error) => {
+        logger.error(`error starting ${systemReference} server: database connection cannot be established - ${error}`);
     });
-}
