@@ -5,7 +5,7 @@ const mssqlServerPort = 1433;
 const upgiSystemAccount = 'upgiSystem';
 const upgiSystemPassword = 'upgiSystem';
 
-const knexQueryDebugFlag = false;
+const ormDebugOption = false;
 
 // database access configuration
 function mssqlServerHost() {
@@ -24,7 +24,7 @@ export function mssqlServerUrl() {
     }
 }
 
-export const mssqlConfig = { // also used as knex.js init object
+export const dbConfig = { // also used as knex.js init object
     client: 'mssql',
     connection: {
         server: mssqlServerHost().slice(7),
@@ -32,7 +32,7 @@ export const mssqlConfig = { // also used as knex.js init object
         password: upgiSystemPassword,
         port: mssqlServerPort
     },
-    debug: knexQueryDebugFlag,
+    debug: ormDebugOption,
     server: mssqlServerHost().slice(7),
     user: upgiSystemAccount,
     password: upgiSystemPassword,

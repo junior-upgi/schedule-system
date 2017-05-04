@@ -1,5 +1,6 @@
-<template>
+<template lang="html">
     <div class="col-xs-12 col-sm-10">
+        <!--
         <div class="form-group form-group-lg panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Sortable control</h3>
@@ -13,8 +14,9 @@
                 <button type="button" class="btn btn-default" @click="orderList">Sort by original order</button>
             </div>
         </div>
-
-        <div class="col-md-3">
+        -->
+        <!--
+        <div class="col-md-4">
             <draggable class="list-group" element="ul" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false">
                 <transition-group type="transition" :name="'flip-list'">
                     <li class="list-group-item" v-for="element in list" :key="element.order">
@@ -24,35 +26,65 @@
                 </transition-group>
             </draggable>
         </div>
-
-        <div class="col-md-3">
-            <draggable class="list-group" element="ul" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false">
-                <transition-group type="transition" :name="'flip-list'">
-                    <li class="list-group-item" v-for="element in list" :key="element.order">
-                        <i :class="element.fixed? 'fa fa-anchor' : 'glyphicon glyphicon-pushpin'" @click=" element.fixed=! element.fixed" aria-hidden="true"></i> {{element.name}}
-                        <span class="badge">{{element.order}}</span>
+        -->
+        <div class="col-md-4">
+            <draggable
+                class="list-group"
+                element="ul"
+                v-model="list"
+                :options="dragOptions"
+                :move="onMove"
+                @start="isDragging=true"
+                @end="isDragging=false">
+                <transition-group
+                    type="transition"
+                    :name="'flip-list'">
+                    <li v-for="element in list"
+                        class="list-group-item"
+                        :key="element.order">
+                        <i
+                            :class="element.fixed?'glyphicon glyphicon-sort':'glyphicon glyphicon-pushpin'"
+                            @click="element.fixed=!element.fixed">
+                        </i>
+                        {{element.name}}
+                        <span class="badge">
+                            {{element.order}}
+                        </span>
                     </li>
                 </transition-group>
             </draggable>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
+            <draggable class="list-group" element="ul" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false">
+                <transition-group type="transition" :name="'flip-list'">
+                    <li class="list-group-item" v-for="element in list" :key="element.order">
+                        <i :class="element.fixed? 'fa fa-anchor' : 'glyphicon glyphicon-pushpin'" @click=" element.fixed=! element.fixed" aria-hidden="true"></i> {{element.name}}
+                    </li>
+                </transition-group>
+            </draggable>
+        </div>
+
+        <div class="col-md-4">
             <draggable element="span" v-model="processType" :options="dragOptions" :move="onMove">
                 <transition-group name="no" class="list-group" tag="ul">
                     <li class="list-group-item" v-for="element in processType" :key="element.displaySequence">
                         <i :class="element.fixed? 'fa fa-anchor' : 'glyphicon glyphicon-pushpin'" @click=" element.fixed=! element.fixed" aria-hidden="true"></i> {{element.reference}}
-                        <span class="badge">{{element.displaySequence}}</span>
                     </li>
                 </transition-group>
             </draggable>
         </div>
 
+        <anchor></anchor>
+
+        <!--
         <div class="list-group col-md-3">
             <pre>{{listString}}</pre>
         </div>
         <div class="list-group col-md-3">
             <pre>{{list2String}}</pre>
         </div>
+        -->
     </div>
 </template>
 

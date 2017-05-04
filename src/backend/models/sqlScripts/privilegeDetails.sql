@@ -17,7 +17,7 @@ SELECT
         ELSE NULL
         END AS compPhone
 	,f.DSC_REM AS compPhoneExt
-FROM scheduleSystem.dbo.privilege a
+FROM scheduleSystem.dbo.privileges a
     LEFT JOIN DB_U105.dbo.SALM b ON a.SAL_NO=b.SAL_NO
     LEFT JOIN DB_U105.dbo.SALM_DSC c ON a.SAL_NO=c.SAL_NO AND c.DSC_NO='telegramId'
     LEFT JOIN DB_U105.dbo.DEPT d ON b.DEP=d.DEP

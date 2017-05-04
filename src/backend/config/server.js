@@ -1,4 +1,4 @@
-import { getUserID } from '../utility/telegram.js';
+import { getUserID } from '../utilities/telegram.js';
 
 // app backend server configuration
 export const development = true;
@@ -15,4 +15,4 @@ export function passphrase() {
     return 'this is not a passphrase';
 }
 
-export const enforceTokenValidation = true;
+export const enforceTokenValidation = false;

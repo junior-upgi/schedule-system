@@ -1,17 +1,9 @@
 import express from 'express';
 import client from 'smartsheet';
 
-// import httpRequest from 'request-promise';
-/*
-const moment = require('moment-timezone');
-const Treeize = require('treeize');
-const uuidV4 = require('uuid/v4');
-*/
-
-import tokenValidation from '../../../middleware/tokenValidation.js';
+import tokenValidation from '../../../middlewares/tokenValidation.js';
 import { smartsheetToken } from '../../../config/smartsheet.js';
-import { endpointErrorHandler } from '../../../utility/endpointErrorHandler.js';
-// import { workspaceIdObj } from '../../../model/smartsheet.js';
+import { endpointErrorHandler } from '../../../utilities/endpointErrorHandler.js';
 
 const router = express.Router();
 const smartsheet = client.createClient({ accessToken: smartsheetToken });

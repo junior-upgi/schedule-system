@@ -4,10 +4,10 @@ import jwt from 'jsonwebtoken';
 import ldap from 'ldapjs';
 
 import { ldapServerUrl } from '../../config/ldapServer.js';
-import { mssqlConfig } from '../../config/database.js';
+import { dbConfig } from '../../config/database.js';
 import { passphrase, systemReference } from '../../config/server.js';
-import { logger } from '../../utility/logger.js';
-import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
+import { logger } from '../../utilities/logger.js';
+import { endpointErrorHandler } from '../../utilities/endpointErrorHandler.js';
 import { smartsheetToken } from '../../config/smartsheet.js';
 
 const router = express.Router();
@@ -31,7 +31,7 @@ router.post('/login', (request, response) => {
             }
             logger.info(`${loginId} account info validated, checking access rights`);
             // continue to check if user has rights to access the website of the system selected
-            const knex = require('knex')(mssqlConfig);
+            const knex = require('knex')(dbConfig);
             knex.select('*')
                 .from('scheduleSystem.dbo.privilegeDetail')
                 .where({ SAL_NO: loginId })

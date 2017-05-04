@@ -23,12 +23,12 @@ export const store = new Vuex.Store({
         token: null, // jwt token
         // working data
         userData: {}, // used to hold the user information returned from the authentication process
-        jobType: null,
-        phase: null,
-        processState: null,
-        processTemplate: null,
-        processType: null,
-        productType: null
+        jobTypes: null,
+        phases: null,
+        processStates: null,
+        processTemplates: null,
+        processTypes: null,
+        productTypes: null
     }
 });
 

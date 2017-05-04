@@ -2,119 +2,54 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import uuidV4 from 'uuid/v4';
 
-import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
-import { mssqlConfig } from '../../config/database.js';
-import { currentDatetimeString } from '../../utility/timeUtility.js';
-import { appTitle } from '../../config/server.js';
-import tokenValidation from '../../middleware/tokenValidation.js';
+import { endpointErrorHandler } from '../../utilities/endpointErrorHandler.js';
+import { dbConfig } from '../../config/database.js';
+import { currentDatetimeString } from '../../utilities/timeRelated.js';
+import tokenValidation from '../../middlewares/tokenValidation.js';
 
 const router = express.Router();
 router.use(bodyParser.json());
 
-const commonReferenceList = [{
-    refName: 'jobType',
+const referenceTables = [{
+    dataRef: 'jobTypes',
     routePath: '/data/jobTypes',
-    dataTable: 'scheduleSystem.dbo.jobType',
+    name: 'scheduleSystem.dbo.jobTypes',
     errorRef: '工作類別資料'
 }, {
-    refName: 'phase',
+    dataRef: 'phases',
     routePath: '/data/phases',
-    dataTable: 'scheduleSystem.dbo.phase',
+    name: 'scheduleSystem.dbo.phases',
     errorRef: '工作階段資料'
 }, {
-    refName: 'processState',
+    dataRef: 'processStates',
     routePath: '/data/processStates',
-    dataTable: 'scheduleSystem.dbo.processState',
+    name: 'scheduleSystem.dbo.processStates',
     errorRef: '工序狀態資料'
 }, {
-    refName: 'processTemplate',
+    dataRef: 'processTemplates',
     routePath: '/data/processTemplates',
-    dataTable: 'scheduleSystem.dbo.processTemplate',
+    name: 'scheduleSystem.dbo.processTemplates',
     errorRef: '工序範本資料'
 }, {
-    refName: 'processType',
+    dataRef: 'processTypes',
     routePath: '/data/processTypes',
-    dataTable: 'scheduleSystem.dbo.processType',
+    name: 'scheduleSystem.dbo.processTypes',
     errorRef: '工序類別資料'
 }, {
-    refName: 'productType',
+    dataRef: 'productTypes',
     routePath: '/data/productTypes',
-    dataTable: 'scheduleSystem.dbo.productType',
+    name: 'scheduleSystem.dbo.productTypes',
     errorRef: '產品類別資料'
 }];
 
-const routeDefinition = [{
-    route: '/data/{ refName }/id/:id',
-    info: [{
-        method: 'get',
-        purpose: 'get a single record by \'id\''
-    }, {
-        method: 'patch',
-        purpose: 'update the \'reference\' field value of a record'
-    }, {
-        method: 'delete',
-        purpose: 'deactivate an active record and reorder'
-    }]
-}, {
-    route: '/data/{ refName }/id/:id/displaySequence/:displaySequence',
-    info: [{
-        method: 'patch',
-        purpose: 'reorder active record list'
-    }]
-}, {
-    route: '/data/{ refName }',
-    info: [{
-        method: 'get',
-        purpose: 'get all active records'
-    }, {
-        method: 'post',
-        purpose: 'insert a new active record to the end of the list'
-    }]
-}, {
-    route: '/data/{ refName }/inactive',
-    info: [{
-        method: 'get',
-        purpose: 'get all inactive but not deprecated records'
-    }]
-}, {
-    route: '/data/{ refName }/inactive/id/:id',
-    info: [{
-        method: 'patch',
-        purpose: 'activate an inactive record and place at the end of the list'
-    }, {
-        method: 'delete',
-        purpose: 'deprecate an inactive record'
-    }]
-}, {
-    route: 'get /data/{ refName }/deprecated',
-    info: [{
-        method: 'get',
-        purpose: 'get all deprecated records'
-    }]
-}, {
-    route: '/data/{ refName }/all',
-    info: [{
-        method: 'get',
-        purpose: 'get all records'
-    }]
-}];
-
-router.route('/data/commonReference/definition')
-    .get((request, response, next) => {
-        return response.status(200).render('definition', {
-            title: appTitle,
-            data: routeDefinition
-        });
-    });
-
-commonReferenceList.forEach((commonReference) => {
-    router.route(`${commonReference.routePath}/id/:id`)
+referenceTables.forEach((referenceTable) => {
+    router.route(`${referenceTable.routePath}/id/:id`)
         .all(tokenValidation)
         // get a single record by 'id'
         .get((request, response, next) => {
             let id = request.params.id;
-            let knex = require('knex')(mssqlConfig);
-            knex(commonReference.dataTable)
+            let knex = require('knex')(dbConfig);
+            knex(referenceTable.name)
                 .select('*')
                 .where({ id: id })
                 .then((resultset) => {
@@ -124,7 +59,7 @@ commonReferenceList.forEach((commonReference) => {
                         endpointErrorHandler(
                             request.method,
                             request.originalUrl,
-                            `${commonReference.errorRef} [${id}] 讀取發生錯誤: ${error}`)
+                            `${referenceTable.errorRef} [${id}] 讀取發生錯誤: ${error}`)
                     );
                 }).finally(() => {
                     knex.destroy();
@@ -143,11 +78,11 @@ commonReferenceList.forEach((commonReference) => {
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `${commonReference.errorRef} [${id}] 名稱更新發生錯誤: reference parameter is invalid`)
+                        `${referenceTable.errorRef} [${id}] 名稱更新發生錯誤: reference parameter is invalid`)
                 );
             } else {
-                let knex = require('knex')(mssqlConfig);
-                knex(commonReference.dataTable)
+                let knex = require('knex')(dbConfig);
+                knex(referenceTable.name)
                     .update({ reference: reference })
                     .where({ id: id })
                     .then(() => {
@@ -157,7 +92,7 @@ commonReferenceList.forEach((commonReference) => {
                             endpointErrorHandler(
                                 request.method,
                                 request.originalUrl,
-                                `${commonReference.errorRef} [${id}] 名稱更新發生錯誤: ${error}`)
+                                `${referenceTable.errorRef} [${id}] 名稱更新發生錯誤: ${error}`)
                         );
                     }).finally(() => {
                         knex.destroy();
@@ -168,29 +103,29 @@ commonReferenceList.forEach((commonReference) => {
         .delete((request, response, next) => {
             let id = request.params.id;
             let targetRecordDisplaySequence = null;
-            let knex = require('knex')(mssqlConfig);
+            let knex = require('knex')(dbConfig);
             knex.transaction((trx) => {
                 // get target record's current data
-                return trx(commonReference.dataTable)
+                return trx(referenceTable.name)
                     .select('displaySequence')
                     .where({ id: id })
                     .then((resultset) => {
                         targetRecordDisplaySequence = resultset[0].displaySequence;
                         // deactivate the target record
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .update({ displaySequence: null, active: 0 })
                             .where({ id: id, active: 1 })
                             .whereNull('deprecated')
                             .returning(['id']);
                     }).then(() => {
                         // update all active records that are preceeded by the target record to displaySequence -1
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .decrement('displaySequence', 1)
                             .where({ active: 1 })
                             .where('displaySequence', '>', targetRecordDisplaySequence);
                     }).then(() => {
                         // get a fresh set of data
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .select('*')
                             .whereNull('deprecated')
                             .orderBy('active', 'desc')
@@ -204,14 +139,14 @@ commonReferenceList.forEach((commonReference) => {
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `${commonReference.errorRef} [${id}] 停用發生錯誤: ${error}`)
+                        `${referenceTable.errorRef} [${id}] 停用發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
         });
 
-    router.route(`${commonReference.routePath}/id/:id/displaySequence/:displaySequence`)
+    router.route(`${referenceTable.routePath}/id/:id/displaySequence/:displaySequence`)
         .all(tokenValidation)
         // reorder active record list
         .patch((request, response, next) => {
@@ -219,16 +154,16 @@ commonReferenceList.forEach((commonReference) => {
             let originalSeqValue = null;
             let intendedSeqValue = request.params.displaySequence;
             let upperLimit = null;
-            let knex = require('knex')(mssqlConfig);
+            let knex = require('knex')(dbConfig);
             knex.transaction((trx) => {
                 // get target record's current displaySequence value
-                return trx(commonReference.dataTable)
+                return trx(referenceTable.name)
                     .select('displaySequence')
                     .where({ id: id })
                     .then((resultset) => {
                         originalSeqValue = resultset[0].displaySequence;
                         // get the current highest displaySequence value
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .max('displaySequence as maxDisplaySequence');
                     }).then((resultset) => {
                         upperLimit = resultset[0].maxDisplaySequence;
@@ -242,13 +177,13 @@ commonReferenceList.forEach((commonReference) => {
                         } else { // check the original and final displaySequence to determine how to reorder
                             if (originalSeqValue < intendedSeqValue) {
                                 // adjust displaySequence of all affected active records
-                                return trx(commonReference.dataTable)
+                                return trx(referenceTable.name)
                                     .decrement('displaySequence', 1)
                                     .where({ active: 1 })
                                     .where('displaySequence', '>', originalSeqValue)
                                     .where('displaySequence', '<=', intendedSeqValue);
                             } else { // adjust displaySequence of all affected active records
-                                return trx(commonReference.dataTable)
+                                return trx(referenceTable.name)
                                     .increment('displaySequence', 1)
                                     .where({ active: 1 })
                                     .where('displaySequence', '>=', intendedSeqValue)
@@ -264,12 +199,12 @@ commonReferenceList.forEach((commonReference) => {
                         ) { // skip operation
                             return Promise.resolve();
                         } else { // update the target with intended displaySequence
-                            return trx(commonReference.dataTable)
+                            return trx(referenceTable.name)
                                 .update({ displaySequence: intendedSeqValue })
                                 .where({ id: id });
                         }
                     }).then(() => { // get a fresh set of data
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .select('*')
                             .where({ active: 1, deprecated: null })
                             .orderBy('displaySequence');
@@ -281,19 +216,19 @@ commonReferenceList.forEach((commonReference) => {
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `${commonReference.errorRef} [${id}] 順序調整發生錯誤: ${error}`)
+                        `${referenceTable.errorRef} [${id}] 順序調整發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
         });
 
-    router.route(`${commonReference.routePath}`)
+    router.route(`${referenceTable.routePath}`)
         .all(tokenValidation)
         // get all active records
         .get((request, response, next) => {
-            let knex = require('knex')(mssqlConfig);
-            knex(commonReference.dataTable)
+            let knex = require('knex')(dbConfig);
+            knex(referenceTable.name)
                 .select('*')
                 .where({ active: 1, deprecated: null })
                 .orderBy('displaySequence')
@@ -304,7 +239,7 @@ commonReferenceList.forEach((commonReference) => {
                         endpointErrorHandler(
                             request.method,
                             request.originalUrl,
-                            `${commonReference.errorRef}表讀取發生錯誤: ${error}`)
+                            `${referenceTable.errorRef}表讀取發生錯誤: ${error}`)
                     );
                 }).finally(() => {
                     knex.destroy();
@@ -312,10 +247,10 @@ commonReferenceList.forEach((commonReference) => {
         })
         // insert a new active record to the end of the list
         .post((request, response, next) => {
-            let knex = require('knex')(mssqlConfig);
+            let knex = require('knex')(dbConfig);
             knex.transaction((trx) => {
                 // get the current highest displaySequence value
-                return trx(commonReference.dataTable)
+                return trx(referenceTable.name)
                     .max('displaySequence as maxDisplaySequence')
                     .then((resultset) => {
                         let recordData = {
@@ -326,16 +261,16 @@ commonReferenceList.forEach((commonReference) => {
                             deprecated: null
                         };
                         // check if the requested 'reference' is duplicated
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .select('*')
                             .where({ reference: request.body.reference })
                             .then((resultset) => {
                                 if (resultset.length === 0) { // insert new record if no duplicates are found
-                                    return trx(commonReference.dataTable)
+                                    return trx(referenceTable.name)
                                         .insert(recordData)
                                         .returning(['id', 'reference', 'displaySequence', 'active', 'deprecated']);
                                 } else { // returns the existing record with the same reference
-                                    return trx(commonReference.dataTable)
+                                    return trx(referenceTable.name)
                                         .select('*')
                                         .where({ reference: request.body.reference });
                                 }
@@ -348,20 +283,20 @@ commonReferenceList.forEach((commonReference) => {
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `${commonReference.errorRef}新增發生錯誤: ${error}`)
+                        `${referenceTable.errorRef}新增發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
         });
 
-    router.route(`${commonReference.routePath}/inactive`)
+    router.route(`${referenceTable.routePath}/inactive`)
         .all(tokenValidation)
         // get all inactive but not deprecated records
         .get((request, response, next) => {
             let id = request.params.id;
-            let knex = require('knex')(mssqlConfig);
-            knex(commonReference.dataTable)
+            let knex = require('knex')(dbConfig);
+            knex(referenceTable.name)
                 .select('*')
                 .where({ active: 0, deprecated: null })
                 .then((resultset) => {
@@ -371,25 +306,25 @@ commonReferenceList.forEach((commonReference) => {
                         endpointErrorHandler(
                             request.method,
                             request.originalUrl,
-                            `${commonReference.errorRef}(停用中) [${id}] 讀取發生錯誤: ${error}`)
+                            `${referenceTable.errorRef}(停用中) [${id}] 讀取發生錯誤: ${error}`)
                     );
                 }).finally(() => {
                     knex.destroy();
                 });
         });
 
-    router.route(`${commonReference.routePath}/inactive/id/:id`)
+    router.route(`${referenceTable.routePath}/inactive/id/:id`)
         .all(tokenValidation)
         // activate an inactive record and place at the end of the list
         .patch((request, response, next) => {
             let id = request.params.id;
-            let knex = require('knex')(mssqlConfig);
+            let knex = require('knex')(dbConfig);
             knex.transaction((trx) => {
                 // get the current highest displaySequence value
-                return trx(commonReference.dataTable)
+                return trx(referenceTable.name)
                     .max('displaySequence as maxDisplaySequence')
                     .then((resultset) => {
-                        return trx(commonReference.dataTable)
+                        return trx(referenceTable.name)
                             .update({
                                 displaySequence: resultset[0].maxDisplaySequence === null ? 0 : resultset[0].maxDisplaySequence + 1,
                                 active: 1,
@@ -404,7 +339,7 @@ commonReferenceList.forEach((commonReference) => {
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `${commonReference.errorRef} [${id}] 重新啟用發生錯誤: ${error}`)
+                        `${referenceTable.errorRef} [${id}] 重新啟用發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
@@ -417,9 +352,9 @@ commonReferenceList.forEach((commonReference) => {
                 displaySequence: null,
                 deprecated: currentDatetimeString()
             };
-            let knex = require('knex')(mssqlConfig);
+            let knex = require('knex')(dbConfig);
             knex.transaction((trx) => {
-                return trx(commonReference.dataTable) // deprecate the target record
+                return trx(referenceTable.name) // deprecate the target record
                     .update(deprecatedFieldValue)
                     .where({ id: id, active: 0 });
             }).then(() => {
@@ -429,20 +364,20 @@ commonReferenceList.forEach((commonReference) => {
                     endpointErrorHandler(
                         request.method,
                         request.originalUrl,
-                        `${commonReference.errorRef} [${id}] 停用發生錯誤: ${error}`)
+                        `${referenceTable.errorRef} [${id}] 停用發生錯誤: ${error}`)
                 );
             }).finally(() => {
                 knex.destroy();
             });
         });
 
-    router.route(`${commonReference.routePath}/deprecated`)
+    router.route(`${referenceTable.routePath}/deprecated`)
         .all(tokenValidation)
         // get all deprecated records
         .get((request, response, next) => {
             let id = request.params.id;
-            let knex = require('knex')(mssqlConfig);
-            knex(commonReference.dataTable)
+            let knex = require('knex')(dbConfig);
+            knex(referenceTable.name)
                 .select('*')
                 .whereNotNull('deprecated')
                 .orderBy('reference')
@@ -453,20 +388,20 @@ commonReferenceList.forEach((commonReference) => {
                         endpointErrorHandler(
                             request.method,
                             request.originalUrl,
-                            `${commonReference.errorRef}(刪除資料項目) [${id}] 讀取發生錯誤: ${error}`)
+                            `${referenceTable.errorRef}(刪除資料項目) [${id}] 讀取發生錯誤: ${error}`)
                     );
                 }).finally(() => {
                     knex.destroy();
                 });
         });
 
-    router.route(`${commonReference.routePath}/all`)
+    router.route(`${referenceTable.routePath}/all`)
         .all(tokenValidation)
         // get all records
         .get((request, response, next) => {
             let id = request.params.id;
-            let knex = require('knex')(mssqlConfig);
-            knex(commonReference.dataTable).select('*')
+            let knex = require('knex')(dbConfig);
+            knex(referenceTable.name).select('*')
                 .orderBy('deprecated')
                 .orderBy('active', 'desc')
                 .orderBy('displaySequence')
@@ -477,7 +412,7 @@ commonReferenceList.forEach((commonReference) => {
                         endpointErrorHandler(
                             request.method,
                             request.originalUrl,
-                            `${commonReference.errorRef}(所有項目) [${id}] 讀取發生錯誤: ${error}`)
+                            `${referenceTable.errorRef}(所有項目) [${id}] 讀取發生錯誤: ${error}`)
                     );
                 }).finally(() => {
                     knex.destroy();

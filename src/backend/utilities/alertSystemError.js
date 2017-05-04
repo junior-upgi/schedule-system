@@ -3,7 +3,7 @@ import httpRequest from 'request-promise';
 import { systemReference, administrator } from '../config/server.js';
 import { logger } from './logger.js';
 import { botApiUrl, getBotToken } from './telegram.js';
-import { currentDatetimeString } from './timeUtility.js';
+import { currentDatetimeString } from './timeRelated.js';
 
 
 // telegram messaging utility

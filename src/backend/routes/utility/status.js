@@ -2,7 +2,7 @@ import express from 'express';
 import os from 'os';
 
 import { systemReference } from '../../config/server.js';
-import { currentDatetimeString } from '../../utility/timeUtility.js';
+import { currentDatetimeString } from '../../utilities/timeRelated.js';
 
 const router = express.Router();
 

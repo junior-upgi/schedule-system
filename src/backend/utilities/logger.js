@@ -3,7 +3,7 @@ import winston from 'winston';
 
 import { development } from '../config/server.js';
 import { logDir } from '../config/logger.js';
-import { currentDatetimeString } from '../utility/timeUtility.js';
+import { currentDatetimeString } from './timeRelated.js';
 
 // logging utility
 // Create the log directory if it does not exist

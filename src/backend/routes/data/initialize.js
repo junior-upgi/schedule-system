@@ -1,59 +1,63 @@
 import express from 'express';
 
-// import { endpointErrorHandler } from '../../utility/endpointErrorHandler.js';
-// import { mssqlConfig } from '../../config/database.js';
-import tokenValidation from '../../middleware/tokenValidation.js';
+import { endpointErrorHandler } from '../../utilities/endpointErrorHandler.js';
+import { dbConfig } from '../../config/database.js';
+import tokenValidation from '../../middlewares/tokenValidation.js';
 
 const router = express.Router();
 
-router.route('/data/processTemplateContents/processTemplateId/:processTemplateId')
+router.route('/data/initialize')
     .all(tokenValidation)
     .get((request, response, next) => {
-        return response.status(204).end();
-        /*
-        let knex = require('knex')(mssqlConfig);
+        let initData = {
+            jobTypes: null,
+            processStates: null,
+            processTemplates: null,
+            processTypes: null,
+            productTypes: null,
+            phases: null
+        };
+        let knex = require('knex')(dbConfig);
         knex.transaction((trx) => {
-            return trx('scheduleSystem.dbo.processTemplate')
+            return trx('scheduleSystem.dbo.jobTypes')
                 .select('*')
-                .where({ processTemplateId: request.params.processTemplateId })
-                .whereNull('deprecated')
-                .orderBy('itemIndex')
+                .where({ active: 1 })
                 .orderBy('displaySequence')
                 .then((resultset) => {
-                    initData.jobType = resultset;
-                    return trx('scheduleSystem.dbo.processState')
+                    initData.jobTypes = resultset;
+                    return trx('scheduleSystem.dbo.processStates')
                         .select('*')
                         .where({ active: 1 })
                         .orderBy('displaySequence');
                 }).then((resultset) => {
-                    initData.processState = resultset;
-                    return trx('scheduleSystem.dbo.processTemplate')
+                    initData.processStates = resultset;
+                    return trx('scheduleSystem.dbo.processTemplates')
                         .select('*')
                         .whereNull('deprecated')
                         .orderBy('active', 'desc')
                         .orderBy('displaySequence')
                         .orderBy('reference');
                 }).then((resultset) => {
-                    initData.processTemplate = resultset;
-                    return trx('scheduleSystem.dbo.processType')
+                    initData.processTemplates = resultset;
+                    return trx('scheduleSystem.dbo.processTypes')
                         .select('*')
                         .where({ active: 1 })
                         .orderBy('displaySequence');
                 }).then((resultset) => {
-                    initData.processType = resultset;
-                    return trx('scheduleSystem.dbo.productType')
+                    initData.processTypes = resultset;
+                    return trx('scheduleSystem.dbo.productTypes')
                         .select('*')
                         .where({ active: 1 })
                         .orderBy('displaySequence');
                 }).then((resultset) => {
-                    initData.productType = resultset;
-                    return trx('scheduleSystem.dbo.phase')
+                    initData.productTypes = resultset;
+                    return trx('scheduleSystem.dbo.phases')
                         .select('*')
                         .where({ active: 1 })
                         .orderBy('displaySequence');
                 });
         }).then((resultset) => {
-            initData.phase = resultset;
+            initData.phases = resultset;
             return response.status(200).json(initData);
         }).catch((error) => {
             return response.status(500).json(
@@ -66,7 +70,6 @@ router.route('/data/processTemplateContents/processTemplateId/:processTemplateId
         }).finally(() => {
             knex.destroy();
         });
-        */
     });
 
 module.exports = router;

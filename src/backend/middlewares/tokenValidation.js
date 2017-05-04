@@ -1,9 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-import { passphrase } from '../config/server.js';
-import { endpointErrorHandler } from '../utility/endpointErrorHandler.js';
-import { logger } from '../utility/logger.js';
-import { enforceTokenValidation } from '../config/server.js';
+import { passphrase, enforceTokenValidation } from '../config/server.js';
+import { endpointErrorHandler } from '../utilities/endpointErrorHandler.js';
+import { logger } from '../utilities/logger.js';
 
 // middleware func declaration for token validation
 module.exports = (request, response, next) => {

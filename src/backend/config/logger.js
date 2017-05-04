@@ -1,1 +1,1 @@
-export const logDir = 'log';
+export const logDir = 'logs';

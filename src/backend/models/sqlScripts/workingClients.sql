@@ -1,3 +1,4 @@
+
     SELECT
         a.CUS_NO
 	,b.SNM AS CUST_SNM
@@ -8,7 +9,7 @@
 	,a.smartsheetId
 	,a.enabled
 	,1 AS existing
-    FROM scheduleSystem.dbo.existingClient a
+    FROM scheduleSystem.dbo.existingClients a
         INNER JOIN DB_U105.dbo.CUST b ON a.CUS_NO=b.CUS_NO
         INNER JOIN DB_U105.dbo.SALM c ON b.SAL=c.SAL_NO
 UNION
@@ -22,5 +23,5 @@ UNION
 	,d.smartsheetId
 	,d.enabled
 	,0 AS existing
-    FROM scheduleSystem.dbo.newClient d
+    FROM scheduleSystem.dbo.potentialClients d
         INNER JOIN DB_U105.dbo.SALM e ON d.SAL_NO=e.SAL_NO;

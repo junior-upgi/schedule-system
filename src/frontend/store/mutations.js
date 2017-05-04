@@ -12,13 +12,13 @@ function emptyStore(state) {
     state.role = null;
     state.token = null;
     // working data
-    state.userData = {};
-    state.jobType = null;
-    state.phase = null;
-    state.processState = null;
-    state.processTemplate = null;
-    state.processType = null;
-    state.productType = null;
+    state.userDatas = {};
+    state.jobTypes = null;
+    state.phases = null;
+    state.processStates = null;
+    state.processTemplates = null;
+    state.processTypes = null;
+    state.productTypes = null;
 }
 
 function buildStore(state, responseList) {
@@ -54,24 +54,24 @@ export default {
     resetStore: resetStore,
     restoreToken: restoreToken,
     // templateManger
-    mutation_insert_processTemplate: function (state, recordObject) { state.processTemplate.push(recordObject); },
-    mutation_refresh_processTemplate: function (state, resultset) {
-        state.processTemplate = null;
-        state.processTemplate = resultset.data;
+    mutation_insert_processTemplates: function (state, recordObject) { state.processTemplates.push(recordObject); },
+    mutation_refresh_processTemplates: function (state, resultset) {
+        state.processTemplates = null;
+        state.processTemplates = resultset.data;
     },
-    mutation_remove_processTemplate: function (state, id) {
-        let temp = state.processTemplate.filter((processTemplateItem) => {
-            return processTemplateItem.id !== id;
+    mutation_remove_processTemplates: function (state, id) {
+        let temp = state.processTemplates.filter((processTemplate) => {
+            return processTemplate.id !== id;
         });
-        state.processTemplate = null;
-        state.processTemplate = temp.slice(0);
+        state.processTemplates = null;
+        state.processTemplates = temp.slice(0);
     },
-    mutation_update_processTemplate: function (state, recordObject) {
-        state.processTemplate.forEach((processTemplateItem) => {
-            if (processTemplateItem.id === recordObject.id) {
+    mutation_update_processTemplates: function (state, recordObject) {
+        state.processTemplates.forEach((processTemplate) => {
+            if (processTemplate.id === recordObject.id) {
                 for (let property in recordObject) {
                     if (property !== 'id') {
-                        processTemplateItem[property] = recordObject[property];
+                        processTemplate[property] = recordObject[property];
                     }
                 }
             }

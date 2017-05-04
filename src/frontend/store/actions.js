@@ -21,7 +21,7 @@ const processTemplateFunction = {
                 id: payload.id,
                 reference: payload.reference
             };
-            context.commit('mutation_update_processTemplate', recordObject);
+            context.commit('mutation_update_processTemplates', recordObject);
         });
     },
     deactivate: function (context, payload) {
@@ -30,7 +30,7 @@ const processTemplateFunction = {
             url: `${serverUrl}/data/processTemplates/id/${payload.id}`,
             headers: { 'x-access-token': sessionStorage.token }
         }).then((resultset) => {
-            context.commit('mutation_refresh_processTemplate', resultset);
+            context.commit('mutation_refresh_processTemplates', resultset);
         });
     },
     reorder: function (context, payload) {
@@ -54,7 +54,7 @@ const processTemplateFunction = {
             data: { reference: payload.reference },
             headers: { 'x-access-token': sessionStorage.token }
         }).then((resultset) => {
-            context.commit('mutation_insert_processTemplate', resultset.data);
+            context.commit('mutation_insert_processTemplates', resultset.data);
         });
     },
     getInactive: function (context) {
@@ -70,7 +70,7 @@ const processTemplateFunction = {
             url: `${serverUrl}/data/processTemplates/inactive/id/${payload.id}`,
             headers: { 'x-access-token': sessionStorage.token }
         }).then((resultset) => {
-            context.commit('mutation_update_processTemplate', resultset.data);
+            context.commit('mutation_update_processTemplates', resultset.data);
         });
     },
     deprecate: function (context, payload) {
@@ -79,7 +79,7 @@ const processTemplateFunction = {
             url: `${serverUrl}/data/processTemplates/inactive/id/${payload.id}`,
             headers: { 'x-access-token': sessionStorage.token }
         }).then(() => {
-            context.commit('mutation_remove_processTemplate', payload.id);
+            context.commit('mutation_remove_processTemplates', payload.id);
         });
     },
     getDeprecated: function (context, payload) {
@@ -161,15 +161,15 @@ export default {
     componentErrorHandler: componentErrorHandler,
     initData: initData,
     // templateManager
-    action_getRecord_processTemplate: processTemplateFunction.getRecord,
-    action_update_processTemplate: processTemplateFunction.update,
-    action_deactivate_processTemplate: processTemplateFunction.deactivate,
-    action_reorder_processTemplate: processTemplateFunction.reorder,
-    action_getActive_processTemplate: processTemplateFunction.getActive,
-    action_insert_processTemplate: processTemplateFunction.insert,
-    action_getInactive_processTemplate: processTemplateFunction.getInactive,
-    action_activate_processTemplate: processTemplateFunction.activate,
-    action_deprecate_processTemplate: processTemplateFunction.deprecate,
-    action_getDeprecated_processTemplate: processTemplateFunction.getDeprecated,
-    action_getAll_processTemplate: processTemplateFunction.getAll
+    action_getRecord_processTemplates: processTemplateFunction.getRecord,
+    action_update_processTemplates: processTemplateFunction.update,
+    action_deactivate_processTemplates: processTemplateFunction.deactivate,
+    action_reorder_processTemplates: processTemplateFunction.reorder,
+    action_getActive_processTemplates: processTemplateFunction.getActive,
+    action_insert_processTemplates: processTemplateFunction.insert,
+    action_getInactive_processTemplates: processTemplateFunction.getInactive,
+    action_activate_processTemplates: processTemplateFunction.activate,
+    action_deprecate_processTemplates: processTemplateFunction.deprecate,
+    action_getDeprecated_processTemplates: processTemplateFunction.getDeprecated,
+    action_getAll_processTemplates: processTemplateFunction.getAll
 };
