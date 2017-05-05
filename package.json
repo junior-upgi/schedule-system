@@ -30,7 +30,6 @@
     "objection": "^0.7.12",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "sequelize": "^3.30.4",
     "smartsheet": "^0.1.0",
     "uuid": "^3.0.1",
     "vue": "^2.3.2",

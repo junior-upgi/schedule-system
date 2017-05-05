@@ -47,8 +47,8 @@ export const sequelize = new Sequelize('scheduleSystem', upgiSystemAccount, upgi
     port: mssqlServerPort,
     dialect: 'mssql',
     pool: {
-        max: 5,
-        min: 0,
+        max: 10,
+        min: 2,
         idle: 10000
     },
     timezone: timezone,

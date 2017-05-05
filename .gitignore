@@ -9,6 +9,7 @@ public
 debug.log
 results.log
 npm-debug.log
+log
 logs
 deprecated
 temp
