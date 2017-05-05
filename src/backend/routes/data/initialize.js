@@ -26,12 +26,12 @@ router.route('/data/initialize')
         const objection = require('objection');
         objection.transaction(JobTemplates, JobTypes, Phases, ProcessStates, ProcessTypes, ProductTypes, (JobTemplates, JobTypes, Phases, ProcessStates, ProcessTypes, ProductTypes, trx) => {
             let initializationQueries = [
-                JobTemplates.query(),
-                JobTypes.query(),
-                Phases.query(),
-                ProcessStates.query(),
-                ProcessTypes.query(),
-                ProductTypes.query()
+                JobTemplates.query().where({ active: true }).orderBy('displaySequence'),
+                JobTypes.query().where({ active: true }).orderBy('displaySequence'),
+                Phases.query().where({ active: true }).orderBy('displaySequence'),
+                ProcessStates.query().where({ active: true }).orderBy('displaySequence'),
+                ProcessTypes.query().where({ active: true }).orderBy('displaySequence'),
+                ProductTypes.query().where({ active: true }).orderBy('displaySequence')
             ];
             return Promise.all(initializationQueries);
         }).then((resultsets) => {

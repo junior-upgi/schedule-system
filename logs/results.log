@@ -43,3 +43,5 @@
 {"level":"info","message":"skip token validation...","timestamp":"2017-05-05T07:14:00.493Z"}
 {"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:15:08.482Z"}
 {"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:15:21.762Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:18:23.084Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T07:18:43.261Z"}
