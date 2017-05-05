@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 
 import { sequelize } from '../config/database.js';
 
-export const JobTemplates = sequelize.define('jobTemplates', {
+export const ProcessStates = sequelize.define('processStates', {
     id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -36,5 +36,5 @@ export const JobTemplates = sequelize.define('jobTemplates', {
     deletedAt: 'deprecated',
     underscored: false,
     freezeTableName: true,
-    tableName: 'jobTemplates'
+    tableName: 'processStates'
 });
