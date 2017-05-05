@@ -1,9 +1,45 @@
-{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T03:44:24.302Z"}
-{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T03:44:52.094Z"}
-{"level":"error","message":"GET /scheduleSystem/data/test route failure: 系統初始化資料讀取失敗: Error: Please note that find* was refactored and uses only one options object from now on.","timestamp":"2017-05-05T03:44:52.136Z"}
-{"level":"info","message":"","timestamp":"2017-05-05T03:44:52.149Z"}
-{"level":"info","message":"scheduleSystem alert sent","timestamp":"2017-05-05T03:44:54.818Z"}
-{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T03:45:09.181Z"}
-{"level":"error","message":"GET /scheduleSystem/data/initialize route failure: 系統初始化資料讀取失敗: RequestError: select * from [scheduleSystem].[dbo].[processTemplates] where [deprecated] is null order by [active] desc, [displaySequence] asc, [reference] asc - Invalid object name 'scheduleSystem.dbo.processTemplates'.","timestamp":"2017-05-05T03:45:10.020Z"}
-{"level":"info","message":"","timestamp":"2017-05-05T03:45:10.032Z"}
-{"level":"info","message":"scheduleSystem alert sent","timestamp":"2017-05-05T03:45:12.267Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:46:33.629Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:47:07.057Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:47:24.966Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:48:49.214Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:49:54.392Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:51:45.650Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T05:52:02.746Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:52:39.138Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T05:52:40.777Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T05:56:00.021Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:56:09.426Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:56:18.427Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:56:36.113Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:57:10.348Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T05:57:11.532Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T05:57:40.665Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T05:57:41.303Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T05:59:46.505Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:49:52.150Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:49:57.127Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:50:08.210Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:50:14.705Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:50:25.103Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:50:33.203Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:50:46.869Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:51:13.720Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:51:36.637Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:51:48.805Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:52:03.841Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:52:15.978Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:52:25.917Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:53:15.135Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T06:57:04.458Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:08:20.856Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:08:52.159Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T07:08:54.958Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:09:34.431Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T07:09:35.746Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:09:56.303Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T07:09:56.981Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:12:48.321Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:13:59.007Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-05T07:14:00.493Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:15:08.482Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-05T07:15:21.762Z"}

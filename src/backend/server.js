@@ -47,20 +47,13 @@ main.use('/', require('./routes/utility/login.js'));
 main.use('/', require('./routes/utility/status.js'));
 
 // initiate server script
-sequelize
-    .authenticate()
-    .then(() => {
-        if (!module.parent) {
-            app.listen(port, (error) => { // start backend server
-                if (error) {
-                    logger.error(`error starting ${systemReference} server: ${error}`);
-                } else {
-                    logger.info(`${systemReference} server in operation... (${serverUrl})`);
-                    statusReport.start(); // start the server status reporting function
-                }
-            });
+if (!module.parent) {
+    app.listen(port, (error) => { // start backend server
+        if (error) {
+            logger.error(`error starting ${systemReference} server: ${error}`);
+        } else {
+            logger.info(`${systemReference} server in operation... (${serverUrl})`);
+            statusReport.start(); // start the server status reporting function
         }
-    })
-    .catch((error) => {
-        logger.error(`error starting ${systemReference} server: database connection cannot be established - ${error}`);
     });
+}

@@ -1,40 +1,18 @@
-import Sequelize from 'sequelize';
+import { Model } from '../config/database.js';
 
-import { sequelize } from '../config/database.js';
-
-export const ProcessStates = sequelize.define('processStates', {
-    id: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true
-    },
-    reference: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    displaySequence: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        defaultValue: null
-    },
-    active: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: 1
-    },
-    deprecated: {
-        type: Sequelize.DATE,
-        allowNull: true,
-        defaultValue: null
+export default class ProcessStates extends Model {
+    static tableName = 'scheduleSystem.dbo.processStates';
+    static jsonSchema = {
+        type: 'object',
+        required: [],
+        properties: {
+            id: { type: 'string' },
+            reference: { type: 'string' },
+            displaySequence: { type: 'integer' },
+            active: { type: 'boolean' },
+            createdAt: { type: 'datetime' },
+            updatedAt: { type: 'datetime' },
+            deletedAt: { type: 'datetime' }
+        }
     }
-}, {
-    timestamp: false,
-    paranoid: true,
-    createdAt: false,
-    updatedAt: false,
-    deletedAt: 'deprecated',
-    underscored: false,
-    freezeTableName: true,
-    tableName: 'processStates'
-});
+}

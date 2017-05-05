@@ -1,5 +1,4 @@
-import { development, timezone } from './server.js';
-import Sequelize from 'sequelize';
+import { development } from './server.js';
 
 const mssqlServerPort = 1433;
 
@@ -42,15 +41,8 @@ export const dbConfig = { // also used as knex.js / sequelize.js init object
     requestTimeout: 60000
 };
 
-export const sequelize = new Sequelize('scheduleSystem', upgiSystemAccount, upgiSystemPassword, {
-    host: mssqlServerHost().slice(7),
-    port: mssqlServerPort,
-    dialect: 'mssql',
-    pool: {
-        max: 10,
-        min: 2,
-        idle: 10000
-    },
-    timezone: timezone,
-    logging: ormDebugOption
-});
+const objection = require('objection');
+export const Model = objection.Model;
+const Knex = require('knex');
+
+Model.knex(Knex(dbConfig));
