@@ -2,17 +2,18 @@ import { Model } from '../config/database.js';
 
 export default class ProductTypes extends Model {
     static tableName = 'scheduleSystem.dbo.productTypes';
+    static idColumn = 'id';
     static jsonSchema = {
         type: 'object',
-        required: [],
+        required: ['reference'],
         properties: {
             id: { type: 'string' },
             reference: { type: 'string' },
-            displaySequence: { type: 'integer' },
+            displaySequence: { type: ['integer', null] },
             active: { type: 'boolean' },
-            createdAt: { type: 'datetime' },
-            updatedAt: { type: 'datetime' },
-            deletedAt: { type: 'datetime' }
+            createdAt: { type: 'string' },
+            updatedAt: { type: 'string' },
+            deletedAt: { type: ['string', null] }
         }
     }
 }

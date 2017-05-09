@@ -5,7 +5,7 @@ const mssqlServerPort = 1433;
 const upgiSystemAccount = 'upgiSystem';
 const upgiSystemPassword = 'upgiSystem';
 
-const ormDebugOption = false;
+const ormDebugOption = true;
 
 // database access configuration
 function mssqlServerHost() {

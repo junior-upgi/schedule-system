@@ -27,6 +27,8 @@ router.route('/data/initialize')
         objection.transaction(JobTemplates, JobTypes, Phases, ProcessStates, ProcessTypes, ProductTypes, (JobTemplates, JobTypes, Phases, ProcessStates, ProcessTypes, ProductTypes, trx) => {
             let initializationQueries = [
                 JobTemplates.query().where({ active: true }).orderBy('displaySequence'),
+                JobTemplates.query().where({ active: false, deletedAt: null }).orderBy('displaySequence'),
+                JobTemplates.query().whereNotNull('deletedAt').orderBy('displaySequence'),
                 JobTypes.query().where({ active: true }).orderBy('displaySequence'),
                 Phases.query().where({ active: true }).orderBy('displaySequence'),
                 ProcessStates.query().where({ active: true }).orderBy('displaySequence'),
@@ -35,12 +37,36 @@ router.route('/data/initialize')
             ];
             return Promise.all(initializationQueries);
         }).then((resultsets) => {
-            initData.jobTemplates = resultsets[0];
-            initData.jobTypes = resultsets[1];
-            initData.phases = resultsets[2];
-            initData.processStates = resultsets[3];
-            initData.processTypes = resultsets[4];
-            initData.productTypes = resultsets[5];
+            initData.jobTemplates = {
+                active: resultsets[0],
+                inactive: resultsets[1],
+                deprecated: resultsets[2]
+            };
+            initData.jobTypes = {
+                active: resultsets[3],
+                inactive: resultsets[4],
+                deprecated: resultsets[5]
+            };
+            initData.phases = {
+                active: resultsets[6],
+                inactive: resultsets[7],
+                deprecated: resultsets[8]
+            };
+            initData.processStates = {
+                active: resultsets[9],
+                inactive: resultsets[10],
+                deprecated: resultsets[11]
+            };
+            initData.processTypes = {
+                active: resultsets[12],
+                inactive: resultsets[13],
+                deprecated: resultsets[14]
+            };
+            initData.productTypes = {
+                active: resultsets[15],
+                inactive: resultsets[16],
+                deprecated: resultsets[17]
+            };
             return response.status(200).json(initData);
         }).catch((error) => {
             return response.status(500).json(
@@ -52,73 +78,5 @@ router.route('/data/initialize')
             );
         });
     });
-
-/*
-router.route('/data/initialize')
-    .all(tokenValidation)
-    .get((request, response, next) => {
-        let initData = {
-            jobTemplates: null,
-            jobTypes: null,
-            phases: null,
-            processStates: null,
-            processTypes: null,
-            productTypes: null
-        };
-        let knex = require('knex')(dbConfig);
-        knex.transaction((trx) => {
-            return trx('scheduleSystem.dbo.jobTypes')
-                .select('*')
-                .where({ active: 1 })
-                .orderBy('displaySequence')
-                .then((resultset) => {
-                    initData.jobTypes = resultset;
-                    return trx('scheduleSystem.dbo.processStates')
-                        .select('*')
-                        .where({ active: 1 })
-                        .orderBy('displaySequence');
-                }).then((resultset) => {
-                    initData.processStates = resultset;
-                    return trx('scheduleSystem.dbo.processTemplates')
-                        .select('*')
-                        .whereNull('deprecated')
-                        .orderBy('active', 'desc')
-                        .orderBy('displaySequence')
-                        .orderBy('reference');
-                }).then((resultset) => {
-                    initData.processTemplates = resultset;
-                    return trx('scheduleSystem.dbo.processTypes')
-                        .select('*')
-                        .where({ active: 1 })
-                        .orderBy('displaySequence');
-                }).then((resultset) => {
-                    initData.processTypes = resultset;
-                    return trx('scheduleSystem.dbo.productTypes')
-                        .select('*')
-                        .where({ active: 1 })
-                        .orderBy('displaySequence');
-                }).then((resultset) => {
-                    initData.productTypes = resultset;
-                    return trx('scheduleSystem.dbo.phases')
-                        .select('*')
-                        .where({ active: 1 })
-                        .orderBy('displaySequence');
-                });
-        }).then((resultset) => {
-            initData.phases = resultset;
-            return response.status(200).json(initData);
-        }).catch((error) => {
-            return response.status(500).json(
-                endpointErrorHandler(
-                    request.method,
-                    request.originalUrl,
-                    `系統初始化資料讀取失敗: ${error}`
-                )
-            );
-        }).finally(() => {
-            knex.destroy();
-        });
-    });
-*/
 
 module.exports = router;
