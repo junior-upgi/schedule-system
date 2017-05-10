@@ -1,4 +1,7 @@
-import { development } from './server.js';
+import Sequelize from 'sequelize';
+
+import { development, systemReference, timezone } from './server.js';
+import { logger } from '../utilities/logger.js';
 
 const mssqlServerPort = 1433;
 
@@ -46,3 +49,22 @@ export const Model = objection.Model;
 const Knex = require('knex');
 
 Model.knex(Knex(dbConfig));
+
+export const sequelize = new Sequelize(
+    systemReference, // database
+    upgiSystemAccount, // username
+    upgiSystemPassword, // password
+    { // connection object
+        host: mssqlServerHost().slice(7),
+        port: mssqlServerPort,
+        dialect: 'mssql',
+        timezone: timezone,
+        logging: ormDebugOption ? logger.info : ormDebugOption,
+        define: {
+            underscored: false,
+            freezeTableName: true,
+            timestamps: true,
+            paranoid: true
+        }
+    },
+);

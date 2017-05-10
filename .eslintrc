@@ -33,7 +33,7 @@
         "eqeqeq": ["warn", "always"],
         "guard-for-in": "off",
         "max-len": "off",
-        "new-cap": ["error", { "capIsNewExceptions": ["Router", "Knex"], "newIsCapExceptions": [] }],
+        "new-cap": ["error", { "capIsNewExceptions": ["Router", "Knex", "Sequelize"], "newIsCapExceptions": [] }],
         "newline-after-var": "off",
         "no-console": "off",
         "no-extra-semi": "error",

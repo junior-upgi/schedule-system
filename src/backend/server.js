@@ -8,6 +8,7 @@ import path from 'path';
 import { port, serverUrl, systemReference } from './config/server.js';
 import { logger } from './utilities/logger.js';
 import { statusReport } from './utilities/statusReport.js';
+import { sequelize } from './config/database.js';
 
 const app = express();
 const main = express.Router();
@@ -38,23 +39,32 @@ main.get('/templateTest', (request, response) => {
 });
 
 // data routes
+/*
 main.use('/', require('./routes/data/smartsheet/workspaces.js'));
 main.use('/', require('./routes/data/initialize.js'));
 main.use('/', require('./routes/data/referenceTables.js'));
 main.use('/', require('./routes/data/clients.js'));
 main.use('/', require('./routes/data/jobs.js'));
+*/
 // utility routes
 main.use('/', require('./routes/utility/login.js'));
 main.use('/', require('./routes/utility/status.js'));
 
 // initiate server script
 if (!module.parent) {
-    app.listen(port, (error) => { // start backend server
-        if (error) {
-            logger.error(`error starting ${systemReference} server: ${error}`);
-        } else {
-            logger.info(`${systemReference} server in operation... (${serverUrl})`);
-            statusReport.start(); // start the server status reporting function
-        }
-    });
+    sequelize.authenticate() // verify server status
+        .then(() => {
+            app.listen(port, (error) => { // start backend server
+                if (error) {
+                    logger.error(`error starting ${systemReference} server: ${error}`);
+                } else {
+                    logger.info(`${systemReference} server in operation... (${serverUrl})`);
+                    // start other services
+                    statusReport.start(); // status reporting
+                }
+            });
+        })
+        .catch((error) => {
+            logger.error(`database authentication error, ${systemReference} server is NOT started: ${error}`);
+        });
 }
