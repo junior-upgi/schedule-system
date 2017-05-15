@@ -1,7 +1,9 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../config/database.js';
 
-export const Depencencies = sequelize.define('dependencies', {
+// 記錄工作品項預計進行的工作階段
+
+export const ApplicablePhases = sequelize.define('applicablePhases', {
     id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -9,29 +11,18 @@ export const Depencencies = sequelize.define('dependencies', {
         primaryKey: true,
         validate: { isUUID: 4 }
     },
-    taskId: {
+    productId: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: { isUUID: 4 }
     },
-    parentTaskId: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: { isUUID: 4 }
-    },
-    restrictionTypeId: {
+    phaseId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: { min: 0 }
-    },
-    lag: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
+        allowNull: false
     },
     comment: {
         type: Sequelize.TEXT,
-        allowNull: true
+        allowNull: false
     },
     createdAt: {
         type: Sequelize.DATE,

@@ -1,3 +1,1291 @@
-{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-10T05:22:29.816Z"}
-{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-10T05:23:44.698Z"}
-{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-10T05:23:44.760Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:51:27.083Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:51:27.083Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:51:27.083Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:51:27.083Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:51:27.083Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:51:27.521Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:51:27.552Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:52:27.382Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:52:27.384Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:52:27.385Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:52:27.385Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:52:27.386Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:52:27.787Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:52:27.809Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:54:09.703Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:54:09.706Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:54:09.707Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:54:09.707Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:54:09.709Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:54:10.152Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:54:10.169Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:54:55.082Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:54:55.084Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:54:55.084Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:54:55.084Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:54:55.084Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:54:55.403Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:54:55.424Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:58:08.522Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:58:08.525Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:58:08.525Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:58:08.526Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:58:08.527Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:58:09.052Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:58:09.070Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:58:21.427Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:58:21.427Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:58:21.427Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:58:21.427Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:58:21.427Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:58:21.773Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:58:21.794Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:59:12.352Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:59:12.356Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:59:12.356Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:59:12.357Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:59:12.357Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:59:12.694Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:59:12.712Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:59:16.630Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:59:16.633Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:59:16.634Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:59:16.636Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:59:16.637Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:59:16.982Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:59:17.022Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:59:27.345Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T05:59:27.347Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T05:59:27.348Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T05:59:27.349Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T05:59:27.350Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T05:59:27.966Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T05:59:28.004Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:01:15.671Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:01:15.674Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:01:15.674Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:01:15.675Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:01:15.676Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:01:16.107Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:01:16.127Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:01:19.093Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:01:19.093Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:01:19.093Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:01:19.093Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:01:19.093Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:01:19.410Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:01:19.426Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:06:23.172Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:06:23.175Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:06:23.176Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:06:23.176Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:06:23.176Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:06:23.490Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:06:23.511Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:08:18.192Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:08:18.195Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:08:18.196Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:08:18.197Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:08:18.198Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:08:19.095Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:08:19.187Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:08:29.752Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:08:29.770Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:08:29.771Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:08:29.771Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:08:29.772Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:08:30.703Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:08:30.763Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:08:43.044Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:08:43.046Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:08:43.047Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:08:43.048Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:08:43.049Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:08:43.891Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:08:43.978Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:09:40.127Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:09:40.129Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:09:40.129Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:09:40.129Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:09:40.130Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:09:40.455Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:09:40.472Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:12:00.129Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:12:00.132Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:12:00.133Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:12:00.133Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:12:00.134Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:12:00.734Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:12:00.754Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:13:53.918Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:13:53.920Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:13:53.920Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:13:53.921Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:13:53.922Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:13:54.221Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:13:54.236Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:14:10.819Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:14:10.821Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:14:10.822Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:14:10.822Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:14:10.823Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:14:11.937Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:14:12.040Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:14:28.478Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:14:28.481Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:14:28.482Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:14:28.483Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:14:28.483Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:14:28.771Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:14:28.817Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:14:47.651Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:14:47.666Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:14:47.666Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:14:47.666Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:14:47.666Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:14:47.963Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:14:48.001Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:15:07.318Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:15:07.334Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:15:07.334Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:15:07.334Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:15:07.334Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:15:07.660Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:15:07.676Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:15:54.872Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:15:54.876Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:15:54.877Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:15:54.877Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:15:54.878Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:15:55.427Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:15:55.516Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:16:41.226Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:16:41.229Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:16:41.229Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:16:41.230Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:16:41.231Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:16:41.538Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:16:41.553Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:18:02.565Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:18:02.569Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:18:02.569Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:18:02.570Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:18:02.571Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:18:02.911Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:18:02.928Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:18:56.334Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:18:56.337Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:18:56.338Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:18:56.338Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:18:56.339Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:18:56.684Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:18:56.722Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:19:12.973Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:19:12.976Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:19:12.978Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:19:12.979Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:19:12.979Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:19:13.282Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:19:13.300Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:21:16.181Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:21:16.184Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:21:16.184Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:21:16.185Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:21:16.186Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:21:16.482Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:21:16.502Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:23:24.531Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:23:24.534Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:23:24.534Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:23:24.535Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:23:24.535Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:23:24.874Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:23:24.892Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:24:04.454Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:24:04.457Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:24:04.457Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:24:04.458Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:24:04.459Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:24:04.766Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:24:04.781Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:24:59.194Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:24:59.197Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:24:59.198Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:24:59.199Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:24:59.200Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:24:59.584Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:24:59.605Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:11.252Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:25:11.254Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:25:11.255Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:25:11.256Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:11.258Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:25:11.843Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:25:11.904Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:26.914Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:25:26.917Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:25:26.917Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:25:26.918Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:26.919Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:25:27.257Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:25:27.304Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:39.929Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:25:39.932Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:25:39.933Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:25:39.934Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:39.935Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:25:40.325Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:25:40.345Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:53.033Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:25:53.049Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:25:53.049Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:25:53.049Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:25:53.049Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:25:53.360Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:25:53.379Z"}
+{"level":"error","message":"DEFAULT DEVELOPMENT ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:25:57.096Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:26:19.675Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:26:19.678Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:26:19.678Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:26:19.679Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:26:19.680Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:26:20.005Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:26:20.020Z"}
+{"level":"error","message":"DEFAULT DEVELOPMENT ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:26:21.859Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:27:45.314Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:27:45.314Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:27:45.314Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:27:45.314Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:27:45.314Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:27:45.640Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:27:45.661Z"}
+{"level":"error","message":"DEFAULT DEVELOPMENT ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:27:45.927Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:30:17.118Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:30:17.118Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:30:17.118Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:30:17.118Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:30:17.118Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:30:17.435Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:30:17.455Z"}
+{"level":"error","message":"CUSTOM ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:30:21.720Z"}
+{"level":"error","message":"DEFAULT DEVELOPMENT ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:30:21.723Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:31:13.423Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:31:13.428Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:31:13.428Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:31:13.429Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:31:13.429Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:31:13.775Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:31:13.792Z"}
+{"level":"error","message":"CUSTOM ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:31:14.867Z"}
+{"level":"error","message":"DEFAULT DEVELOPMENT ERROR HANDLER MIDDLEWARE TRIGGERED","timestamp":"2017-05-15T06:31:14.870Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:32:00.147Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:32:00.147Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:32:00.147Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:32:00.147Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:32:00.147Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:32:01.153Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:32:01.271Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:32:41.843Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:32:41.843Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:32:41.843Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:32:41.843Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:32:41.843Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:32:42.158Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:32:42.174Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:32:56.101Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:32:56.105Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:32:56.107Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:32:56.110Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:32:56.112Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:32:56.425Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:32:56.441Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:33:49.956Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:33:49.958Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:33:49.959Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:33:49.960Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:33:49.961Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:33:50.266Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:33:50.313Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:34:56.858Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:34:56.861Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:34:56.862Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:34:56.862Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:34:56.863Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:34:57.307Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:34:57.332Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:35:24.213Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:35:24.213Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:35:24.213Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:35:24.213Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:35:24.213Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:35:24.582Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:35:24.606Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:35:57.057Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:35:57.060Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:35:57.061Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:35:57.061Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:35:57.061Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:35:57.380Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:35:57.397Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:36:18.633Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:36:18.635Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:36:18.636Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:36:18.636Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:36:18.637Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:36:18.996Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:36:19.018Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:36:40.902Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:36:40.905Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:36:40.906Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:36:40.907Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:36:40.908Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:36:41.328Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:36:41.347Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:38:12.923Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:38:56.087Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:38:56.087Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:38:56.087Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:38:56.087Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:38:56.087Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:38:56.416Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:38:56.433Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:38:57.803Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:40:06.125Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:40:06.129Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:40:06.129Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:40:06.130Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:40:06.131Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:40:06.691Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:40:06.729Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:40:42.002Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:40:42.002Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:40:42.002Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:40:42.002Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:40:42.017Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:40:42.321Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:40:42.337Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:40:42.353Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:40:42.375Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:41:52.602Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:41:52.604Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:41:52.604Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:41:52.605Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:41:52.606Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:41:52.992Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:41:53.015Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:41:54.111Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:41:54.129Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:42:12.929Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:42:12.929Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:42:12.945Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:42:12.945Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:42:12.946Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:42:13.848Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:42:13.980Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:42:14.169Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:42:14.186Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:42:15.991Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:42:15.995Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:42:35.368Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:42:35.371Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:42:35.371Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:42:35.372Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:42:35.375Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:42:36.041Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:42:36.103Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:42:36.273Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:42:36.304Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:43:11.198Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:43:11.200Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:43:11.201Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:43:11.201Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:43:11.202Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:43:11.501Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:43:11.532Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:43:40.415Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:43:40.415Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:43:40.415Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:43:40.415Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:43:40.415Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:43:40.719Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:43:40.735Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:43:40.803Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:43:40.834Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:43:51.632Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:43:51.632Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:43:51.632Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:43:51.632Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:43:51.632Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:43:51.929Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:43:51.982Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:43:52.183Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:43:52.205Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:44:32.776Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:44:32.780Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:44:32.780Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:44:32.781Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:44:32.782Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:44:33.099Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:44:33.146Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:44:48.965Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:44:48.968Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:44:48.968Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:44:48.969Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:44:48.970Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:44:49.297Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:44:49.329Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:45:27.327Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:45:27.330Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:45:27.332Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:45:27.333Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:45:27.336Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:45:28.748Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:45:28.854Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:45:56.856Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:45:56.858Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:45:56.859Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:45:56.860Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:45:56.861Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:45:57.202Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:45:57.240Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:17.695Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:46:17.695Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:46:17.711Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:46:17.711Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:17.711Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:46:18.002Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:46:18.018Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:29.987Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:46:29.987Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:46:30.003Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:46:30.003Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:30.004Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:46:30.337Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:46:30.355Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:41.369Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:46:41.371Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:46:41.372Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:46:41.372Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:41.373Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:46:41.782Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:46:41.798Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:52.908Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:46:52.910Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:46:52.911Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:46:52.912Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:46:52.912Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:46:53.452Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:46:53.477Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:47:41.731Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:47:41.731Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:47:41.731Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:47:41.731Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:47:41.731Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:47:42.034Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:47:42.068Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:48:42.793Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:48:42.798Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:48:42.798Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:48:42.799Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:48:42.799Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:48:43.089Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:48:43.106Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:55:16.950Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:55:16.953Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:55:16.953Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:55:16.953Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:55:16.954Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:55:17.300Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:55:17.315Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:55:24.491Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'1');","timestamp":"2017-05-15T06:55:24.507Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:55:26.401Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'2');","timestamp":"2017-05-15T06:55:26.404Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:55:28.595Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'4');","timestamp":"2017-05-15T06:55:28.604Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:55:36.180Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'2');","timestamp":"2017-05-15T06:55:36.186Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T06:55:39.452Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [jobTypes] AS [jobTypes] WHERE ([jobTypes].[deletedAt] IS NULL AND [jobTypes].[id] = N'4');","timestamp":"2017-05-15T06:55:39.455Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:57:07.973Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:57:07.976Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:57:07.976Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:57:07.977Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:57:07.978Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:57:08.287Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:57:08.302Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:58:59.711Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T06:58:59.711Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T06:58:59.711Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T06:58:59.711Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T06:58:59.727Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T06:59:00.095Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T06:59:00.127Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:55:16.903Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND [clients].[id] = N'103ee56c-fa00-4df3-b0cd-2995c2b48446');","timestamp":"2017-05-15T07:55:16.961Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:55:22.446Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND [clients].[id] = N'103ee56c-fa00-4df3-b0cd-2995c2b48447');","timestamp":"2017-05-15T07:55:22.450Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T07:56:16.301Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T07:56:16.304Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T07:56:16.305Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T07:56:16.306Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T07:56:16.307Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T07:56:16.615Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T07:56:16.620Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:56:18.175Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND [clients].[id] = N'103ee56c-fa00-4df3-b0cd-2995c2b48447');","timestamp":"2017-05-15T07:56:18.196Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T07:56:54.137Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T07:56:54.140Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T07:56:54.141Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T07:56:54.141Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T07:56:54.142Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T07:56:54.717Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T07:56:54.732Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:56:59.999Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND [clients].[id] = N'103ee56c-fa00-4df3-b0cd-2995c2b48447');","timestamp":"2017-05-15T07:57:00.018Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:58:16.686Z"}
+{"level":"info","message":"Executing (default): SELECT max([displaySequence]) AS [max] FROM [clients] AS [clients] WHERE [clients].[deletedAt] IS NULL;","timestamp":"2017-05-15T07:58:16.718Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND ([clients].[reference] = N'Client6' AND [clients].[active] = 1)) ORDER BY [id] OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;","timestamp":"2017-05-15T07:58:16.733Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND ([clients].[reference] = N'Client6' AND [clients].[active] = 0)) ORDER BY [id] OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;","timestamp":"2017-05-15T07:58:16.733Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T07:59:36.810Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T07:59:36.812Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T07:59:36.813Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T07:59:36.814Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T07:59:36.815Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T07:59:37.115Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T07:59:37.146Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:59:37.974Z"}
+{"level":"info","message":"Executing (default): SELECT max([displaySequence]) AS [max] FROM [clients] AS [clients] WHERE [clients].[deletedAt] IS NULL;","timestamp":"2017-05-15T07:59:37.990Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND ([clients].[reference] = N'Client6' AND [clients].[active] = 1)) ORDER BY [id] OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;","timestamp":"2017-05-15T07:59:38.003Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND ([clients].[reference] = N'Client6' AND [clients].[active] = 0)) ORDER BY [id] OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;","timestamp":"2017-05-15T07:59:38.014Z"}
+{"level":"info","message":"Executing (default): INSERT INTO [clients] ([id],[reference],[displaySequence],[active],[createdAt],[updatedAt]) OUTPUT INSERTED.* VALUES (N'4b6010ad-4673-4285-a1bd-46750608233a',N'Client6',3,1,N'2017-05-15 15:59:38.000',N'2017-05-15 15:59:38.000');","timestamp":"2017-05-15T07:59:38.025Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T07:59:46.762Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE [clients].[deletedAt] IS NULL ORDER BY [clients].[active] DESC, [clients].[displaySequence], [clients].[reference];","timestamp":"2017-05-15T07:59:46.767Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:01:16.590Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:01:16.590Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:01:16.590Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:01:16.590Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:01:16.590Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:01:16.935Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:01:16.960Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:02:10.198Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:02:10.198Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:02:10.198Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:02:10.198Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:02:10.198Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:02:10.493Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:02:10.520Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:04:24.442Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:04:24.445Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:04:24.445Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:04:24.446Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:04:24.448Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:04:24.896Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:04:24.916Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:06:26.842Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:06:26.842Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:06:26.842Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:06:26.842Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:06:26.842Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:06:27.209Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:06:27.230Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:07:41.413Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:07:41.413Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:07:41.413Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:07:41.413Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:07:41.413Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:07:41.737Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:07:41.767Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:10:03.559Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:10:03.576Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:10:03.576Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:10:03.577Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:10:03.578Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:10:03.906Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:10:03.928Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:10:53.273Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:10:53.275Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:10:53.276Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:10:53.276Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:10:53.277Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:10:53.586Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:10:53.608Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:13:35.971Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:13:35.973Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:13:35.974Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:13:35.974Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:13:35.975Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:13:36.272Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:13:36.288Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:15:04.450Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:15:04.452Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:15:04.453Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:15:04.454Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:15:04.454Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:15:04.755Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:15:04.792Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:15:43.543Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:15:43.546Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:15:43.546Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:15:43.546Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:15:43.547Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:15:43.897Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:15:43.923Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:15:49.215Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:15:49.217Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:15:49.217Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:15:49.218Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:15:49.219Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:15:49.570Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:15:49.624Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T08:16:01.514Z"}
+{"level":"info","message":"Executing (default): SELECT max([displaySequence]) AS [max] FROM [clients] AS [clients] WHERE [clients].[deletedAt] IS NULL;","timestamp":"2017-05-15T08:16:01.550Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND ([clients].[reference] = N'Client7' AND [clients].[active] = 1)) ORDER BY [id] OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;","timestamp":"2017-05-15T08:16:01.565Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [clients] AS [clients] WHERE ([clients].[deletedAt] IS NULL AND ([clients].[reference] = N'Client7' AND [clients].[active] = 0)) ORDER BY [id] OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;","timestamp":"2017-05-15T08:16:01.565Z"}
+{"level":"info","message":"Executing (default): INSERT INTO [clients] ([id],[reference],[displaySequence],[active],[createdAt],[updatedAt]) OUTPUT INSERTED.* VALUES (N'ebdfe9e7-507d-4d1b-b5b5-ae9b218dcd12',N'Client7',4,1,N'2017-05-15 16:16:01.000',N'2017-05-15 16:16:01.000');","timestamp":"2017-05-15T08:16:01.581Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:16:28.202Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:16:28.204Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:16:28.205Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:16:28.205Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:16:28.206Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:16:28.821Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:16:28.873Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:18:41.414Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:18:41.416Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:18:41.417Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:18:41.418Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:18:41.418Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:18:41.850Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:18:41.887Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:19:39.295Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:19:39.297Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:19:39.297Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:19:39.298Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:19:39.299Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:19:39.597Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:19:39.622Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:20:07.766Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:20:07.766Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:20:07.766Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:20:07.766Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:20:07.775Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:20:08.071Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:20:08.086Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:21:41.248Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:21:41.251Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:21:41.252Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:21:41.252Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:21:41.253Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:21:41.799Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:21:41.827Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:22:11.958Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:22:11.961Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:22:11.962Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:22:11.963Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:22:11.964Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:22:12.267Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:22:12.278Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:22:25.742Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:22:25.746Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:22:25.747Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:22:25.752Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:22:25.753Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:22:26.048Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:22:26.070Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:24:25.820Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:24:25.823Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:24:25.823Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:24:25.824Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:24:25.825Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:24:26.661Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:24:26.709Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:25:11.585Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:25:11.585Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:25:11.585Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:25:11.585Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:25:11.585Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:25:11.924Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:25:11.944Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:25:20.400Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:25:20.403Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:25:20.403Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:25:20.404Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:25:20.404Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:25:20.742Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:25:20.757Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:25:36.162Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:25:36.165Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:25:36.165Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:25:36.166Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:25:36.167Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:25:36.458Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:25:36.482Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:26:08.905Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:26:08.906Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:26:08.907Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:26:08.907Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:26:08.909Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:26:09.206Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:26:09.222Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:27:48.180Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:27:48.182Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:27:48.183Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:27:48.184Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:27:48.184Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:27:48.530Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:27:48.547Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:29:55.090Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:29:55.092Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:29:55.092Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:29:55.093Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:29:55.094Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:29:55.603Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:29:55.626Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:30:08.711Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:30:08.713Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:30:08.713Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:30:08.714Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:30:08.715Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:30:09.087Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:30:09.107Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:30:49.387Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:30:49.390Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:30:49.391Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:30:49.393Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:30:49.396Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:30:49.696Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:30:49.704Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:31:34.554Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:31:34.554Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:31:34.554Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:31:34.554Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:31:34.554Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:31:34.847Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:31:34.863Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:31:45.097Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:31:45.100Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:31:45.101Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:31:45.101Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:31:45.102Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:31:45.433Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:31:45.450Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:32:37.140Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:32:37.140Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:32:37.140Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:32:37.156Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:32:37.157Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:32:37.504Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:32:37.526Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:32:42.781Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:32:42.783Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:32:42.784Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:32:42.784Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:32:42.785Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:32:43.211Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:32:43.260Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:33:10.007Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:33:10.010Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:33:10.011Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:33:10.012Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:33:10.013Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:33:10.449Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:33:10.497Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:33:38.327Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:33:38.327Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:33:38.327Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:33:38.327Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:33:38.342Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:33:38.649Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:33:38.665Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:35:20.869Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:35:20.872Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:35:20.873Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:35:20.873Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:35:20.874Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:35:21.238Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:35:21.259Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:35:40.588Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:35:40.591Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:35:40.591Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:35:40.591Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:35:40.592Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:35:40.886Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:35:40.902Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:37:23.923Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:37:23.926Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:37:23.926Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:37:23.927Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:37:23.927Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:37:24.220Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:37:24.237Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:39:03.698Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:39:03.702Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:39:03.703Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:39:03.703Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:39:03.704Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:39:04.111Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:39:04.129Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:39:27.544Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:39:27.546Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:39:27.547Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:39:27.547Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:39:27.548Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:39:27.852Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:39:27.868Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:40:09.671Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:40:09.674Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:40:09.675Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:40:09.675Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:40:09.676Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:40:09.971Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:40:09.986Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:43:54.090Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:43:54.092Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:43:54.093Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:43:54.093Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:43:54.094Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:43:54.399Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:43:54.415Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:45:17.745Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:45:17.747Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:45:17.748Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:45:17.748Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:45:17.749Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:45:18.072Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:45:18.091Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:47:01.979Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:47:01.982Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:47:01.982Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:47:01.983Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:47:01.983Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:47:02.357Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:47:02.376Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:47:58.420Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:47:58.423Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:47:58.423Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:47:58.423Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:47:58.424Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:47:58.903Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:47:58.920Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:50:27.952Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:50:27.954Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:50:27.955Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:50:27.956Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:50:27.957Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:50:28.262Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:50:28.278Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:50:39.789Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:50:39.792Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:50:39.793Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:50:39.793Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:50:39.794Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:50:40.141Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:50:40.161Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:51:33.976Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:51:33.979Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:51:33.980Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:51:33.981Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:51:33.982Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:51:34.621Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:51:34.678Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:51:38.162Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:51:38.164Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:51:38.165Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:51:38.166Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:51:38.167Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:51:38.848Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:51:38.902Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:51:43.528Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:51:43.530Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:51:43.531Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:51:43.531Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:51:43.532Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:51:43.830Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:51:43.846Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:53:05.606Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:53:05.608Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:53:05.609Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:53:05.609Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:53:05.610Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:53:06.141Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:53:06.191Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:53:18.641Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:53:18.643Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:53:18.643Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:53:18.643Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:53:18.644Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:53:18.962Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:53:18.978Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:53:31.864Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:53:31.866Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:53:31.867Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:53:31.867Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:53:31.867Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:53:32.160Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:53:32.176Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:54:10.069Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:54:10.072Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:54:10.072Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:54:10.073Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:54:10.074Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:54:10.380Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:54:10.397Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:54:35.284Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:54:35.293Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:54:35.293Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:54:35.294Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:54:35.295Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:54:35.659Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:54:35.677Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:55:42.772Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:55:42.775Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:55:42.775Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:55:42.775Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:55:42.776Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:55:43.146Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:55:43.163Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:56:21.838Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T08:56:21.840Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T08:56:21.841Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T08:56:21.841Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T08:56:21.841Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T08:56:22.180Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T08:56:22.196Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:05:05.529Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:05:05.531Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:05:05.532Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:05:05.532Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:05:05.533Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:05:05.845Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:05:05.862Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:19:43.381Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:19:43.384Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:19:43.384Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:19:43.385Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:19:43.385Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:19:43.705Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:19:43.723Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:20:20.511Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:20:20.513Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:20:20.514Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:20:20.514Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:20:20.514Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:20:20.817Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:20:20.832Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:21:23.841Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:21:23.844Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:21:23.844Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:21:23.844Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:21:23.845Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:21:24.162Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:21:24.177Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:22:35.799Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:22:35.802Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:22:35.803Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:22:35.803Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:22:35.804Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:22:36.271Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:22:36.293Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:23:13.041Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:23:13.043Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:23:13.043Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:23:13.044Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:23:13.044Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:23:13.339Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:23:13.354Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:23:46.278Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:23:46.280Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:23:46.280Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:23:46.281Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:23:46.282Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:23:46.711Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:23:46.730Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:26:54.805Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:26:54.807Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:26:54.808Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:26:54.808Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:26:54.808Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:26:55.106Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:26:55.122Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:31:11.433Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:31:11.436Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:31:11.437Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:31:11.438Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:31:11.439Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:31:11.757Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:31:11.772Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:31:23.759Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:31:23.761Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:31:23.762Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:31:23.762Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:31:23.762Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:31:24.095Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:31:24.116Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:32:31.745Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:32:31.747Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:32:31.748Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:32:31.748Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:32:31.748Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:32:32.051Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:32:32.072Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:32:39.830Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:32:39.833Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:32:39.833Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:32:39.834Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:32:39.834Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:32:40.167Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:32:40.184Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:38:43.664Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:38:43.667Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:38:43.667Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:38:43.667Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:38:43.668Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:38:43.973Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:38:43.988Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:39:50.825Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:39:50.827Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:39:50.827Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:39:50.827Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:39:50.828Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:39:51.140Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:39:51.154Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:40:29.766Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:40:29.768Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:40:29.768Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:40:29.769Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:40:29.769Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:40:30.167Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:40:30.183Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:42:34.105Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:42:34.107Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:42:34.108Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:42:34.108Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:42:34.108Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:42:34.427Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:42:34.442Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:49:12.381Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:49:12.385Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:49:12.386Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:49:12.387Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:49:12.388Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:49:12.798Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:49:12.817Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:49:55.538Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:49:55.541Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:49:55.541Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:49:55.542Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:49:55.542Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:49:55.901Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:49:55.923Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:50:05.851Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:50:05.855Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:50:05.855Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:50:05.855Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:50:05.856Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:50:06.183Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:50:06.198Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:50:08.445Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:50:08.448Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:50:08.448Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:50:08.449Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:50:08.450Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:50:08.752Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:50:08.787Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:52:07.851Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:52:07.853Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:52:07.854Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:52:07.854Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:52:07.854Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:52:08.167Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:52:08.182Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:52:34.324Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:52:34.326Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:52:34.326Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:52:34.327Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:52:34.327Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:52:34.623Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:52:34.639Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:54:40.815Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:54:40.817Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:54:40.818Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:54:40.818Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:54:40.819Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:54:41.191Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:54:41.208Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:56:23.614Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:56:23.616Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:56:23.616Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:56:23.617Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:56:23.617Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:56:23.917Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:56:23.931Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:57:25.071Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T09:57:25.076Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T09:57:25.076Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T09:57:25.077Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T09:57:25.077Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T09:57:25.380Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T09:57:25.397Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:05:23.581Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:05:23.585Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:05:23.585Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:05:23.586Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:05:23.587Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:05:24.002Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:05:24.020Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:05:30.015Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:05:30.017Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:05:30.018Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:05:30.018Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:05:30.019Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:05:30.414Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:05:30.430Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:06:08.845Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:06:08.847Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:06:08.847Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:06:08.848Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:06:08.849Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:06:09.356Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:06:09.384Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:07:42.537Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:07:42.539Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:07:42.540Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:07:42.540Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:07:42.540Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:07:42.920Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:07:42.938Z"}
+{"level":"info","message":"skip token validation...","timestamp":"2017-05-15T10:07:53.978Z"}
+{"level":"info","message":"Executing (default): SELECT [id], [reference], [displaySequence], [active], [createdAt], [updatedAt], [deletedAt] FROM [progressTypes] AS [progressTypes] WHERE [progressTypes].[deletedAt] IS NULL ORDER BY [progressTypes].[active] DESC, [progressTypes].[displaySequence], [progressTypes].[reference];","timestamp":"2017-05-15T10:07:54.022Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:11:21.405Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:11:21.408Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:11:21.410Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:11:21.410Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:11:21.411Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:11:21.746Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:11:21.760Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:13:13.423Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:13:13.426Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:13:13.427Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:13:13.427Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:13:13.428Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:13:13.736Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:13:13.755Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:16:53.642Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:16:53.645Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:16:53.645Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:16:53.645Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:16:53.646Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:16:53.957Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:16:53.979Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:18:08.070Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:18:08.072Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:18:08.072Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:18:08.074Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:18:08.074Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:18:08.376Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:18:08.393Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:18:13.690Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:18:13.692Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:18:13.693Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:18:13.693Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:18:13.694Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:18:14.010Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:18:14.026Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:18:38.768Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:18:38.770Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:18:38.771Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:18:38.771Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:18:38.771Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:18:39.064Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:18:39.079Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:19:49.061Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:19:49.065Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:19:49.065Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:19:49.066Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:19:49.066Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:19:49.564Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:19:49.593Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:20:39.706Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:20:39.709Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:20:39.710Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:20:39.710Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:20:39.711Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:20:40.641Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:20:40.746Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:20:43.396Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:20:43.398Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:20:43.398Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:20:43.398Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:20:43.399Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:20:44.340Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:20:44.435Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:20:52.138Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:20:52.141Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:20:52.142Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:20:52.142Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:20:52.143Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:20:53.313Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:20:53.377Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:06.307Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:21:06.310Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:21:06.310Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:21:06.311Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:06.311Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:21:07.353Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:21:07.525Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:15.261Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:21:15.263Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:21:15.264Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:21:15.265Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:15.266Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:21:16.414Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:21:16.544Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:22.211Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:21:22.216Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:21:22.217Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:21:22.218Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:22.219Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:21:22.737Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:21:22.756Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:26.334Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:21:26.337Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:21:26.337Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:21:26.338Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:26.339Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:21:26.742Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:21:26.763Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:50.288Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:21:50.291Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:21:50.291Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:21:50.291Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:50.292Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:21:50.657Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:21:50.674Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:57.172Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:21:57.175Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:21:57.175Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:21:57.176Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:21:57.176Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:21:57.483Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:21:57.502Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:23:39.128Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:23:39.131Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:23:39.132Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:23:39.132Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:23:39.132Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:23:39.491Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:23:39.507Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:24:01.882Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:24:01.884Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:24:01.884Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:24:01.884Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:24:01.885Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:24:02.198Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:24:02.215Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:24:34.256Z"}
+{"level":"info","message":"dotenv module test:","timestamp":"2017-05-15T10:24:34.258Z"}
+{"level":"info","message":"the 'TEST' environment variable is currently: test","timestamp":"2017-05-15T10:24:34.259Z"}
+{"level":"info","message":"dotenv module is working","timestamp":"2017-05-15T10:24:34.260Z"}
+{"level":"info","message":"----------------------------------------","timestamp":"2017-05-15T10:24:34.261Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2017-05-15T10:24:34.566Z"}
+{"level":"info","message":"scheduleSystem server in operation... (http://localhost:9007)","timestamp":"2017-05-15T10:24:34.594Z"}

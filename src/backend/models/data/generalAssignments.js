@@ -1,24 +1,34 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../config/database.js';
 
-export const Privileges = sequelize.define('privileges', {
+export const GeneralAssignments = sequelize.define('generalAssignments', {
     id: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull: false,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         validate: { isUUID: 4 }
     },
-    privilegeTypeId: { // 權限種類 (例：客戶、員工、廠商)
+    personnelId: { // 責任人員
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: { isUUID: 4 }
+    },
+    reference: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    productTypeId: { // 產品種類
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: { min: 0 }
     },
-    privilegeRoleId: { // 工作角色 (例：管理員、使用者、主管)
+    taskTypeId: { // 工序種類
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: { min: 0 }
     },
-    active: {
+    principle: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false

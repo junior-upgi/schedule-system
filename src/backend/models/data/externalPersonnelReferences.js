@@ -1,27 +1,21 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../config/database.js';
 
-export const Privileges = sequelize.define('privileges', {
-    id: {
+export const ExternalPersonnelReferences = sequelize.define('externalPersonnelReferences', {
+    personnelId: { // 系統內部人員資料 ID
         type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true,
         validate: { isUUID: 4 }
     },
-    privilegeTypeId: { // 權限種類 (例：客戶、員工、廠商)
-        type: Sequelize.INTEGER,
+    externalId: { // 外部人員資料來源資料 ID (天心 ERP 資料表 SALM 欄位 SAL_NO)
+        type: Sequelize.STRING,
         allowNull: false,
-        validate: { min: 0 }
-    },
-    privilegeRoleId: { // 工作角色 (例：管理員、使用者、主管)
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: { min: 0 }
-    },
-    active: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
+        primaryKey: true,
+        validate: {
+            isAlphanumeric: true, // 人員編號包含字母(例: 外勞)
+            notEmpty: true
+        }
     },
     createdAt: {
         type: Sequelize.DATE,

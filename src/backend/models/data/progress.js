@@ -1,36 +1,26 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../config/database.js';
 
-export const Depencencies = sequelize.define('dependencies', {
-    id: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        validate: { isUUID: 4 }
-    },
+export const Progress = sequelize.define('progress', {
     taskId: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: { isUUID: 4 }
     },
-    parentTaskId: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: { isUUID: 4 }
-    },
-    restrictionTypeId: {
+    progressTypeId: { // 百分比，數量，時間
         type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: { min: 0 }
+        allowNull: false
     },
-    lag: {
+    target: { // 目標
         type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
+        allowNull: false
     },
-    comment: {
-        type: Sequelize.TEXT,
+    currentStanding: { // 目前累計
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    dailyRate: { // 預計日產能
+        type: Sequelize.INTEGER,
         allowNull: true
     },
     createdAt: {

@@ -1,6 +1,7 @@
 import { getUserID } from '../utilities/telegram.js';
 
 // app backend server configuration
+export const env = process.env.NODE_ENV || 'development';
 export const development = true;
 
 const host = 'http://localhost';
@@ -14,6 +15,8 @@ export const administrator = getUserID('蔡佳佑');
 export function passphrase() {
     return 'this is not a passphrase';
 }
+
+export const ddnsHost = 'upgi.ddns.net';
 
 export const enforceTokenValidation = false;
 

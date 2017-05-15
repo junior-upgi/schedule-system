@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../config/database.js';
 
-export const Depencencies = sequelize.define('dependencies', {
+export const Tasks = sequelize.define('tasks', {
     id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -9,29 +9,42 @@ export const Depencencies = sequelize.define('dependencies', {
         primaryKey: true,
         validate: { isUUID: 4 }
     },
-    taskId: {
+    productId: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: { isUUID: 4 }
     },
-    parentTaskId: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: { isUUID: 4 }
-    },
-    restrictionTypeId: {
+    taskTypeId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: { min: 0 }
+        allowNull: false
     },
-    lag: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    comment: {
+    description: {
         type: Sequelize.TEXT,
         allowNull: true
+    },
+    deadline: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        validate: { isDate: true }
+    },
+    startedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        validate: { isDate: true }
+    },
+    durationEstimate: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    completedAt: {
+        type: Sequelize.DATE,
+        allowNull: true,
+        validate: { isDate: true }
+    },
+    observable: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     },
     createdAt: {
         type: Sequelize.DATE,

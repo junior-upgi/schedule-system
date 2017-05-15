@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import { passphrase, enforceTokenValidation } from '../config/server.js';
-import { endpointErrorHandler } from '../utilities/endpointErrorHandler.js';
+import { passphrase, enforceTokenValidation, ddnsHost, port } from '../config/server.js';
 import { logger } from '../utilities/logger.js';
 
 // middleware func declaration for token validation
@@ -21,17 +20,15 @@ module.exports = (request, response, next) => {
         if (accessToken) { // if a token is found
             jwt.verify(accessToken, passphrase(), (error, decodedToken) => {
                 if (error) {
-                    return response.status(403).json(
-                        endpointErrorHandler(request.method, request.originalUrl, `帳號使用權限發生錯誤: ${error.message}`)
-                    );
+                    response.status(403);
+                    next(`${response.statusCode} Forbidden (Unauthorized Token)`);
                 }
                 logger.info('credential is valid...');
                 next();
             });
         } else { // if there is no token, return an error
-            return response.status(403).json(
-                endpointErrorHandler(request.method, request.originalUrl, '認證遺失，請重新登入')
-            );
+            response.status(403);
+            next(`${response.statusCode} Forbidden (Lost Token)`);
         }
     }
 };

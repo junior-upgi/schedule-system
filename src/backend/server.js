@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import express from 'express';
 import exphbs from 'express-handlebars';
 import morgan from 'morgan';
@@ -10,6 +11,19 @@ import { logger } from './utilities/logger.js';
 import { statusReport } from './utilities/statusReport.js';
 import { sequelize } from './config/database.js';
 
+// dotenv enviornmental variable loader template
+dotenv.config(); // loads .env file from root of project
+// dotenv.config({ path: 'custom-path-to-.env-file' });
+logger.info('----------------------------------------');
+logger.info('dotenv module test:');
+logger.info(`the 'TEST' environment variable is currently: ${process.env.TEST}`);
+if ((process.env.TEST === undefined) || (process.env.TEST === 'test')) {
+    logger.info('dotenv module is working');
+} else {
+    logger.error('dotenv module is not working');
+}
+logger.info('----------------------------------------');
+
 const app = express();
 const main = express.Router();
 app.use(`/${systemReference}`, main);
@@ -19,6 +33,28 @@ main.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-
 main.use(bodyParser.json()); // parse application/json
 main.use('/', express.static(path.join(__dirname, '/../public'))); // frontend client server route
 main.use('/bower_components', express.static(path.join(__dirname, '/../bower_components'))); // serve bower packages
+
+// default error handlers
+if (app.get('env') === 'development') {
+    app.use((error, request, response, next) => {
+        // logger.error('DEFAULT DEVELOPMENT ERROR HANDLER MIDDLEWARE TRIGGERED');
+        response.status(error.status || 500);
+        response.json({
+            message: error.message,
+            error: error
+        });
+    });
+}
+if (app.get('env') === 'production') {
+    app.use((error, request, response, next) => {
+        // logger.error('DEFAULT PRODUCTION ERROR HANDLER MIDDLEWARE TRIGGERED');
+        response.status(error.status || 500);
+        response.json({
+            message: error.message,
+            error: {}
+        });
+    });
+}
 
 // Handlebars templating engine test route
 app.engine('.hbs', exphbs({
@@ -38,6 +74,8 @@ main.get('/templateTest', (request, response) => {
     });
 });
 
+// reference routes
+main.use('/', require('./routes/reference/common.js')); // common reference tables
 // data routes
 /*
 main.use('/', require('./routes/data/smartsheet/workspaces.js'));
@@ -52,7 +90,8 @@ main.use('/', require('./routes/utility/status.js'));
 
 // initiate server script
 if (!module.parent) {
-    sequelize.authenticate() // verify server status
+    // verify database server status
+    Promise.all([sequelize.authenticate()])
         .then(() => {
             app.listen(port, (error) => { // start backend server
                 if (error) {

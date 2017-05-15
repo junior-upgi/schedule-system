@@ -1,3 +1,4 @@
+// import path from 'path';
 import Sequelize from 'sequelize';
 
 import { development, systemReference, timezone } from './server.js';
@@ -64,7 +65,10 @@ export const sequelize = new Sequelize(
             underscored: false,
             freezeTableName: true,
             timestamps: true,
-            paranoid: true
+            paranoid: true,
+            createdAt: 'createdAt',
+            updatedAt: 'updatedAt',
+            deletedAt: 'deletedAt'
         }
     },
 );
