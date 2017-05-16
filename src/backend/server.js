@@ -1,8 +1,8 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import express from 'express';
 import exphbs from 'express-handlebars';
+import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
 
@@ -76,14 +76,14 @@ main.get('/templateTest', (request, response) => {
 
 // reference routes
 main.use('/', require('./routes/reference/common.js')); // common reference tables
+
 // data routes
-/*
-main.use('/', require('./routes/data/smartsheet/workspaces.js'));
-main.use('/', require('./routes/data/initialize.js'));
-main.use('/', require('./routes/data/referenceTables.js'));
-main.use('/', require('./routes/data/clients.js'));
-main.use('/', require('./routes/data/jobs.js'));
-*/
+// main.use('/', require('./routes/data/smartsheet/workspaces.js'));
+// main.use('/', require('./routes/data/initialize.js'));
+// main.use('/', require('./routes/data/referenceTables.js'));
+// main.use('/', require('./routes/data/clients.js'));
+// main.use('/', require('./routes/data/jobs.js'));
+
 // utility routes
 main.use('/', require('./routes/utility/login.js'));
 main.use('/', require('./routes/utility/status.js'));

@@ -28,7 +28,7 @@ export function mssqlServerUrl() {
     }
 }
 
-export const dbConfig = { // also used as knex.js / sequelize.js init object
+export const dbConfig = { // also used as knex.js init object
     client: 'mssql',
     connection: {
         server: mssqlServerHost().slice(7),
@@ -51,7 +51,7 @@ const Knex = require('knex');
 
 Model.knex(Knex(dbConfig));
 
-export const sequelize = new Sequelize(
+export const sequelize = new Sequelize( // sequelize init object
     systemReference, // database
     upgiSystemAccount, // username
     upgiSystemPassword, // password
@@ -72,3 +72,34 @@ export const sequelize = new Sequelize(
         }
     },
 );
+
+export const db = {}; // provide global access to Sequelize models
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+db.Clients = require('../models/reference/clients.js')(sequelize, Sequelize);
+db.JobTemplates = require('../models/reference/jobTemplates.js')(sequelize, Sequelize);
+db.jobTypes = require('../models/reference/jobTypes.js')(sequelize, Sequelize);
+db.Personnel = require('../models/reference/personnel.js')(sequelize, Sequelize);
+db.Phases = require('../models/reference/personnel.js')(sequelize, Sequelize);
+db.PrivilegeRoles = require('../models/reference/privilegeRoles.js')(sequelize, Sequelize);
+db.PrivilegeTypes = require('../models/reference/privilegeTypes.js')(sequelize, Sequelize);
+db.ProductTypes = require('../models/reference/productTypes.js')(sequelize, Sequelize);
+db.ProgressTypes = require('../models/reference/progressTypes.js')(sequelize, Sequelize);
+db.RestrictionTypes = require('../models/reference/restrictionTypes.js')(sequelize, Sequelize);
+db.TaskStatusTypes = require('../models/reference/taskStatusTypes.js')(sequelize, Sequelize);
+db.TaskTypes = require('../models/reference/taskTypes.js')(sequelize, Sequelize);
+
+db.ApplicablePhases = require('../models/data/applicablePhases.js')(sequelize, Sequelize);
+db.Dependencies = require('../models/data/dependencies.js')(sequelize, Sequelize);
+db.externalClientReferences = require('../models/data/externalClientReferences.js')(sequelize, Sequelize);
+db.externalPersonnelReferences = require('../models/data/externalPersonnelReferences.js')(sequelize, Sequelize);
+db.generalAssignments = require('../models/data/generalAssignments.js')(sequelize, Sequelize);
+db.Jobs = require('../models/data/jobs.js')(sequelize, Sequelize);
+db.JobTemplateContents = require('../models/data/jobTemplateContents.js')(sequelize, Sequelize);
+db.Privileges = require('../models/data/privileges.js')(sequelize, Sequelize);
+db.Products = require('../models/data/products.js')(sequelize, Sequelize);
+db.Progress = require('../models/data/progress.js')(sequelize, Sequelize);
+db.Tasks = require('../models/data/tasks.js')(sequelize, Sequelize);
+db.TaskStatuses = require('../models/data/taskStatuses.js')(sequelize, Sequelize);

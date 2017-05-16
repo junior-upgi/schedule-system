@@ -1,13 +1,17 @@
 import fs from 'fs';
+import path from 'path';
 import winston from 'winston';
 
 import { development } from '../config/server.js';
-import { logDir } from '../config/logger.js';
+import { logDir } from '../config/logger';
 import { currentDatetimeString } from './timeRelated.js';
 
 // logging utility
 // Create the log directory if it does not exist
-if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir); }
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
+}
+
 export const logger = new(winston.Logger)({
     transports: [
         // colorize the output to the console

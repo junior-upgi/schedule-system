@@ -2,7 +2,7 @@ import { getUserID } from '../utilities/telegram.js';
 
 // app backend server configuration
 export const env = process.env.NODE_ENV || 'development';
-export const development = true;
+export const development = env === 'development' ? true : false;
 
 const host = 'http://localhost';
 export const port = process.env.PORT || 9007;
