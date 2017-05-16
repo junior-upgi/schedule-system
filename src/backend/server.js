@@ -1,32 +1,37 @@
+import dotenv from 'dotenv';
+import express from 'express';
+import path from 'path';
+
+import logger from './utilities/logger.js';
+import system from './config/system.js';
+import sqlite from './config/sqlite.js';
+
+const app = express();
+const main = express.Router();
+app.use(`/${system.reference}`, main);
+
+dotenv.config(); // loads .env file from root of project
+
+app.listen(system.server.port, (error) => { // start backend server
+    if (error) {
+        logger.error(`error starting ${system.reference} server: ${error}`);
+    } else {
+        logger.info(`${system.reference} server is in operation... (${system.server.baseUrl})`);
+    }
+});
+
+/*
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import exphbs from 'express-handlebars';
-import express from 'express';
+
 import morgan from 'morgan';
 import path from 'path';
 
 import { port, serverUrl, systemReference } from './config/server.js';
-import { logger } from './utilities/logger.js';
 import { statusReport } from './utilities/statusReport.js';
 import { sequelize } from './config/database.js';
 
-// dotenv enviornmental variable loader template
-dotenv.config(); // loads .env file from root of project
-// dotenv.config({ path: 'custom-path-to-.env-file' });
-logger.info('----------------------------------------');
-logger.info('dotenv module test:');
-logger.info(`the 'TEST' environment variable is currently: ${process.env.TEST}`);
-if ((process.env.TEST === undefined) || (process.env.TEST === 'test')) {
-    logger.info('dotenv module is working');
-} else {
-    logger.error('dotenv module is not working');
-}
-logger.info('----------------------------------------');
-
-const app = express();
-const main = express.Router();
-app.use(`/${systemReference}`, main);
 main.use(cors());
 main.use(morgan('dev'));
 main.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
@@ -88,22 +93,4 @@ main.get('/templateTest', (request, response) => {
 // main.use('/', require('./routes/utility/login.js'));
 // main.use('/', require('./routes/utility/status.js'));
 
-// initiate server script
-if (!module.parent) {
-    // verify database server status
-    Promise.all([sequelize.authenticate()])
-        .then(() => {
-            app.listen(port, (error) => { // start backend server
-                if (error) {
-                    logger.error(`error starting ${systemReference} server: ${error}`);
-                } else {
-                    logger.info(`${systemReference} server in operation... (${serverUrl})`);
-                    // start other services
-                    statusReport.start(); // status reporting
-                }
-            });
-        })
-        .catch((error) => {
-            logger.error(`database authentication error, ${systemReference} server is NOT started: ${error}`);
-        });
-}
+*/

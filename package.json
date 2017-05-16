@@ -83,6 +83,9 @@
             "vueify"
         ]
     },
+    "config": {
+        "appurl": "http://localhost:9007/scheduleSystem/index.html"
+    },
     "scripts": {
         "rebuild:cleanup": "run-p client:cleanup server:cleanup cleanup:log cleanup:misc",
         "client:cleanup": "rimraf public && mkdir public && cd public && mkdir partials && mkdir layouts",
