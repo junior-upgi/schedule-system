@@ -1,0 +1,15 @@
+{
+  "name": "schedule-system",
+  "description": "product development and production schedule management system",
+  "main": "main.js",
+  "authors": [
+    "Chia-Yu Tsai"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/junior-upgi/scheduleSystem",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}
