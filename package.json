@@ -1,20 +1,18 @@
 {
-  "name": "scheduleSystem",
+  "name": "schedule-system",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "universal product and services schedule tracking and management system",
+  "main": "server.js",
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junior-upgi/scheduleSystem.git"
+    "url": "git+https://github.com/chiayutsaipersonal/schedule-system.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Chia-Yu Tsai",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/junior-upgi/scheduleSystem/issues"
+    "url": "https://github.com/chiayutsaipersonal/schedule-system/issues"
   },
-  "homepage": "https://github.com/junior-upgi/scheduleSystem#readme"
+  "homepage": "https://github.com/chiayutsaipersonal/schedule-system#readme"
 }
